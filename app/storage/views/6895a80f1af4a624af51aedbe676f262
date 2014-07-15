@@ -1,0 +1,62 @@
+<div class="row">
+	<?php if($entity->main_image_attribute && $item->{'image_' . $entity->main_image_attribute->name}): ?>
+		<div class="col-xs-4">
+			<br>
+			<img class="img-thumbnail img-responsive" src="<?php echo asset($item->{'image_' . $entity->main_image_attribute->name}->path); ?>">
+		</div>
+		<div class="col-xs-8">
+	<?php else: ?>
+		<div class="col-xs-12">
+	<?php endif; ?>
+		<h1><?php echo $item->{$entity->main_attribute->name}; ?></h1>
+
+		<?php foreach($entity->attributes as $index => $attribute): ?>
+			<?php if($attribute->type == 'string'): ?>
+				<p><b><?php echo ucfirst($attribute->name); ?></b></p>
+				<p><?php echo $item->{$attribute->name}; ?></p>
+			<?php endif; ?>
+			<?php if($attribute->type == 'text'): ?>
+				<p><b><?php echo ucfirst($attribute->name); ?></b></p>
+				<p><?php echo $item->{$attribute->name}; ?></p>
+			<?php endif; ?>
+			<?php if($attribute->type == 'integer'): ?>
+				<p><b><?php echo ucfirst($attribute->name); ?></b></p>
+				<p><?php echo $item->{$attribute->name}; ?></p>
+			<?php endif; ?>
+			<?php if($attribute->type == 'image' && $item->{'image_' . $entity->main_image_attribute->name}): ?>
+				<p><b><?php echo ucfirst($attribute->name); ?></b></p>
+				<p><?php echo asset($item->{'image_' . $attribute->name}->path); ?></p>
+				<div class="">
+					<div class="pull-left image-color" style="background-color:<?php echo $item->{'image_' . $attribute->name}->key_color; ?>"></div>
+					<div class="pull-left image-color" style="background-color:<?php echo $item->{'image_' . $attribute->name}->secondary_color; ?>"></div>
+					<div class="pull-left image-color" style="background-color:<?php echo $item->{'image_' . $attribute->name}->background_color; ?>"></div>
+				</div>
+				<br>
+				<p><?php echo $item->{'image_' . $attribute->name}->width; ?>x<?php echo $item->{'image_' . $attribute->name}->height; ?></p>
+			<?php elseif($attribute->type == 'image'): ?>
+				<p><b><?php echo ucfirst($attribute->name); ?></b></p>
+				<p><i>Empty</i></p>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</div>
+</div>
+
+
+
+
+
+<hr>
+<a class="btn btn-default" href="<?php echo URL::route('admin.' . $entity->route_name . '.index'); ?>">Back</a>
+<a class="btn btn-warning" href="<?php echo URL::route('admin.' . $entity->route_name . '.edit', $item->id); ?>">Edit</a>
+<a class="btn btn-danger" href="<?php echo URL::route('admin.' . $entity->route_name . '.delete', $item->id); ?>">Delete</a>
+
+
+<style>
+.image-color {
+	width:20px;
+	height:20px;
+	margin-right: 10px;
+	margin-top: -7px;
+	border: 1px solid grey;
+}
+</style>

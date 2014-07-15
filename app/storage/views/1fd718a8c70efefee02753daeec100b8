@@ -1,0 +1,57 @@
+<?php $__env->startSection('header'); ?>
+<?php echo $header; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('footer'); ?>
+<?php echo $footer; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<br>
+<div class="row">
+	<div class="col-sm-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Navegación</h3>
+			</div>
+			<div class="panel-body">
+				<div class="list-group sidenav">
+					<a href="<?php echo URL::route('stars.index'); ?>" class="list-group-item 
+					<?php if(Helper::routeStartsWith('stars.index')): ?>
+					active
+					<?php endif; ?>
+					">
+						Mis Estrellas
+					</a>
+					<a href="<?php echo URL::route('stars.sent'); ?>" class="list-group-item 
+					<?php if(Helper::routeStartsWith('stars.sent')): ?>
+					active
+					<?php endif; ?>
+					">
+						Entrellas Enviadas
+					</a>
+					<a href="<?php echo URL::route('stars.create'); ?>" class="list-group-item 
+					<?php if(Helper::routeStartsWith('stars.create')): ?>
+					active
+					<?php endif; ?>
+					">
+						Enviar Estrellas
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-9">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"><?php echo $title; ?></h3>
+			</div>
+			<div class="panel-body">
+				<?php echo $content; ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

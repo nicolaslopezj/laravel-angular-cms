@@ -1,0 +1,39 @@
+<?php foreach($items as $index => $item): ?>
+	<?php if($index != 0): ?>
+		<hr>
+	<?php endif; ?>
+	<div class="row">
+		<?php if($entity->main_image_attribute && $item->{'image_' . $entity->main_image_attribute->name}): ?>
+			<div class="col-xs-2">
+				<img class="img-circle pull-right" width="60" src="<?php echo asset($item->{'image_' . $entity->main_image_attribute->name}->thumbnail_sm); ?>">
+			</div>
+			<div class="col-xs-10">
+		<?php elseif($entity->main_image_attribute): ?>
+			<div class="col-xs-2">
+				
+			</div>
+			<div class="col-xs-10">
+		<?php else: ?>
+			<div class="col-xs-12">
+		<?php endif; ?>
+			<div class="pull-right">
+				<a class="btn btn-default btn-xs" href="<?php echo URL::route('admin.' . $entity->route_name . '.show', $item->id); ?>">View</a>
+			</div>
+			<h4>
+				<?php echo $item->{$entity->main_attribute->name}; ?>
+
+			</h4>
+		</div>
+	</div>
+
+<?php endforeach; ?>
+
+<?php if(count($items) == 0): ?> 
+<p><i>No items.</i></p>
+<?php endif; ?>
+
+<?php echo $items->links(); ?>
+
+
+<hr>
+<a class="btn btn-default" href="<?php echo URL::route('admin.' . $entity->route_name . '.create'); ?>">Create</a>

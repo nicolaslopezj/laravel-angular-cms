@@ -1,0 +1,43 @@
+<br>
+<?php echo Form::open(['route' => 'login.make']); ?>
+<div class="row">
+	<div class="col-sm-4 col-sm-offset-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Login</h3>
+			</div>
+			<div class="panel-body">
+				<p><i>No tienes cuenta? <a href="<?php echo URL::route('register'); ?>">Registrate</a></i></p>
+
+				<?php if(Session::get('url.intended')): ?>
+				<div class="alert alert-warning">Necesitas entrar para seguir.</div>
+				<?php endif; ?>
+				<?php if(Session::get('error')): ?>
+				<div class="alert alert-danger"><?php echo Session::get('error'); ?></div>
+				<?php else: ?>
+				<br>
+				<?php endif; ?>
+
+				<div class="form-group">
+					<label>Email</label>
+					<input type="email" class="form-control" name="email">
+				</div>
+				<div class="form-group">
+					<label>Contraseña</label>
+					<input type="password" class="form-control" name="password">
+				</div>
+				<div class="form-group">
+					<label class="checkbox">
+						<input type="checkbox" name="remember">
+						Recuerdame
+					</label>
+				</div>
+
+			</div>
+			<div class="panel-footer clearfix">
+				<button class="btn btn-primary pull-right">Entrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<?php echo Form::close(); ?>

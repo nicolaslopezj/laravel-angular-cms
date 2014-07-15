@@ -1,0 +1,63 @@
+<?php $__env->startSection('content'); ?>
+<br>
+<div class="row">
+	<div class="col-sm-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Admin</h3>
+			</div>
+			<div class="panel-body">
+				<div class="list-group sidenav">
+					<a href="<?php echo URL::route('admin.users.index'); ?>" class="list-group-item
+					<?php if(Helper::routeStartsWith('admin.users')): ?>
+					active
+					<?php endif; ?>
+					">
+						Users
+					</a>
+					<?php foreach(EntityDriver::all() as $index => $entity): ?>
+						<a href="<?php echo URL::route('admin.' . $entity->route_name . '.index'); ?>" class="list-group-item
+						<?php if(Helper::routeStartsWith('admin.' . $entity->route_name)): ?>
+						active
+						<?php endif; ?>
+						">
+						<?php echo str_plural($entity->name); ?>
+
+						</a>
+					<?php endforeach; ?>
+					<a href="<?php echo URL::route('admin.definitions.index'); ?>" class="list-group-item
+					<?php if(Helper::routeStartsWith('admin.definitions')): ?>
+					active
+					<?php endif; ?>
+					">
+						Dictionary
+					</a>
+					<?php foreach(PackagesHelper::getAdminSidebar() as $index => $params): ?>
+						<a href="<?php echo URL::route('admin.' . $params['route_index']); ?>" class="list-group-item
+						<?php if(Helper::routeStartsWith('admin.' . $params['route_check'])): ?>
+						active
+						<?php endif; ?>
+						">
+							<?php echo $params['name']; ?>
+
+						</a>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-9">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"><?php echo $title; ?></h3>
+			</div>
+			<div class="panel-body">
+				<?php echo $content; ?>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

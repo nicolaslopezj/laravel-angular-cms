@@ -1,0 +1,21 @@
+<?php foreach($public_routes as $index => $public_route): ?>
+	<div class="row">
+		<div class="col-xs-12">
+			<a class="pull-right btn btn-default btn-xs" href="<?php echo URL::route('dev.public-routes.show', $public_route->id); ?>">View</a>
+			<p>
+				Name:
+				<b><?php echo $public_route->name; ?></b>
+			</p>
+			<p>
+				Path:
+				<code><?php echo $public_route->path; ?></code>
+			</p>
+		</div>
+	</div>
+	<hr>
+<?php endforeach; ?>
+
+<?php echo $public_routes->links(); ?>
+
+
+<a class="btn btn-default" href="<?php echo URL::route('dev.public-routes.create'); ?>">Create</a>

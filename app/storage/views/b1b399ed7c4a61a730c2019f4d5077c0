@@ -1,0 +1,16 @@
+<div class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="<?php echo URL::to('/'); ?>">Estrellas</a>
+		</div>
+		<div class="navbar-collapse collapse navbar-responsive-collapse">
+			<ul class="nav navbar-nav navbar-right">
+			<?php if(Auth::check()): ?> 
+				
+			<?php else: ?>
+				
+			<?php endif; ?>
+			</ul>
+		</div>
+	</div>
+</div>

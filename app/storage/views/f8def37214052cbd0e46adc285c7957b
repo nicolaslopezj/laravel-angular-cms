@@ -1,0 +1,12 @@
+<div class="container footer">
+	<br>
+	<hr>
+	<div class="row">
+		<div class="col-sm-8">
+			<p>Created by Nicolás López</p>
+		</div>
+		<div class="col-sm-4">
+		</div>
+	</div>
+	<br>
+</div>

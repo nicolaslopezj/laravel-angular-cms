@@ -1,0 +1,69 @@
+<div class="row">
+	<div class="col-sm-12">
+		<p>
+			Identifier:
+			<b><?php echo $definition->identifier; ?></b>
+		</p>
+		<p>
+			Description:
+			<b><?php echo $definition->description; ?></b>
+		</p>
+		<p>
+			Editable:
+			<b><?php echo $definition->editable; ?></b>
+		</p>
+		<p>
+			Type:
+			<b><?php echo $definition->type; ?></b>
+		</p>
+		<hr>
+		<?php if($definition->type == 'string'): ?>
+
+		<p>Value: <b><?php echo $definition->string; ?></b></p>
+
+		<?php elseif($definition->type == 'text'): ?>
+
+		<p><b>Value:</b></p>
+		<?php echo nl2br($definition->text); ?>
+
+
+		<?php elseif($definition->type == 'integer'): ?>
+
+		<p>Value: <b><?php echo $definition->integer; ?></b></p>
+
+		<?php elseif($definition->type == 'image'): ?>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<img class="img-thumbnail img-responsive" src="<?php echo asset($definition->image->path); ?>">
+			</div>
+			<div class="col-sm-6">
+				<p><?php echo $definition->image->path; ?></p>
+				<div class="">
+					<div class="pull-left image-color" style="background-color:<?php echo $definition->image->key_color; ?>"></div>
+					<div class="pull-left image-color" style="background-color:<?php echo $definition->image->secondary_color; ?>"></div>
+					<div class="pull-left image-color" style="background-color:<?php echo $definition->image->background_color; ?>"></div>
+				</div>
+				<br>
+				<p><?php echo $definition->image->width; ?>x<?php echo $definition->image->height; ?></p>
+			</div>
+		</div>
+
+		<?php endif; ?>
+
+		<hr>
+		<a href="<?php echo URL::route('dev.definitions.index'); ?>" class="btn btn-default">Back</a>
+		<a href="<?php echo URL::route('dev.definitions.edit', $definition->id); ?>" class="btn btn-default">Edit</a>
+		<a href="<?php echo URL::route('dev.definitions.delete', $definition->id); ?>" class="btn btn-danger">Delete</a>
+	</div>
+</div>
+
+<style>
+.image-color {
+	width:20px;
+	height:20px;
+	margin-right: 10px;
+	margin-top: -7px;
+	border: 1px solid grey;
+}
+</style>

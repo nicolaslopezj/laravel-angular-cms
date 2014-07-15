@@ -1,0 +1,38 @@
+<?php if($total == 0): ?>
+
+<p><i>Aún no haz recibido estrellas...</i></p>
+
+<?php else: ?>
+
+<h4>Total: <?php echo $total; ?> estrellas</h4>
+<hr>
+
+<?php foreach($stars as $index => $star): ?>
+<?php if($index != 0): ?>
+<hr>
+<?php endif; ?>
+<div class="row">
+	<div class="col-xs-2">
+		<?php for($i=0; $i < $star->amount; $i++): ?>
+			<i class="fa fa-star"></i>
+		<?php endfor; ?>
+	</div>
+	<div class="col-xs-6">
+		<p>por <b>"<?php echo $star->description; ?>"</b></p>
+	</div>
+	<div class="col-xs-2 text-right">
+		<p>de <b><?php echo $star->sender->name; ?></b></p>
+	</div>
+	<div class="col-xs-2 text-right">
+		<p>
+			<a href="<?php echo URL::route('stars.show', $star->id); ?>">Ver</a>
+		</p>
+	</div>
+</div>
+<?php endforeach; ?>
+
+
+<?php echo $stars->links(); ?>
+
+
+<?php endif; ?>

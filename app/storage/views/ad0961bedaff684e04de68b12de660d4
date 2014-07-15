@@ -1,0 +1,40 @@
+<?php echo Form::open(['route' => 'dev.definitions.store']); ?>
+
+
+<div class="form-group">
+	<label>Identifier</label>
+	<input class="form-control" name="identifier" value="<?php echo Input::old('identifier'); ?>">
+	<?php echo $errors->first('identifier', '<br><div class="alert alert-danger">:message</div>'); ?>
+
+</div>
+<div class="form-group">
+	<label>Description</label>
+	<input class="form-control" name="description" value="<?php echo Input::old('description'); ?>">
+	<?php echo $errors->first('description', '<br><div class="alert alert-danger">:message</div>'); ?>
+
+</div>
+<div class="form-group">
+	<label>Type</label>
+	<?php echo Form::select('type', 
+		['string' => 'string', 'text' => 'text', 'integer' => 'integer', 'image' => 'image'], 
+		Input::old('type'), ['class' => 'form-control']); ?>
+
+	<?php echo $errors->first('type', '<br><div class="alert alert-danger">:message</div>'); ?>
+
+</div>
+<div class="checkbox">
+	<label>
+		<?php echo Form::checkbox('editable', '1', Input::old('editable'));; ?>
+
+		Editable
+	</label>
+</div>
+<?php echo $errors->first('editable', '<br><div class="alert alert-danger">:message</div>'); ?>
+
+<hr>
+<div class="pull-right">
+	<a class="btn btn-default" href="<?php echo URL::route('dev.definitions.index'); ?>">Cancel</a>
+	<button class="btn btn-primary">Save</button>
+</div>
+
+<?php echo Form::close(); ?>

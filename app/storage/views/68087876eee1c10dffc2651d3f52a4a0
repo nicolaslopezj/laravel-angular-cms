@@ -1,0 +1,43 @@
+<br>
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<?php echo Form::open(['route' => 'stars.store']); ?>
+
+		<div class="form-group">
+			<label>Para</label>
+			<?php foreach(User::all() as $user): ?>
+			<?php if($user->id != Auth::user()->id): ?>
+			<p><b><?php echo $user->name; ?></b></p>
+			<input type="hidden" name="receiver_id" value="<?php echo $user->id; ?>">
+			<?php endif; ?>
+			<?php endforeach; ?>
+			<?php echo $errors->first('receiver_id', '<br><div class="alert alert-danger">:message</div>'); ?>
+
+		</div>
+		<div class="form-group">
+			<label>Descripción</label>
+			<div class="input-group">
+				<span class="input-group-addon">Por</span>
+				<input type="text" class="form-control" name="description" value="<?php echo Input::old('description'); ?>">
+			</div>
+			<?php echo $errors->first('description', '<br><div class="alert alert-danger">:message</div>'); ?>
+
+		</div>
+		<div class="form-group">
+			<label>Cantidad</label>
+			<select class="form-control" name="amount" value="<?php echo Input::old('amount'); ?>">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+			<?php echo $errors->first('amount', '<br><div class="alert alert-danger">:message</div>'); ?>
+
+		</div>
+		<button class="btn btn-primary pull-right">Enviar</button>
+		<?php echo Form::close(); ?>
+
+	</div>
+</div>
+

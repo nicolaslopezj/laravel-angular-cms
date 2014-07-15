@@ -1,0 +1,32 @@
+<?php foreach($definitions as $index => $definition): ?>
+	<div class="row">
+		<div class="col-xs-12">
+			<div style="padding-left: 15px">
+				<a class="pull-right btn btn-default btn-xs" href="<?php echo URL::route('dev.definitions.show', $definition->id); ?>">View</a>
+				<p >
+					<?php if(!$definition->editable): ?>
+						<i class="fa fa-lock" style="margin-left: -20px; margin-right: 8px"></i>
+					<?php endif; ?>
+					<b><?php echo $definition->identifier; ?></b> <br>
+					<span class="text-muted"><?php echo $definition->description; ?></span><br>
+					<?php echo $definition->string; ?>
+
+					<?php echo str_limit($definition->text, 100); ?>
+
+					<?php echo $definition->integer; ?>
+
+					<?php if($definition->image_id): ?>
+						<img class="img-circle" style="margin-top:10px" src="<?php echo asset($definition->image->thumbnail_xs); ?>">
+					<?php endif; ?>
+				</p>
+				<hr>
+			</div>
+		</div>
+	</div>
+
+<?php endforeach; ?>
+
+<?php echo $definitions->links(); ?>
+
+
+<a class="btn btn-default" href="<?php echo URL::route('dev.definitions.create'); ?>">Create</a>

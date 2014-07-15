@@ -1,0 +1,18 @@
+<div class="container footer">
+	<br>
+	<hr>
+	<div class="row">
+		<div class="col-sm-8">
+			<p>Created by Nicolás López</p>
+		</div>
+		<div class="col-sm-4">
+			<?php if(Auth::check()): ?>
+			<span class="pull-right">
+				Connected as <?php echo Auth::user()->name; ?>,
+				<a href="<?php echo URL::route('logout'); ?>">log out</a>
+			</span>
+			<?php endif; ?>
+		</div>
+	</div>
+	<br>
+</div>

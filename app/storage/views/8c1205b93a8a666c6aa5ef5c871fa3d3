@@ -1,0 +1,15 @@
+<?php $__env->startSection('content'); ?>
+
+<p>
+	<b>
+		Change Password
+	</b>
+</p>
+
+<p>
+	To change your password, complete this form: <?php echo URL::action('Cms\Auth\Controllers\RemindersController@getReset', [$token]); ?>.<br/>
+	This link will expire in <?php echo Config::get('auth.reminder.expire', 60); ?> minutes.
+</p>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('emails.layouts.base', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
