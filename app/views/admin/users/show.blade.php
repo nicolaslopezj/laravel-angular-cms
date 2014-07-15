@@ -30,7 +30,7 @@
 
 <hr>
 <a class="btn btn-default" href="{{ URL::route('admin.users.index') }}">Back</a>
-@if ($is_me && false) 
-	<a class="btn btn-warning" href="{{ URL::route('admin.users.edit', 'me') }}">Edit</a>
+@if ($is_me) 
+	<a class="btn btn-warning" href="{{ URL::route('me.settings.edit') }}">Edit</a>
 @endif
 <a class="btn btn-danger" href="{{ URL::route('admin.users.delete', $user->id) }}">Delete</a>

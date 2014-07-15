@@ -7,7 +7,7 @@
 </div>
 <div class="form-group">
 	<label>Description</label>
-	<input class="form-control" name="description" value="{{ $definition->description }}">
+	<input class="form-control" name="description" value="{{{ $definition->description }}}">
 	{{ $errors->first('description', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 <div class="checkbox">
@@ -23,7 +23,7 @@
 
 <div class="form-group">
 	<label>Value</label>
-	<input type="text" class="form-control" name="string" value="{{ $definition->string }}">
+	<input type="text" class="form-control" name="string" value="{{{ $definition->string }}}">
 	{{ $errors->first('string', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 
@@ -32,7 +32,7 @@
 
 <div class="form-group">
 	<label>Value</label>
-	<textarea class="form-control" name="text">{{ $definition->text }}</textarea>
+	<textarea class="form-control" name="text">{{{ $definition->text }}}</textarea>
 	{{ $errors->first('text', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 

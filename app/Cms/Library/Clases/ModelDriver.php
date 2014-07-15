@@ -23,9 +23,9 @@ Class ModelDriver implements ModelDriverInterface {
 
 	public function store($data) {
 		$model = new $this->model;
-
+		
 		$model->fill($data);
-		$model->isValid();
+		$model->isValid('creating', true);
 		$model->save();
 
 		if (!empty($this->events_name)) {
@@ -39,7 +39,7 @@ Class ModelDriver implements ModelDriverInterface {
 		$model = $this->get($id);
 
 		$model->fill($data);
-		$model->isValid();
+		$model->isValid('updating', true);
 		$model->save();
 
 		if (!empty($this->events_name)) {

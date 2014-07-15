@@ -1,15 +1,26 @@
 @foreach ($users as $index => $user)
 	<div class="row">
 		<div class="col-xs-12">
-			<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('admin.users.show', $user->id) }}">View</a>
-			<p>
-				Name:
-				<b>{{ $user->name }}</b>
-			</p>
-			<p>
-				Email:
-				<code>{{ $user->email }}</code>
-			</p>
+			<div style="padding-left: 15px">
+				<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('admin.users.show', $user->id) }}">View</a>
+				<p>
+					@if ($user->is_dev)
+						<i class="fa fa-cogs" style="margin-left: -20px; margin-right: 2px;"></i>
+					@elseif ($user->is_admin)
+						<i class="fa fa-legal" style="margin-left: -20px; margin-right: 2px;"></i>
+					@elseif ($user->is_editor)
+						<i class="fa fa-file-text-o" style="margin-left: -20px; margin-right: 2px;"></i>
+					@elseif ($user->is_normal)
+						<i class="fa fa-user" style="margin-left: -20px; margin-right: 2px;"></i>
+					@endif
+					Name:
+					<b>{{ $user->name }}</b>
+				</p>
+				<p>
+					Email:
+					<code>{{ $user->email }}</code>
+				</p>
+			</div>
 		</div>
 	</div>
 	<hr>
@@ -18,4 +29,3 @@
 {{ $users->links() }}
 
 <a class="btn btn-default" href="{{ URL::route('admin.users.create') }}">Create</a>
-<a class="btn btn-primary" href="{{ URL::route('admin.users.show', 'me') }}">Me</a>

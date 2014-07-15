@@ -81,12 +81,12 @@ class DeployCommand extends Command {
             'name' => $options['name'],
             'email' => $options['email'],
             'role' => 'dev',
-            'password' => \Hash::make($options['password']),
         ];
 
         try {
             $model = new \User;
             $model->fill($user);
+            $model->password = \Hash::make($options['password']);
             $model->isValid();
             $model->save();
         } catch (\Exception $e) {

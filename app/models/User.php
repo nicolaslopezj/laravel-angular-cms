@@ -29,19 +29,27 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password', 'role'];
+	protected $fillable = ['name', 'email', 'role'];
 
 	/**
 	 * Validation Rules
 	 *
 	 * @var array
 	 */
-	protected $rules = [
-        'name' => 'required|min:4|max:20',
-        'email' => 'required|max:100|unique:users,email',
-        'password' => 'required|alpha_dash|min:6|max:100',
-        'role' => 'required|in:normal,editor,admin,dev',
-    ];
+    protected $rulesets = [
+		'creating' => [
+	        'password' => 'required|min:6|max:100',
+		],
+		'password' => [
+	        'password' => 'required|min:6|max:100',
+		],
+		'saving' => [
+			'name' => 'required|min:4|max:50',
+	        'email' => 'required|max:100|unique:users,email',
+	        'password' => 'min:6|max:100',
+	        'role' => 'required|in:normal,editor,admin,dev',
+		],
+	];
 
     /**
 	 * Whether the model should throw a ValidationException if it
@@ -59,5 +67,23 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return (int) $attribute;
 	}
+
+	public function getIsDevAttribute() {
+		return $this->attributes['role'] == 'dev';
+	}
+
+	public function getIsAdminAttribute() {
+		return $this->attributes['role'] == 'admin';
+	}
+
+	public function getIsEditorAttribute() {
+		return $this->attributes['role'] == 'editor';
+	}
+
+	public function getIsNormalAttribute() {
+		return $this->attributes['role'] == 'normal';
+	}
+
+
 
 }

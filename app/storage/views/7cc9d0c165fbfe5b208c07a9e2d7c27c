@@ -4,13 +4,20 @@
 	<div class="col-sm-3">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Me</h3>
+				<h3 class="panel-title"><?php echo \UserDriver::loggedIn()->name; ?></h3>
 			</div>
 			<div class="panel-body">
 				<div class="list-group sidenav">
+					<a href="<?php echo URL::route('me.index'); ?>" class="list-group-item
+					<?php if(Helper::routeStartsWith('me.index')): ?>
+					active
+					<?php endif; ?>
+					">
+						Dashboard
+					</a>
 					<?php foreach(PackagesHelper::getUserSidebar() as $index => $params): ?>
-						<a href="<?php echo URL::route('admin.' . $params['route_index']); ?>" class="list-group-item
-						<?php if(Helper::routeStartsWith('admin.' . $params['route_check'])): ?>
+						<a href="<?php echo URL::route('me.' . $params['route_index']); ?>" class="list-group-item
+						<?php if(Helper::routeStartsWith('me.' . $params['route_check'])): ?>
 						active
 						<?php endif; ?>
 						">
@@ -18,20 +25,19 @@
 
 						</a>
 					<?php endforeach; ?>
+					<a href="<?php echo URL::route('me.settings.edit'); ?>" class="list-group-item
+					<?php if(Helper::routeStartsWith('me.settings')): ?>
+					active
+					<?php endif; ?>
+					">
+						Settings
+					</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-sm-9">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title"><?php echo $title; ?></h3>
-			</div>
-			<div class="panel-body">
-				<?php echo $content; ?>
-
-			</div>
-		</div>
+		<?php echo $__env->make('layouts.panel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	</div>
 </div>
 

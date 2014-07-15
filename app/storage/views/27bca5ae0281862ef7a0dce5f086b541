@@ -47,15 +47,7 @@
 		</div>
 	</div>
 	<div class="col-sm-9">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title"><?php echo $title; ?></h3>
-			</div>
-			<div class="panel-body">
-				<?php echo $content; ?>
-
-			</div>
-		</div>
+		<?php echo $__env->make('layouts.panel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	</div>
 </div>
 

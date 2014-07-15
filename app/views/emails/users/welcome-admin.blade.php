@@ -19,7 +19,7 @@
 
 <p>
 	Your password is <code>{{ $password }}</code>.
-	<!--To change it <a href="{{ URL::route('admin.users.edit', 'me') }}">click here</a>-->
+	To change it <a href="{{ URL::route('me.settings.edit') }}">click here</a>
 </p>
 
 @stop

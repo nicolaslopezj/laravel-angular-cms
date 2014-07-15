@@ -15,8 +15,8 @@ return array(
 	*/
 
 	'mailgun' => array(
-	    'domain' => 'vendik.com',
-	    'secret' => 'key-6tsgtql6s7tlmn1usgvc5oyq-tr7acc2',
+	    'domain' => \Dict::get('mailgun_domain'),
+	    'secret' => \Dict::get('mailgun_secret'),
 	),
 
 	'mandrill' => array(

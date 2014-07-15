@@ -4,8 +4,9 @@ class DashboardController extends BaseController {
 
 	public function index()
 	{
-		$this->layout->title = 'hola';
-		$this->layout->content = \View::make('me.dashboard.index');
+		$user = \UserDriver::loggedIn();
+		$this->layout->title = 'Dashboard';
+		$this->layout->content = \View::make('me.dashboard.index', compact('user'));
 	}
 
 }

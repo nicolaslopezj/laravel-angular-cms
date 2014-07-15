@@ -16,25 +16,27 @@
 		<div class="col-sm-3">
 			<div class="radio">
 				<label>
-					<input type="radio" name="function_type" value="view" checked>
+					<input type="radio" name="function_type" value="view" 
+					@if (Input::old('function_type') == 'view')
+						checked
+					@endif
+					>
 					Show a view
 				</label>
 			</div>
 			<div class="radio">
 				<label>
-					<input type="radio" name="function_type" value="entity">
-					Show a entity
-				</label>
-			</div>
-			<div class="radio">
-				<label>
-					<input type="radio" name="function_type" value="custom">
+					<input type="radio" name="function_type" value="custom"
+					@if (Input::old('function_type') == 'custom')
+						checked
+					@endif
+					>
 					Custom
 				</label>
 			</div>
 		</div>
 		<div class="col-sm-9">
-			<div class="form-group">
+			<div class="form-group function_type_view_container">
 				<label>View</label>
 				<select class="form-control" name="function_view">
 					@foreach (PublicViewDriver::all() as $index => $view)
@@ -42,7 +44,7 @@
 					@endforeach
 				</select>
 			</div>
-			<div class="form-group">
+			<div class="form-group function_type_custom_container">
 				<label>Custom Function</label>
 				<textarea name="function_custom" class="form-control">{{ Input::old('function_custom') }}</textarea>
 			</div>
@@ -56,4 +58,31 @@
 	<button class="btn btn-primary">Save</button>
 </div>
 
+<script>
+$(document).ready(function() {
+	$("input[name='function_type']").change(function() {
+		selectChanged();
+	});
+	selectChanged();
+});
+function selectChanged() {
+	var value = $('input[name=function_type]:checked').val();
+	if (value == 'view') {
+		$('.function_type_view_container').show();
+		$('.function_type_custom_container').hide();
+	} else if (value == 'custom') {
+		$('.function_type_view_container').hide();
+		$('.function_type_custom_container').show();
+	} else {
+		$('.function_type_view_container').hide();
+		$('.function_type_custom_container').hide();
+	}
+}
+</script>
+
 {{ Form::close() }}
+
+
+
+
+

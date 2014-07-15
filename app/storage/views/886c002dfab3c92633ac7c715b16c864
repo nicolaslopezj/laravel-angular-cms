@@ -17,6 +17,7 @@
 
 <p>
 	Your password is <code><?php echo $password; ?></code>.
+	To change it <a href="<?php echo URL::route('me.settings.edit'); ?>">click here</a>
 </p>
 
 <?php $__env->stopSection(); ?>

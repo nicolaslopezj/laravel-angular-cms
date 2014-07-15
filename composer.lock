@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5ec4e59f9fd16899ebb234270a8fb15a",
+    "hash": "f028688ffd655e658c1cbff377b33599",
     "packages": [
         {
             "name": "chumper/zipper",
@@ -262,16 +262,16 @@
         },
         {
             "name": "guzzlehttp/streams",
-            "version": "1.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/streams.git",
-                "reference": "cf0c8c33ca95cc147efba4c714f630ee44767180"
+                "reference": "7f1c788f15b2cf9b88709457d7806b82337f6297"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/cf0c8c33ca95cc147efba4c714f630ee44767180",
-                "reference": "cf0c8c33ca95cc147efba4c714f630ee44767180",
+                "url": "https://api.github.com/repos/guzzle/streams/zipball/7f1c788f15b2cf9b88709457d7806b82337f6297",
+                "reference": "7f1c788f15b2cf9b88709457d7806b82337f6297",
                 "shasum": ""
             },
             "require": {
@@ -283,7 +283,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -311,7 +311,7 @@
                 "Guzzle",
                 "stream"
             ],
-            "time": "2014-04-03 04:48:24"
+            "time": "2014-07-15 17:59:08"
         },
         {
             "name": "intervention/image",
@@ -1998,32 +1998,33 @@
         },
         {
             "name": "watson/validating",
-            "version": "0.7.13",
+            "version": "0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dwightwatson/validating.git",
-                "reference": "11240658521ca06d6af90cd4651dc9bf8e627feb"
+                "reference": "d60dac3a57f082560ed2a591468fb5c5f90b5624"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dwightwatson/validating/zipball/11240658521ca06d6af90cd4651dc9bf8e627feb",
-                "reference": "11240658521ca06d6af90cd4651dc9bf8e627feb",
+                "url": "https://api.github.com/repos/dwightwatson/validating/zipball/d60dac3a57f082560ed2a591468fb5c5f90b5624",
+                "reference": "d60dac3a57f082560ed2a591468fb5c5f90b5624",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "4.2.x",
-                "illuminate/support": "4.2.x",
-                "illuminate/validation": "4.2.x",
+                "illuminate/database": "~4.2.6",
+                "illuminate/events": "~4.2.6",
+                "illuminate/support": "~4.2.6",
+                "illuminate/validation": "~4.2.6",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.x",
-                "phpunit/phpunit": "4.1.x"
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "4.1.*"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Watson\\Validating": "src/"
+                "psr-4": {
+                    "Watson\\Validating\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2042,7 +2043,7 @@
                 "laravel",
                 "validation"
             ],
-            "time": "2014-06-19 04:35:51"
+            "time": "2014-07-09 04:36:21"
         }
     ],
     "packages-dev": [

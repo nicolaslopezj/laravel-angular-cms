@@ -4,6 +4,10 @@ class AuthController extends BaseController {
 
 	public function login()
 	{
+		if (\Auth::check()) {
+			return \Redirect::intended(\URL::route('me.index'));
+		}
+
 		$this->layout->content = \View::make('auth.login');
 	}
 
@@ -17,7 +21,7 @@ class AuthController extends BaseController {
 			->with('error', 'Email or password are incorrect.');
 		} 
 
-		return \Redirect::to('/');
+		return \Redirect::intended(\URL::route('me.index'));
 	}
 
 	public function logout()

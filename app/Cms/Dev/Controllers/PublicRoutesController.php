@@ -16,6 +16,13 @@ class PublicRoutesController extends BaseController {
 		$this->layout->content = \View::make('dev.public-routes.show', compact('public_route'));
 	}
 
+	public function edit($id) {
+		$public_route = \PublicRouteDriver::get($id);
+
+		$this->layout->title = 'Edit Route - ' . $public_route->name;
+		$this->layout->content = \View::make('dev.public-routes.edit', compact('public_route'));
+	}
+
 	public function create() {
 		$this->layout->title = 'Add A Route';
 		$this->layout->content = \View::make('dev.public-routes.create');
@@ -47,6 +54,21 @@ class PublicRoutesController extends BaseController {
 
 
 		return \Redirect::route('dev.public-routes.show', $public_route->id);
+	}
+
+	public function update($id) {
+		$data = \Input::all();
+		
+		try {
+			$public_route = \PublicRouteDriver::update($id, $data);
+		} catch (\Watson\Validating\ValidationException $e) {
+			return \Redirect::route('dev.public-routes.edit', $id)
+			->withErrors($e->getErrors())
+			->withInput();
+		}
+
+
+		return \Redirect::route('dev.public-routes.show', $id);
 	}
 
 	public function destroy($id) {
