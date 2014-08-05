@@ -2,9 +2,9 @@
 
 Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 
-	Route::get('/', [
-	'as' => 'site.index',
-	'uses' => 'SiteController@index',
+	Route::get('caca', [
+	'as' => 'site.ico',
+	'uses' => 'SiteController@ico',
 	]);
 
 });

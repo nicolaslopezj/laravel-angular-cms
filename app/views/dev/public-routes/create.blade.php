@@ -47,6 +47,7 @@
 			<div class="form-group function_type_custom_container">
 				<label>Custom Function</label>
 				<textarea name="function_custom" class="form-control">{{ Input::old('function_custom') }}</textarea>
+				<div class="well" id="function_custom"/>
 			</div>
 		</div>
 	</div>
@@ -82,6 +83,21 @@ function selectChanged() {
 
 {{ Form::close() }}
 
+<style type="text/css" media="screen">
+    #function_custom { 
+        height: 350px;
+    }
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("function_custom");
+	var textarea = $('textarea[name="function_custom"]').hide();
+	editor.getSession().setMode("ace/mode/php");
+	editor.getSession().setValue(textarea.val());
+	editor.getSession().on('change', function(){
+	  textarea.val(editor.getSession().getValue());
+	});
+</script>
 
 
 
