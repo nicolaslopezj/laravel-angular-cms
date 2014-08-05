@@ -47,7 +47,7 @@ class FilesHelper {
 
 	public function filesInFolder($path) {
 		if (is_dir($path)) {
-			$_files = array_diff(scandir($path), array('..', '.', '.DS_Store', '__MACOSX'));
+			$_files = array_diff(scandir($path), array('..', '.', '.DS_Store', '__MACOSX', '.gitignore'));
 			$files = [];
 
 			foreach ($_files as $index => $file_name) {
