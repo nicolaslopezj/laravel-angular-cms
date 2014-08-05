@@ -1,7 +1,0 @@
-<p>
-	<b><?php echo $package; ?></b>
-</p>
-
-<hr>
-<a class="btn btn-default" href="<?php echo URL::route('dev.packages.index'); ?>">Back</a>
-<a class="btn btn-danger" href="<?php echo URL::route('dev.packages.delete', $package); ?>">Delete</a>
