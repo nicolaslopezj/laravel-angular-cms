@@ -1,3 +1,0 @@
-<?php
-
-\Schema::drop('comments');

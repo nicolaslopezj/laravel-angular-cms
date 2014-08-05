@@ -17,13 +17,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Cms\Admin\Controllers', 'befo
 		]);
 	Route::resource('users', 'UsersController');
 	
-	
-	foreach (\EntityDriver::all() as $index => $entity) {
-		Route::get($entity->route_name . '/{id}/delete', [
-			'as' => 'admin.' . $entity->route_name . '.delete',
-			'uses' => 'EntitiesController@delete',
-		]);
-		Route::resource($entity->route_name, 'EntitiesController');
+	try {
+		foreach (\EntityDriver::all() as $index => $entity) {
+			Route::get($entity->route_name . '/{id}/delete', [
+				'as' => 'admin.' . $entity->route_name . '.delete',
+				'uses' => 'EntitiesController@delete',
+			]);
+			Route::resource($entity->route_name, 'EntitiesController');
+		}
+	} catch (\Exception $e) {
+		
 	}
 
 });

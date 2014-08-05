@@ -16,7 +16,6 @@
 	},
 	"autoload": {
 		"classmap": [
-			"app/commands",
 			"app/controllers",
 			"app/models",
 			"app/database/migrations",

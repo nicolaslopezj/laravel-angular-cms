@@ -18,7 +18,7 @@
 
 		<p>Value: <b>{{ $definition->integer }}</b></p>
 
-		@elseif ($definition->type == 'image')
+		@elseif ($definition->type == 'image' && $definition->image)
 
 		<div class="row">
 			<div class="col-sm-6">

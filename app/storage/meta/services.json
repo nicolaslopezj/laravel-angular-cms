@@ -34,11 +34,11 @@
         "Cms\\Auth\\AuthServiceProvider",
         "Cms\\Admin\\AdminServiceProvider",
         "Cms\\Me\\MeServiceProvider",
-        "Cms\\Site\\SiteServiceProvider",
         "Cms\\Dev\\DevServiceProvider",
         "Cms\\Commands\\CommandsServiceProvider",
         "Cms\\Events\\EventsServiceProvider",
-        "Cms\\Packages\\PackagesServiceProvider"
+        "Cms\\Packages\\PackagesServiceProvider",
+        "Cms\\Site\\SiteServiceProvider"
     ],
     "eager": [
         "Illuminate\\Cookie\\CookieServiceProvider",
@@ -56,11 +56,11 @@
         "Cms\\Auth\\AuthServiceProvider",
         "Cms\\Admin\\AdminServiceProvider",
         "Cms\\Me\\MeServiceProvider",
-        "Cms\\Site\\SiteServiceProvider",
         "Cms\\Dev\\DevServiceProvider",
         "Cms\\Commands\\CommandsServiceProvider",
         "Cms\\Events\\EventsServiceProvider",
-        "Cms\\Packages\\PackagesServiceProvider"
+        "Cms\\Packages\\PackagesServiceProvider",
+        "Cms\\Site\\SiteServiceProvider"
     ],
     "deferred": {
         "artisan": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

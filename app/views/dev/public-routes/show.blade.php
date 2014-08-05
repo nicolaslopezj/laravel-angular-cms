@@ -10,7 +10,7 @@
 
 <p><b>Function</b></p>
 <pre>
-{{ $public_route->function }}
+{{{ $public_route->function }}}
 </pre>
 
 <hr>

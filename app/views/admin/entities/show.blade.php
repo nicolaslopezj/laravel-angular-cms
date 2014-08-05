@@ -23,7 +23,7 @@
 				<p><b>{{ ucfirst($attribute->name) }}</b></p>
 				<p>{{ $item->{$attribute->name} }}</p>
 			@endif
-			@if ($attribute->type == 'image' && $item->{'image_' . $entity->main_image_attribute->name})
+			@if ($attribute->type == 'image' && $item->{'image_' . $attribute->name})
 				<p><b>{{ ucfirst($attribute->name) }}</b></p>
 				<p>{{ asset($item->{'image_' . $attribute->name}->path) }}</p>
 				<div class="">

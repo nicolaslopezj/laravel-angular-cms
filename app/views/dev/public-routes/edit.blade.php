@@ -12,7 +12,7 @@
 </div>
 <div class="form-group">
 	<label>Function</label>
-	<textarea name="function" class="form-control">{{ $public_route->function }}</textarea>
+	<textarea name="function" class="form-control">{{{ $public_route->function }}}</textarea>
 	{{ $errors->first('function', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 <hr>

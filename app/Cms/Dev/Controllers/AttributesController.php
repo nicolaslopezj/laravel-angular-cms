@@ -15,7 +15,7 @@ class AttributesController extends BaseController {
 	{
 		$entity = \EntityDriver::get($id);
 
-		$this->layout->title = 'Create Entity';
+		$this->layout->title = 'Create Entity Attribute';
 		$this->layout->content = \View::make('dev.entities.attributes.create', compact('entity'));
 	}
 

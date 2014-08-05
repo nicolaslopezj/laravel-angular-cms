@@ -67,8 +67,8 @@ class Image extends Eloquent {
 	{	
 		$path = $this->attributes['path'];
 		$parts = explode('/', $path);
-		$parts[2] = str_replace('.jpg', '', $parts[2]);
-		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'xs.jpg';
+		$parts[2] = str_replace('.png', '', $parts[2]);
+		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'xs.png';
 		return $thumbnail;
 	}
 
@@ -76,8 +76,8 @@ class Image extends Eloquent {
 	{
 		$path = $this->attributes['path'];
 		$parts = explode('/', $path);
-		$parts[2] = str_replace('.jpg', '', $parts[2]);
-		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'sm.jpg';
+		$parts[2] = str_replace('.png', '', $parts[2]);
+		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'sm.png';
 		return $thumbnail;
 	}
 
@@ -85,8 +85,8 @@ class Image extends Eloquent {
 	{
 		$path = $this->attributes['path'];
 		$parts = explode('/', $path);
-		$parts[2] = str_replace('.jpg', '', $parts[2]);
-		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'md.jpg';
+		$parts[2] = str_replace('.png', '', $parts[2]);
+		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'md.png';
 		return $thumbnail;
 	}
 
@@ -94,8 +94,8 @@ class Image extends Eloquent {
 	{
 		$path = $this->attributes['path'];
 		$parts = explode('/', $path);
-		$parts[2] = str_replace('.jpg', '', $parts[2]);
-		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'lg.jpg';
+		$parts[2] = str_replace('.png', '', $parts[2]);
+		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'lg.png';
 		return $thumbnail;
 	}
 

@@ -2,7 +2,7 @@
 
 <div class="form-group">
 	<label>Content</label>
-	<textarea name="content" class="form-control">{{ $public_view->content }}</textarea>
+	<textarea name="content" class="form-control">{{{ $public_view->content }}}</textarea>
 	{{ $errors->first('content', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 <hr>

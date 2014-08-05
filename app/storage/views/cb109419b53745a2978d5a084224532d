@@ -31,7 +31,7 @@
 
 		<p>Value: <b><?php echo $definition->integer; ?></b></p>
 
-		<?php elseif($definition->type == 'image'): ?>
+		<?php elseif($definition->type == 'image' && $definition->image): ?>
 
 		<div class="row">
 			<div class="col-sm-6">

@@ -9,6 +9,8 @@ class EntityAttributesEventHandler {
 
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
         $coder->migrateEntity($entity, $migration);
+
+        $coder->codeEntities();
     }
 
     public function onUpdate($entity_attribute)
@@ -20,6 +22,8 @@ class EntityAttributesEventHandler {
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
         $coder->migrateEntity($entity, $migration_down);
         $coder->migrateEntity($entity, $migration_up);
+
+        $coder->codeEntities();
     }
 
     public function onDelete($entity_attribute)
@@ -29,6 +33,8 @@ class EntityAttributesEventHandler {
 
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
         $coder->migrateEntity($entity, $migration);
+
+        $coder->codeEntities();
     }
 
     /**

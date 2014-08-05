@@ -26,6 +26,20 @@ class EntityCrudDriver extends ModelDriver {
 		return $items;
 	}
 
+	public function all($page = 1, $per_page = 20) {
+		$model = $this->model;
+		$query = $model::where('id', '!=', 0);
+
+		foreach ($this->entity->attributes as $index => $attribute) {
+			if ($attribute->type == 'image') {
+				$query->with('image_' . $attribute->name);
+			}
+		}
+
+		$items = $query->get();
+		return $items;
+	}
+
 	public function get($id) {
 		$model = $this->model;
 		$item = $model::where('id', $id);
@@ -57,7 +71,6 @@ class EntityCrudDriver extends ModelDriver {
 
 		foreach ($this->entity->attributes as $index => $attribute) {
 			if ($attribute->type == 'image' && $data[$attribute->name]) {
-				var_dump($data[$attribute->name]);
 				$image = \ImageDriver::store(['file' => $data[$attribute->name]]);
 				$data[$attribute->name] = $image->id;
 			} else if ($attribute->type == 'image') {

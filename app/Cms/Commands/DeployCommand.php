@@ -40,6 +40,7 @@ class DeployCommand extends Command {
         $this->setupDatabase();
         $this->createUser();
         $this->setupProject();
+        $this->setupDefinitions();
     }
 
     public function setupDatabase() {
@@ -135,6 +136,62 @@ class DeployCommand extends Command {
             \PublicRouteDriver::store($route);
         } catch (\Exception $e) {
             $this->error('Error creating the home route: "' . $e->getMessage() . '"');
+        }
+    }
+
+    public function setupDefinitions() {
+        $this->info('Setting up definitions');
+
+        $definition = [
+            'identifier' => 'email_from_email',
+            'description' => '"From" email address',
+            'type' => 'string',
+            'string' => 'norepley@example.com',
+            'editable' => false,
+        ];
+        try {
+            \DefinitionDriver::store($definition);
+        } catch (\Exception $e) {
+            $this->error('Error creating the definition: "' . $e->getMessage() . '"');
+        }
+
+        $definition = [
+            'identifier' => 'email_from_name',
+            'description' => '"From" email address alias',
+            'type' => 'string',
+            'string' => 'CMS',
+            'editable' => false,
+        ];
+        try {
+            \DefinitionDriver::store($definition);
+        } catch (\Exception $e) {
+            $this->error('Error creating the definition: "' . $e->getMessage() . '"');
+        }
+
+        $definition = [
+            'identifier' => 'mailgun_domain',
+            'description' => 'Mailgun API domain',
+            'type' => 'string',
+            'string' => '',
+            'editable' => false,
+        ];
+        try {
+            \DefinitionDriver::store($definition);
+        } catch (\Exception $e) {
+            $this->error('Error creating the definition: "' . $e->getMessage() . '"');
+        }
+
+        $definition = [
+            'identifier' => 'mailgun_secret',
+            'description' => 'Mailgun API secret',
+            'type' => 'string',
+            'string' => '',
+            'editable' => false,
+        ];
+        try {
+            \DefinitionDriver::store($definition);
+        } catch (\Exception $e) {
+            $this->error('Error creating the definition: "' . $e->getMessage() . '"');
         }
     }
 

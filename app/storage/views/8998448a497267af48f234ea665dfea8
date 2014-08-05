@@ -12,7 +12,7 @@
 
 <p><b>Function</b></p>
 <pre>
-<?php echo $public_route->function; ?>
+<?php echo e($public_route->function); ?>
 
 </pre>
 

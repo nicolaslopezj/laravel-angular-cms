@@ -2,12 +2,12 @@
 
 <div class="form-group">
 	<label>Name</label>
-	<input class="form-control" name="name" value="{{ Input::old('name') }}">
+	<input class="form-control" name="name" value="{{{ Input::old('name') }}}">
 	{{ $errors->first('name', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 <div class="form-group">
 	<label>Content</label>
-	<textarea name="content" class="form-control">{{ Input::old('content') }}</textarea>
+	<textarea name="content" class="form-control">{{{ Input::old('content') }}}</textarea>
 	{{ $errors->first('content', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 <hr>

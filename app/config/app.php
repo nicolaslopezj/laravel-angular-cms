@@ -130,12 +130,11 @@ return array(
 		'Cms\Auth\AuthServiceProvider',
 		'Cms\Admin\AdminServiceProvider',
 		'Cms\Me\MeServiceProvider',
-		'Cms\Site\SiteServiceProvider',
 		'Cms\Dev\DevServiceProvider',
 		'Cms\Commands\CommandsServiceProvider',
 		'Cms\Events\EventsServiceProvider',
 		'Cms\Packages\PackagesServiceProvider',
-
+		'Cms\Site\SiteServiceProvider',
 
 	),
 
