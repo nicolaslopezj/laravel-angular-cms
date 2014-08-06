@@ -1,13 +1,25 @@
 {{ Form::open(['route' => ['dev.public-routes.update', $public_route->id], 'method' => 'put']) }}
 
-<div class="form-group">
-	<label>Name</label>
-	<input name="name" class="form-control" value="{{ $public_route->name }}">
-	{{ $errors->first('name', '<br><div class="alert alert-danger">:message</div>') }}
+<div class="row">
+	<div class="col-sm-7">
+		<div class="form-group">
+			<label>Name</label>
+			<input name="name" class="form-control" value="{{{ $public_route->name }}}">
+			{{ $errors->first('name', '<br><div class="alert alert-danger">:message</div>') }}
+		</div>
+	</div>
+	<div class="col-sm-5">
+		<div class="form-group">
+			<label>Tag</label>
+			<input class="form-control" name="tag" value="{{{ $public_route->tag }}}">
+			{{ $errors->first('tag', '<br><div class="alert alert-danger">:message</div>') }}
+		</div>
+	</div>
 </div>
+
 <div class="form-group">
 	<label>Path</label>
-	<input name="path" class="form-control" value="{{ $public_route->path }}">
+	<input name="path" class="form-control" value="{{{ $public_route->path }}}">
 	{{ $errors->first('path', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 <div class="form-group">

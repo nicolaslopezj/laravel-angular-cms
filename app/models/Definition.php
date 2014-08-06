@@ -25,7 +25,7 @@ class Definition extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['identifier', 'description', 'type', 'editable', 'string', 'text', 'integer', 'image_id', 'image'];
+	protected $fillable = ['identifier', 'description', 'type', 'editable', 'string', 'text', 'integer', 'image_id', 'image', 'tag'];
 
 	/**
 	 * Validation Rules
@@ -40,6 +40,7 @@ class Definition extends Eloquent {
         'text' => '',
         'integer' => 'numeric',
         'image_id' => 'exists:images,id',
+        'tag' => 'alpha_dash',
     ];
 
     /**

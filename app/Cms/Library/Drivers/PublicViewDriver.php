@@ -1,8 +1,8 @@
 <?php namespace Cms\Library\Drivers;
 
-use Cms\Library\Clases\ModelDriver;
+use Cms\Library\Clases\ModelDriverWithTag;
 
-class PublicViewDriver extends ModelDriver {
+class PublicViewDriver extends ModelDriverWithTag {
 
 	protected $model = '\\PublicView';
 	protected $events_name = 'public_views';

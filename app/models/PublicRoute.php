@@ -25,7 +25,7 @@ class PublicRoute extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'path', 'function'];
+	protected $fillable = ['name', 'path', 'function', 'tag'];
 
 	/**
 	 * The attributes are not in the database
@@ -43,6 +43,7 @@ class PublicRoute extends Eloquent {
 		'name' => 'required|alpha_dash|unique:public_routes,name',
         'path' => 'required|unique:public_routes,path',
         'function' => 'required',
+        'tag' => 'alpha_dash',
     ];
 
     /**

@@ -1,10 +1,23 @@
 {{ Form::open(['route' => 'dev.public-routes.store']) }}
 
-<div class="form-group">
-	<label>Name</label>
-	<input class="form-control" name="name" value="{{ Input::old('name') }}">
-	{{ $errors->first('name', '<br><div class="alert alert-danger">:message</div>') }}
+
+<div class="row">
+	<div class="col-sm-7">
+		<div class="form-group">
+			<label>Name</label>
+			<input class="form-control" name="name" value="{{ Input::old('name') }}">
+			{{ $errors->first('name', '<br><div class="alert alert-danger">:message</div>') }}
+		</div>
+	</div>
+	<div class="col-sm-5">
+		<div class="form-group">
+			<label>Tag</label>
+			<input class="form-control" name="tag" value="{{{ Input::old('tag') }}}">
+			{{ $errors->first('tag', '<br><div class="alert alert-danger">:message</div>') }}
+		</div>
+	</div>
 </div>
+
 <div class="form-group">
 	<label>Path</label>
 	<input class="form-control" name="path" value="{{ Input::old('path') }}">

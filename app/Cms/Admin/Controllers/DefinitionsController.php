@@ -4,10 +4,12 @@ class DefinitionsController extends BaseController {
 
 	public function index()
 	{
-		$definitions = \DefinitionDriver::index();
+		$tag = \Input::get('tag');
+		$definitions = \DefinitionDriver::index('admin', $tag);
+		$tags = \DefinitionDriver::getTags('admin');
 
 		$this->layout->title = 'Dictionary';
-		$this->layout->content = \View::make('admin.definitions.index', compact('definitions'));
+		$this->layout->content = \View::make('admin.definitions.index', compact('definitions', 'tags'));
 	}
 
 	public function show($id)

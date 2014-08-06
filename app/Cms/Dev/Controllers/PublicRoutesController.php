@@ -3,10 +3,12 @@
 class PublicRoutesController extends BaseController {
 
 	public function index() {
-		$public_routes = \PublicRouteDriver::index();
+		$tag = \Input::get('tag');
+		$public_routes = \PublicRouteDriver::index($tag);
+		$tags = \PublicRouteDriver::getTags();
 
 		$this->layout->title = 'Routes';
-		$this->layout->content = \View::make('dev.public-routes.index', compact('public_routes'));
+		$this->layout->content = \View::make('dev.public-routes.index', compact('public_routes', 'tags'));
 	}
 
 	public function show($id) {

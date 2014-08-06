@@ -3,10 +3,12 @@
 class PublicViewsController extends BaseController {
 
 	public function index() {
-		$public_views = \PublicViewDriver::index();
+		$tag = \Input::get('tag');
+		$public_views = \PublicViewDriver::index($tag);
+		$tags = \PublicViewDriver::getTags();
 
 		$this->layout->title = 'Views';
-		$this->layout->content = \View::make('dev.public-views.index', compact('public_views'));
+		$this->layout->content = \View::make('dev.public-views.index', compact('public_views', 'tags'));
 	}
 
 	public function show($id) {

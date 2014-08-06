@@ -33,6 +33,9 @@
 					">
 						Settings
 					</a>
+					<a href="{{ URL::route('logout') }}" class="list-group-item">
+						Log out
+					</a>
 				</div>
 			</div>
 		</div>

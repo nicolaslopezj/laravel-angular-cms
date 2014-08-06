@@ -1,8 +1,8 @@
 <?php namespace Cms\Library\Drivers;
 
-use Cms\Library\Clases\ModelDriver;
+use Cms\Library\Clases\ModelDriverWithTag;
 
-class DefinitionDriver extends ModelDriver {
+class DefinitionDriver extends ModelDriverWithTag {
 
 	protected $model = '\\Definition';
 
@@ -11,15 +11,20 @@ class DefinitionDriver extends ModelDriver {
 		return $class::where('identifier', $identifier)->first();
 	}
 
-	public function index($page = 1, $per_page = 20) {
-		$class = $this->model;
+	public function index($site = 'admin', $tag = null, $page = 1, $per_page = 20) {
+		$model = $this->model;
 
-		if (\Auth::user()->role != 'dev') {
-			return $class::where('editable', true)
-			->paginate($per_page);
+		if ($tag) {
+			$query = $model::where('tag', $tag);
 		} else {
-			return $class::paginate($per_page);
+			$query = $model::where('id', '>', '0');
 		}
+
+		if ($site != 'dev') {
+			$query = $query->where('editable', true);
+		}
+
+		return $query->paginate($per_page);
 	}
 
 	public function update($id, $data) {
@@ -31,6 +36,25 @@ class DefinitionDriver extends ModelDriver {
 		}
 		
 		return parent::update($id, $data);
+	}
+
+	public function getTags($site = 'admin') {
+		$model = $this->model;
+
+		$query = $model::select('tag')
+		->whereNotNull('tag')
+		->groupBy('tag')
+		->orderBy('tag');
+
+		if ($site != 'dev') {
+			$query = $query->where('editable', true);
+		}
+
+		$results = $query->get();
+
+		$tags = array_pluck($results, 'tag');
+		
+		return $tags;
 	}
 	
 }

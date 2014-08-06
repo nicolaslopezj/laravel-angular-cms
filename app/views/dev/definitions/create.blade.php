@@ -1,10 +1,22 @@
 {{ Form::open(['route' => 'dev.definitions.store']) }}
 
-<div class="form-group">
-	<label>Identifier</label>
-	<input class="form-control" name="identifier" value="{{ Input::old('identifier') }}">
-	{{ $errors->first('identifier', '<br><div class="alert alert-danger">:message</div>') }}
+<div class="row">
+	<div class="col-sm-7">
+		<div class="form-group">
+			<label>Identifier</label>
+			<input class="form-control" name="identifier" value="{{ Input::old('identifier') }}">
+			{{ $errors->first('identifier', '<br><div class="alert alert-danger">:message</div>') }}
+		</div>
+	</div>
+	<div class="col-sm-5">
+		<div class="form-group">
+			<label>Tag</label>
+			<input class="form-control" name="tag" value="{{{ Input::old('tag') }}}">
+			{{ $errors->first('tag', '<br><div class="alert alert-danger">:message</div>') }}
+		</div>
+	</div>
 </div>
+
 <div class="form-group">
 	<label>Description</label>
 	<input class="form-control" name="description" value="{{ Input::old('description') }}">
