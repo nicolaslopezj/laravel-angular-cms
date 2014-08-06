@@ -18,7 +18,11 @@ class SiteServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		// Register Routes
-		include 'routes.php';
+		try {
+			include 'routes.php';
+		} catch (\Exception $e) {
+			
+		}
 	}
 
 	public function register()

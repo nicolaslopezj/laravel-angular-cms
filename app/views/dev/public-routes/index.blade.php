@@ -28,7 +28,7 @@
 				Path:
 				<code>{{ $public_route->path }}</code>
 			</p>
-			@if ($definition->tag)
+			@if ($public_route->tag)
 				<p>
 					<span class="label label-danger" style="margin-right: 10px">
 						<a href="?tag={{ $public_route->tag }}" style="color: white">

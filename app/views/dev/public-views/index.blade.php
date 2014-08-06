@@ -28,7 +28,7 @@
 				File:
 				<b>site/{{ $public_view->name }}.blade.php</b>
 			</p>
-			@if ($definition->tag)
+			@if ($public_view->tag)
 				<p>
 					<span class="label label-danger" style="margin-right: 10px">
 						<a href="?tag={{ $public_view->tag }}" style="color: white">
