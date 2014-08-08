@@ -20,6 +20,9 @@ class EntityCrudDriver extends ModelDriver {
 			if ($attribute->type == 'image') {
 				$query->with('image_' . $attribute->name);
 			}
+			if ($attribute->type == 'image_array') {
+				$item->with('images_' . $attribute->name);
+			}
 		}
 
 		$items = $query->paginate($per_page);
@@ -33,6 +36,9 @@ class EntityCrudDriver extends ModelDriver {
 		foreach ($this->entity->attributes as $index => $attribute) {
 			if ($attribute->type == 'image') {
 				$query->with('image_' . $attribute->name);
+			}
+			if ($attribute->type == 'image_array') {
+				$item->with('images_' . $attribute->name);
 			}
 		}
 
