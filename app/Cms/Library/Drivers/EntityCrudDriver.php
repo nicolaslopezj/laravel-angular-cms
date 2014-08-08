@@ -21,7 +21,7 @@ class EntityCrudDriver extends ModelDriver {
 				$query->with('image_' . $attribute->name);
 			}
 			if ($attribute->type == 'image_array') {
-				$item->with('images_' . $attribute->name);
+				$query->with('images_' . $attribute->name);
 			}
 		}
 
@@ -38,7 +38,7 @@ class EntityCrudDriver extends ModelDriver {
 				$query->with('image_' . $attribute->name);
 			}
 			if ($attribute->type == 'image_array') {
-				$item->with('images_' . $attribute->name);
+				$query->with('images_' . $attribute->name);
 			}
 		}
 
