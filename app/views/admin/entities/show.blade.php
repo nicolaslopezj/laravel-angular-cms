@@ -17,7 +17,7 @@
 			@endif
 			@if ($attribute->type == 'text')
 				<p><b>{{ ucfirst($attribute->name) }}</b></p>
-				<p>{{ $item->{$attribute->name} }}</p>
+				<p>{{ nl2br(str_limit($item->{$attribute->name}, 300)) }}</p>
 			@endif
 			@if ($attribute->type == 'integer')
 				<p><b>{{ ucfirst($attribute->name) }}</b></p>

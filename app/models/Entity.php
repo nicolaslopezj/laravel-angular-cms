@@ -95,6 +95,11 @@ class Entity extends Eloquent {
 		if (!$attributes) {
 			return null;
 		}
+		foreach ($attributes as $index => $attribute) {
+			if ($attribute->name == 'image' || $attribute->name == 'picture') {
+				return $attribute;
+			}
+		}
 		return $attributes[0];
 	}
 

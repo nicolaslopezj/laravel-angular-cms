@@ -204,6 +204,7 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 		'ImageIntervention' => 'Intervention\Image\Facades\Image',
 		'Excel'             => 'Maatwebsite\Excel\Facades\Excel',
+		'Markdown'          => 'Michelf\Markdown',
 		
 		'EntityCrudDriver'  => 'Cms\Library\Drivers\EntityCrudDriver',
 		'UserDriver'        => 'Cms\Library\Facades\UserDriver',
