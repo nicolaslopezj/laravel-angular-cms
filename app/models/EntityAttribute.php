@@ -38,6 +38,16 @@ class EntityAttribute extends Eloquent {
         'type' => 'required|in:string,text,integer,image,image_array',
     ];
 
+    
+    public function setEntityIdAttribute($value){
+    	$this->rules['name'] .= ',NULL,id,entity_id,' . $value;
+        $this->attributes['entity_id'] = $value;
+    }
+
+    public function setNameAttribute($value) {
+    	$this->attributes['name'] = strtolower($value);
+    }
+
     /**
 	 * Whether the model should throw a ValidationException if it
 	 * fails validation. If not set, it will default to false.
