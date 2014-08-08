@@ -37,16 +37,20 @@
 				<p><b>{{ ucfirst($attribute->name) }}</b></p>
 				<p><i>Empty</i></p>
 			@endif
-		@endforeach
+		@endforeach	
 	</div>
 </div>
 
 
-
-
-
 <hr>
 <a class="btn btn-default" href="{{ URL::route('admin.' . $entity->route_name . '.index') }}">Back</a>
+@foreach ($entity->attributes as $index => $attribute)
+	@if ($attribute->type == 'image_array')
+		<a class="btn btn-primary" href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute->name . '.index', $item->id) }}">
+			{{ ucfirst($attribute->name) }}
+		</a>
+	@endif
+@endforeach
 <a class="btn btn-warning" href="{{ URL::route('admin.' . $entity->route_name . '.edit', $item->id) }}">Edit</a>
 <a class="btn btn-danger" href="{{ URL::route('admin.' . $entity->route_name . '.delete', $item->id) }}">Delete</a>
 

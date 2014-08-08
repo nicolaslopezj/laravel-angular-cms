@@ -2,6 +2,11 @@
   display: none !important;
 }
 
+.img-circle {
+  border: 1px solid #f8f8f8;
+  background-color: #f8f8f8;
+}
+
 .panel-heading .btn {
 	margin-top: -4px;
 }

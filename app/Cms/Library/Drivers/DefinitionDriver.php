@@ -43,6 +43,7 @@ class DefinitionDriver extends ModelDriverWithTag {
 
 		$query = $model::select('tag')
 		->whereNotNull('tag')
+		->where('tag', '!=', '')
 		->groupBy('tag')
 		->orderBy('tag');
 

@@ -6,7 +6,7 @@ Class ModelDriver implements ModelDriverInterface {
 
 	public function all() {
 		$class = $this->model;
-
+		
 		return $class::all();
 	}
 

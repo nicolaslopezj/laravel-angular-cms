@@ -12,6 +12,7 @@
 		<option>text</option>
 		<option>integer</option>
 		<option>image</option>
+		<option>image_array</option>
 	</select>
 	{{ $errors->first('type', '<br><div class="alert alert-danger">:message</div>') }}
 </div>

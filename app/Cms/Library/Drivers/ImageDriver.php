@@ -57,4 +57,9 @@ class ImageDriver extends ModelDriver {
 
 	}
 
+	public function delete($id) {
+
+		return parent::delete($id);
+	}
+
 }

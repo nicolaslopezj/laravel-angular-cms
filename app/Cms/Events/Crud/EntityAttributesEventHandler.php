@@ -6,9 +6,13 @@ class EntityAttributesEventHandler {
     {
         $entity = \EntityDriver::get($entity_attribute->entity_id);
         $migration = 'attributes.' . $entity_attribute->name . '.up';
-
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
-        $coder->migrateEntity($entity, $migration);
+        
+        try {
+            $coder->migrateEntity($entity, $migration);
+        } catch (\Exception $e) {
+            
+        }
 
         $coder->codeEntities();
     }
@@ -20,8 +24,13 @@ class EntityAttributesEventHandler {
         $migration_up = 'attributes.' . $entity_attribute->name . '.down';
 
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
-        $coder->migrateEntity($entity, $migration_down);
-        $coder->migrateEntity($entity, $migration_up);
+
+        try {
+            $coder->migrateEntity($entity, $migration_down);
+            $coder->migrateEntity($entity, $migration_up);
+        } catch (\Exception $e) {
+            
+        }
 
         $coder->codeEntities();
     }
@@ -30,9 +39,13 @@ class EntityAttributesEventHandler {
     {
         $entity = \EntityDriver::get($entity_attribute->entity_id);
         $migration = 'attributes.' . $entity_attribute->name . '.down';
-
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
-        $coder->migrateEntity($entity, $migration);
+
+        try {
+            $coder->migrateEntity($entity, $migration);
+        } catch (\Exception $e) {
+            
+        }
 
         $coder->codeEntities();
     }

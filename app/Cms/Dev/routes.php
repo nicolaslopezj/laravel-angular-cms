@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'dev', 'namespace' => 'Cms\Dev\Controllers', 'before' => 'auth'], function()
+Route::group(['prefix' => 'dev', 'namespace' => 'Cms\Dev\Controllers', 'before' => 'permissions.dev'], function()
 {
 	// Index
 	Route::get('/', [

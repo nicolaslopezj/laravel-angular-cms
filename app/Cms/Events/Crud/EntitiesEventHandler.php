@@ -6,7 +6,12 @@ class EntitiesEventHandler {
     {
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
         $coder->codeEntities();
-        $coder->migrateEntity($entity, 'refresh');
+
+        try {
+            $coder->migrateEntity($entity, 'refresh');
+        } catch (Exception $e) {
+            
+        }
     }
 
     public function onUpdate($entity)
@@ -18,7 +23,13 @@ class EntitiesEventHandler {
     public function onDelete($entity)
     {
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
-        $coder->migrateEntity($entity, 'delete');
+        
+        try {
+            $coder->migrateEntity($entity, 'delete');
+        } catch (Exception $e) {
+            
+        }
+        
         $coder->codeEntities();
     }
 

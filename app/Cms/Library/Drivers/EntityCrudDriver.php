@@ -48,6 +48,9 @@ class EntityCrudDriver extends ModelDriver {
 			if ($attribute->type == 'image') {
 				$item->with('image_' . $attribute->name);
 			}
+			if ($attribute->type == 'image_array') {
+				$item->with('images_' . $attribute->name);
+			}
 		}
 
 		return $item->first();
@@ -87,6 +90,24 @@ class EntityCrudDriver extends ModelDriver {
 
 		return $public_view;
 
+	}
+
+	public function addImage($id, $attribute_name, $file) {
+		$image = \ImageDriver::store(['file' => $file]);
+		$item = $this->get($id);
+		$item->{'images_' . $attribute_name}()->attach($image->id);
+
+		return $image;
+	}
+
+	public function removeImage($id, $attribute_name, $image_id) {
+		$image = \ImageDriver::get($image_id);
+		$item = $this->get($id);
+		$item->{'images_' . $attribute_name}()->detach($image->id);
+
+		\ImageDriver::delete($image_id);
+
+		return $image;
 	}
 
 }

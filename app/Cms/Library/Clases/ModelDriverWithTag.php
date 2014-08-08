@@ -20,6 +20,7 @@ class ModelDriverWithTag extends ModelDriver implements ModelDriverInterface {
 
 		$query = $model::select('tag')
 		->whereNotNull('tag')
+		->where('tag', '!=', '')
 		->groupBy('tag')
 		->orderBy('tag');
 		$results = $query->get();

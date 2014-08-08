@@ -1,4 +1,5 @@
-@if ($migrations['info'])
+@foreach ($migrations['info'] as $table)
+	<p><b>{{ $table['name'] }}</b></p>
 	<table class="table table-hover well" style="font-family:Menlo,Monaco,Consolas,'Courier New',monospace; font-size: 14px">
 		<tr>
 			<th>Field</th>
@@ -8,7 +9,7 @@
 			<th>Default</th>
 			<th>Extra</th>
 		</tr>
-		@foreach($migrations['info'] as $info)
+		@foreach($table['info'] as $info)
 			<tr>
 				<td>{{ $info->Field }}</td>
 				<td>{{ $info->Type }}</td>
@@ -19,11 +20,7 @@
 			</tr>
 		@endforeach
 	</table>
-@else
-<div class="alert alert-danger">
-	Table does not exist
-</div>
-@endif
+@endforeach
 
 <hr>
 
@@ -32,11 +29,7 @@
 	href="{{ URL::route('dev.entities.migrate', $entity->id) }}?migration=refresh">Run</a>
 	Refresh:
 </h4>
-@if (!$migrations['info'])
-	<div class="alert alert-warning">
-		Required
-	</div>
-@endif
+
 <pre>{{ $migrations['refresh'] }}</pre>
 
 <hr>
@@ -56,13 +49,7 @@
 		href="{{ URL::route('dev.entities.migrate', $entity->id) }}?migration=attributes.{{ $attribute->name }}.up">Run</a>
 		{{ $attribute->name }} up:
 	</h4>
-	@if ($migrations['info'])
-		@if (!in_array($attribute->name, array_pluck($migrations['info'], 'Field')))
-			<div class="alert alert-warning">
-				Required
-			</div>
-		@endif
-	@endif
+
 	<pre>{{ $migrations['attributes'][$attribute->name]['up'] }}</pre>
 
 	<hr>

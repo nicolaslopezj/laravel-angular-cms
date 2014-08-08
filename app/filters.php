@@ -54,6 +54,73 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Permisions Filters
+|--------------------------------------------------------------------------
+*/
+
+Route::filter('permissions.dev', function()
+{
+	if (Auth::check())
+	{
+		$user = Auth::user();
+		if ($user->is_dev != true) {
+			return Response::make('Unauthorized', 401);
+		}
+	} else {
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
+		}
+		else
+		{
+			return Redirect::guest('login');
+		}
+	}
+});
+
+Route::filter('permissions.admin', function()
+{
+	if (Auth::check())
+	{
+		$user = Auth::user();
+		if ($user->is_dev != true && $user->is_admin != true) {
+			return Response::make('Unauthorized', 401);
+		}
+	} else {
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
+		}
+		else
+		{
+			return Redirect::guest('login');
+		}
+	}
+});
+
+Route::filter('permissions.editor', function()
+{
+	if (Auth::check())
+	{
+		$user = Auth::user();
+		if ($user->is_dev != true && $user->is_admin != true && $user->is_editor != true) {
+			return Response::make('Unauthorized', 401);
+		}
+	} else {
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
+		}
+		else
+		{
+			return Redirect::guest('login');
+		}
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

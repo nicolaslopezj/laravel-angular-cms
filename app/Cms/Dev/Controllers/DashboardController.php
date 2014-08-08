@@ -4,7 +4,7 @@ class DashboardController extends BaseController {
 
 	public function index()
 	{
-		$this->layout->title = 'hola';
+		$this->layout->title = 'Developer';
 		$this->layout->content = \View::make('dev.dashboard.index');
 	}
 

@@ -52,6 +52,9 @@ class EntityDriver extends ModelDriver {
 	public function deleteAttribute($attribute) {
 		\Event::fire('entity_attributes.deleted', $attribute);
 		$attribute->delete();
+		
+		$coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
+		$coder->codeEntities();
 	}
 
 	public function getMigrations($id) {
@@ -60,73 +63,41 @@ class EntityDriver extends ModelDriver {
 		$migrations = [];
 
 		try {
-			$migrations['info'] = \DB::select(\DB::raw('describe site_' . $entity->table_name));
+			$migrations['info'] = [];
+			$migrations['info'][0]['name'] = 'site_' . $entity->table_name;
+			$migrations['info'][0]['info'] = \DB::select(\DB::raw('describe site_' . $entity->table_name));
 		} catch (\Exception $e) {
 			$migrations['info'] = [];
 		}
-		
-
-		$migrations['refresh'] = "";
-		$migrations['refresh'] .= "\Schema::dropIfExists('site_" . $entity->table_name . "');" . "\n";
-		$migrations['refresh'] .= "\Schema::create('site_" . $entity->table_name . "', function(\$table)" . "\n";
-		$migrations['refresh'] .= "{" . "\n";
-		$migrations['refresh'] .= "\t" . "\$table->increments('id');" . "\n";
 
 		foreach ($entity->attributes as $index => $attribute) {
-			if ($attribute->type == 'string') {
-				$migrations['refresh'] .= "\t" . "\$table->string('" . $attribute->name . "');" . "\n";
+
+			if ($attribute->type == 'image_array') {
+
+				try {
+					$info = [];
+					$info['name'] = 'site_' . $entity->table_name . '_' . $attribute->name . '_images';
+					$info['info'] = \DB::select(\DB::raw('describe site_' . $entity->table_name . '_' . $attribute->name . '_images'));
+					$migrations['info'][] = $info;
+				} catch (\Exception $e) {
+					
+				}
+				
 			}
-			if ($attribute->type == 'text') {
-				$migrations['refresh'] .= "\t" . "\$table->text('" . $attribute->name . "');" . "\n";
-			}
-			if ($attribute->type == 'integer') {
-				$migrations['refresh'] .= "\t" . "\$table->integer('" . $attribute->name . "');" . "\n";
-			}
-			if ($attribute->type == 'image') {
-				$migrations['refresh'] .= "\t" . "\$table->integer('" . $attribute->name . "')->unsigned()->nullable();" . "\n";
-				$migrations['refresh'] .= "\t" . "\$table->foreign('" . $attribute->name . "')->references('id')->on('images');" . "\n";
-			}
+
 		}
 
-		$migrations['refresh'] .= "\t" . "\$table->timestamps();" . "\n";
-		$migrations['refresh'] .= "});";
+		$migrations['refresh'] = \View::make('coder.database.up.entity', compact('entity'));
 
-		$migrations['delete'] = "\Schema::dropIfExists('site_" . $entity->table_name . "');";
+		$migrations['delete'] = \View::make('coder.database.down.entity', compact('entity'));
 
 		$migrations['attributes'] = [];
 		foreach ($entity->attributes as $index => $attribute) {
-			$migration = "";
-			$migration .= "\Schema::table('site_" . $entity->table_name . "', function(\$table)" . "\n";
-			$migration .= "{" . "\n";
-			if ($attribute->type == 'string') {
-				$migration .= "\t" . "\$table->string('" . $attribute->name . "');" . "\n";
-			}
-			if ($attribute->type == 'text') {
-				$migration .= "\t" . "\$table->text('" . $attribute->name . "');" . "\n";
-			}
-			if ($attribute->type == 'integer') {
-				$migration .= "\t" . "\$table->integer('" . $attribute->name . "');" . "\n";
-			}
-			if ($attribute->type == 'image') {
-				$migration .= "\t" . "\$table->integer('" . $attribute->name . "')->unsigned()->nullable();" . "\n";
-				$migration .= "\t" . "\$table->foreign('" . $attribute->name . "')->references('id')->on('images');" . "\n";
-			}
-			$migration .= "});";
+			$up = \View::make('coder.database.up.entity-attribute.' . $attribute->type, compact('entity', 'attribute'));
+			$migrations['attributes'][$attribute->name]['up'] = $up;
 
-			$migrations['attributes'][$attribute->name]['up'] = $migration;
-
-			$migration = "";
-			$migration .= "\Schema::table('site_" . $entity->table_name . "', function(\$table)" . "\n";
-			$migration .= "{" . "\n";
-			if ($attribute->type != 'image') {
-				$migration .= "\t" . "\$table->dropColumn('" . $attribute->name . "');" . "\n";
-			} else {
-				$migration .= "\t" . "\$table->dropForeign('site_" . $entity->table_name . "_" . $attribute->name . "_foreign');" . "\n";
-				$migration .= "\t" . "\$table->dropColumn('" . $attribute->name . "');" . "\n";
-			}
-			$migration .= "});";
-
-			$migrations['attributes'][$attribute->name]['down'] = $migration;
+			$down = \View::make('coder.database.down.entity-attribute.' . $attribute->type, compact('entity', 'attribute'));
+			$migrations['attributes'][$attribute->name]['down'] = $down;
 		}
 
 		return $migrations;
