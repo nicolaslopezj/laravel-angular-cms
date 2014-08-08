@@ -33,7 +33,7 @@ class EntitiesCoder {
 	}
 
 	public function codeModelForEntity($entity) {
-		$path = app_path() . '/models/Site/' . $entity->name . '.php';
+		$path = app_path() . '/models/Site/' . $entity->model_name . '.php';
 
 		$content = '<?php ' . \View::make('coder.models.entity', compact('entity'));
 

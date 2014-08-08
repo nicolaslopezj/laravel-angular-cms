@@ -2,7 +2,7 @@ namespace Site;
 
 use Watson\Validating\ValidatingTrait;
 
-class {{ $entity->name }} extends \Eloquent {
+class {{ $entity->model_name }} extends \Eloquent {
 
 	use ValidatingTrait;
 

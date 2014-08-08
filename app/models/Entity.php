@@ -25,14 +25,14 @@ class Entity extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'table_name'];
+	protected $fillable = ['name', 'table_name', 'route_name', 'model_name'];
 
 	/**
 	 * The attributes are not in the database
 	 *
 	 * @var array
 	 */
-	protected $appends = ['route_name'];
+	protected $appends = [];
 
 	/**
 	 * Validation Rules
@@ -40,8 +40,11 @@ class Entity extends Eloquent {
 	 * @var array
 	 */
 	protected $rules = [
-        'name' => 'required|max:20',
-        'table_name' => 'required|max:20|alpha_num',
+        'name' => 'required|min:3|max:20',
+        'table_name' => 'required|min:3|max:20|alpha_dash',
+        'route_name' => 'required|min:3|max:20|alpha_dash',
+        'model_name' => 'required|min:3|max:20|alpha',
+
     ];
 
     /**
@@ -67,11 +70,6 @@ class Entity extends Eloquent {
 	public function getIdAttribute($attribute)
 	{
 		return (int) $attribute;
-	}
-
-	public function getRouteNameAttribute()
-	{
-		return str_plural(snake_case($this->attributes['name']));
 	}
 
 	public function getMainAttributeAttribute()

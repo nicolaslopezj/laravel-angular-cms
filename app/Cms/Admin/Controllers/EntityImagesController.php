@@ -5,10 +5,10 @@ class EntityImagesController extends BaseController {
 	public function __construct() {
 		$uri = str_replace(\URL::route('admin.index'), '', \URL::current());
 		$parts = explode('/', $uri);
-		$entity = studly_case(str_singular($parts[1]));
+		$route_name = $parts[1];
 		$attribute = $parts[3];
-		$this->driver = new \EntityCrudDriver($entity);
-		$this->entity = \EntityDriver::findByName($entity);
+		$this->entity = \EntityDriver::findByRouteName($route_name);
+		$this->driver = new \EntityCrudDriver($this->entity->model_name);
 		$this->attribute = $attribute;
 	}
 

@@ -9,7 +9,7 @@ class EntityCrudDriver extends ModelDriver {
 
 	public function __construct($model) {
 		$this->model = '\\Site\\' . $model;
-		$this->entity = \EntityDriver::findByName($model);
+		$this->entity = \EntityDriver::findByModelName($model);
 	}
 
 	public function index($page = 1, $per_page = 20) {

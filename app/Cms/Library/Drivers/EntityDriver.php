@@ -29,6 +29,20 @@ class EntityDriver extends ModelDriver {
 		return $entity;
 	}
 
+	public function findByModelName($model_name) {
+		$entity = \Entity::where('model_name', $model_name)
+		->with('attributes')
+		->first();
+		return $entity;
+	}
+
+	public function findByRouteName($route_name) {
+		$entity = \Entity::where('route_name', $route_name)
+		->with('attributes')
+		->first();
+		return $entity;
+	}
+
 	public function getAttribute($entity_id, $attribute_id) {
 		$attribute = \EntityAttribute::where('entity_id', $entity_id)
 		->where('id', $attribute_id)

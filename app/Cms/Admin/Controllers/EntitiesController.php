@@ -5,9 +5,9 @@ class EntitiesController extends BaseController {
 	public function __construct() {
 		$uri = str_replace(\URL::route('admin.index'), '', \URL::current());
 		$parts = explode('/', $uri);
-		$name = studly_case(str_singular($parts[1]));
-		$this->driver = new \EntityCrudDriver($name);
-		$this->entity = \EntityDriver::findByName($name);
+		$route_name = $parts[1];
+		$this->entity = \EntityDriver::findByRouteName($route_name);
+		$this->driver = new \EntityCrudDriver($this->entity->model_name);
 	}
 
 	public function index()

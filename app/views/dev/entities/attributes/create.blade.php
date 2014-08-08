@@ -7,13 +7,9 @@
 </div>
 <div class="form-group">
 	<label>Type</label>
-	<select class="form-control" name="type" value="{{ Input::old('type') }}">
-		<option>string</option>
-		<option>text</option>
-		<option>integer</option>
-		<option>image</option>
-		<option>image_array</option>
-	</select>
+	{{ Form::select('type', 
+		['string' => 'string', 'text' => 'text', 'integer' => 'integer', 'image' => 'image', 'image_array' => 'image_array'], 
+		Input::old('type'), ['class' => 'form-control']) }}
 	{{ $errors->first('type', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 <div class="form-group">
