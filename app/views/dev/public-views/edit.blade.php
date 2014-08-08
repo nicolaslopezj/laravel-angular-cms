@@ -13,7 +13,7 @@
 </div>
 <hr>
 <div class="pull-right">
-	<a class="btn btn-default" href="{{ URL::route('dev.public-views.show', $public_view->id) }}">Cancel</a>
+	<a class="btn btn-default" href="{{ URL::route('dev.public-views.show', $public_view->id) }}">Back</a>
 	<button class="btn btn-primary">Save</button>
 </div>
 

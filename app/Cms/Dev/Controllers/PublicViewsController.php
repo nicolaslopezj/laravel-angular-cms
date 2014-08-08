@@ -64,7 +64,7 @@ class PublicViewsController extends BaseController {
 		}
 
 
-		return \Redirect::route('dev.public-views.show', $public_view->id);
+		return \Redirect::route('dev.public-views.edit', $public_view->id);
 	}
 
 	public function destroy($id) {
