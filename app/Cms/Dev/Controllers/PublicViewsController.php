@@ -3,6 +3,9 @@
 class PublicViewsController extends BaseController {
 
 	public function index() {
+
+		return \View::make('angular.public-views.base');
+		
 		$tag = \Input::get('tag');
 		$public_views = \PublicViewDriver::index($tag);
 		$tags = \PublicViewDriver::getTags();

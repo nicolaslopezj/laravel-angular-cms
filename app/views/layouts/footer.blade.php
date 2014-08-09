@@ -1,4 +1,4 @@
-<div class="container footer">
+<div class="footer">
 	<br>
 	<hr>
 	<div class="row">

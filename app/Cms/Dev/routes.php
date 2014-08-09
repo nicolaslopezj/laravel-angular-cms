@@ -65,3 +65,8 @@ Route::group(['prefix' => 'dev', 'namespace' => 'Cms\Dev\Controllers', 'before' 
 	Route::resource('public-views', 'PublicViewsController');
 
 });
+
+Route::group(['prefix' => 'dev/ajax', 'namespace' => 'Cms\Dev\AjaxControllers', 'before' => 'permissions.dev'], function()
+{
+	Route::resource('public-views', 'PublicViewsController');
+});

@@ -1,54 +1,41 @@
 @extends('layouts.master')
 
+@section('sidebar')
+<li class="sidebar-brand">
+    Admin
+</li>
+
+<li>
+	<a href="{{ URL::route('admin.users.index') }}" class="{{ Helper::routeStartsWith('admin.users') ? 'active' : '' }}">
+		Users
+	</a>
+</li>
+@foreach (EntityDriver::all() as $index => $entity)
+<li>
+	<a href="{{ URL::route('admin.' . $entity->route_name . '.index') }}" class="{{ Helper::routeStartsWith('admin.' . $entity->route_name) ? 'active' : '' }}">
+		{{ str_plural($entity->name) }}
+	</a>
+<li>
+@endforeach
+<li>
+	<a href="{{ URL::route('admin.definitions.index') }}" class="{{ Helper::routeStartsWith('admin.definitions') ? 'active' : '' }}">
+		Dictionary
+	</a>
+</li>
+@foreach (PackagesHelper::getAdminSidebar() as $index => $params)
+<li>
+	<a href="{{ URL::route('admin.' . $params['route_index']) }}" class="{{ Helper::routeStartsWith('admin.' . $params['route_check']) ? 'active' : '' }}">
+		{{ $params['name'] }}
+	</a>
+</li>
+@endforeach
+
+@stop
+
 @section('content')
 <br>
 <div class="row">
-	<div class="col-sm-3">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Admin</h3>
-			</div>
-			<div class="panel-body">
-				<div class="list-group sidenav">
-					<a href="{{ URL::route('admin.users.index') }}" class="list-group-item
-					@if (Helper::routeStartsWith('admin.users'))
-					active
-					@endif
-					">
-						Users
-					</a>
-					@foreach (EntityDriver::all() as $index => $entity)
-						<a href="{{ URL::route('admin.' . $entity->route_name . '.index') }}" class="list-group-item
-						@if (Helper::routeStartsWith('admin.' . $entity->route_name))
-						active
-						@endif
-						">
-						{{ str_plural($entity->name) }}
-						</a>
-					@endforeach
-					<a href="{{ URL::route('admin.definitions.index') }}" class="list-group-item
-					@if (Helper::routeStartsWith('admin.definitions'))
-					active
-					@endif
-					">
-						Dictionary
-					</a>
-					@foreach (PackagesHelper::getAdminSidebar() as $index => $params)
-						<a href="{{ URL::route('admin.' . $params['route_index']) }}" class="list-group-item
-						@if (Helper::routeStartsWith('admin.' . $params['route_check']))
-						active
-						@endif
-						">
-							{{ $params['name'] }}
-						</a>
-					@endforeach
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-sm-9">
-		@include('layouts.panel')
-	</div>
+	@include('layouts.panel')
 </div>
 
 @stop

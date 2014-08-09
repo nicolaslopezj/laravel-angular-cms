@@ -1,21 +1,19 @@
-@if (is_array($content))
-	@foreach ($content as $index => $cont)
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">{{ $cont['title'] }}</h3>
-			</div>
-			<div class="panel-body">
+<div class="col-sm-8 col-sm-offset-2">
+	@if (is_array($content))
+		@foreach ($content as $index => $cont)
+			<h3>{{ $cont['title'] }}</h3>
+			<hr><br>
+			<div class="well clearfix">
 				{{ $cont['content'] }}
 			</div>
-		</div>
-	@endforeach
-@else
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 class="panel-title">{{ $title }}</h3>
-		</div>
-		<div class="panel-body">
+			<br><br>
+		@endforeach
+	@else
+		<h3>{{ $title }}</h3>
+		<hr><br>
+		<div class="well clearfix">
 			{{ $content }}
 		</div>
-	</div>
-@endif
+		
+	@endif
+</div>
