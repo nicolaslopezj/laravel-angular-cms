@@ -12,9 +12,11 @@ angular.module('cmsApp.controllers')
 
 		if ($scope.editor_loaded) {
 			if ($rootScope.activeView.content != newContent) {
-				$scope.$apply(function(){
-					$rootScope.activeView.has_changes = true;
-				})
+				if(!$scope.$$phase) {
+					$scope.$apply(function(){
+						$rootScope.activeView.has_changes = true;
+					})
+				}
 			};
 			$rootScope.activeView.content = newContent;
 		};
