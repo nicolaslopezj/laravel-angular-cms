@@ -46,6 +46,20 @@
     margin-right: -250px;
 }
 
+#sidebar-wrapper .creator-link {
+    color: #6C6C6C;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+}
+
 /* Sidebar Styles */
 
 .sidebar-nav {
@@ -69,6 +83,12 @@
 }
 
 .sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a.active {
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.2);

@@ -21,6 +21,9 @@
 	        <ul class="sidebar-nav">
 	        	@yield('sidebar')
 	        </ul>
+        	<a  href="http://nicolaslopez.co" target="_BLANK" class="creator-link">
+    			Nicolás López
+    		</a>
 	    </div>
 	    <!-- /#sidebar-wrapper -->
 

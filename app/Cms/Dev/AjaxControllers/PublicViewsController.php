@@ -18,7 +18,9 @@ class PublicViewsController extends \Controller {
 		try {
 			$public_view = \PublicViewDriver::store($data);
 		} catch (\Watson\Validating\ValidationException $e) {
-			return $e;
+			$messages = $e->getErrors();
+			$response = ['type' => 'error', 'messages' => $messages];
+			return \Response::json($response, 400);
 		}
 
 

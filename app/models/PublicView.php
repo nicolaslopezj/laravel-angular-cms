@@ -41,7 +41,6 @@ class PublicView extends Eloquent {
 	 */
 	protected $rules = [
 		'name' => 'required|alpha_dash|unique:public_views,name',
-        'content' => 'required',
         'tag' => 'alpha_dash',
     ];
 

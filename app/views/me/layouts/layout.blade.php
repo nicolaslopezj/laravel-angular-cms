@@ -2,7 +2,7 @@
 
 @section('sidebar')
 <li class="sidebar-brand">
-    Admin
+    {{ \UserDriver::loggedIn()->name }}
 </li>
 
 <li>

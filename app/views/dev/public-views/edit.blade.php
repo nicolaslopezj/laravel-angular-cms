@@ -24,13 +24,3 @@
         height: 600px;
     }
 </style>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var editor = ace.edit("content");
-	var textarea = $('textarea[name="content"]').hide();
-	editor.getSession().setMode("ace/mode/php");
-	editor.getSession().setValue(textarea.val());
-	editor.getSession().on('change', function(){
-	  textarea.val(editor.getSession().getValue());
-	});
-</script>
