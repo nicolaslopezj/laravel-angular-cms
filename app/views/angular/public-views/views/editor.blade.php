@@ -2,9 +2,9 @@
 
 	<div>
 		<div class="actions clearfix">
-			<div class="row">
+			<div class="row" ng-show="activeView">
 				<div class="col-xs-9">
-					<p>
+					<p class="file-description-container">
 						<span class="file-name">
 							<span class="text-muted">site/</span><span class="name" ng-click="changeName(activeView)">@{{ activeView.name }}</span><span class="text-muted">.blade.php</span>
 						</span>
@@ -28,24 +28,48 @@
 					</div>
 				</div>
 			</div>
+			<div class="row" ng-show="!activeView">
+				<div class="col-xs-9">
+					<p class="file-description-container">
+						<span class="file-name">
+							<span class="text-muted">Select a file</span>
+						</span>
+					</p>
+				</div>
+			</div>
 		</div>
 
-		<div id="content"/>
+		<div id="content" class="editor"></div>
 	</div>
-	
 </div>
+<script type="text/javascript">
+	function setHeight() {
+		var windowHeight = $(window).height();
 
+		$(".editor").height(windowHeight - 98);
+	}
+
+	$(document).ready(function(){
+		setHeight();
+		$(window).resize(function() {
+			setHeight();
+		});
+	});
+</script>
 <style type="text/css" media="screen">
     .navbar {
     	margin-bottom: 0px;
     }
     .actions {
     	background-color: #f0f0f0;
+    	overflow: hidden;
+    	height: 43px;
+    }
+    .actions .file-description-container {
+    	padding-top: 5px;
     }
     .actions .file-name {
-    	position: relative;
-		left: 14px;
-		top: 6px;
+		margin-left: 10px;
 		font-size: 20px;
     }
     .actions .file-name .name{
@@ -53,12 +77,9 @@
     }
     .file-tag{
     	position: relative;
-		left: 25px;
-		top: 3px;
+		top: -2px;
+		margin-left: 10px;
 		font-size: 16px;
 		cursor: pointer;
-    }
-    #content {
-    	min-height: 600px;
     }
 </style>

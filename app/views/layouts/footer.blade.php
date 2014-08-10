@@ -1,3 +1,4 @@
+<br><br><br>
 <!--<div class="footer col-sm-12">
 	<br>
 	<hr>

@@ -7,6 +7,11 @@ angular.module('cmsApp.controllers')
 	$scope.editor_loaded = false;
 	$scope.editor = ace.edit("content");
 	$scope.editor.getSession().setMode("ace/mode/php");
+	$scope.editor.setOptions({
+	    readOnly: true,
+	    highlightActiveLine: false,
+	    highlightGutterLine: false
+	});
 	$scope.editor.getSession().on('change', function(){
 		var newContent = $scope.editor.getSession().getValue();
 
@@ -32,7 +37,18 @@ angular.module('cmsApp.controllers')
 		if (newValue) {
 			$scope.editor_loaded = false;
 			$scope.editor.getSession().setValue(newValue.content);
-		};
+			$scope.editor.setOptions({
+			    readOnly: false,
+			    highlightActiveLine: true,
+			    highlightGutterLine: true
+			});
+		} else {
+			$scope.editor.setOptions({
+			    readOnly: true,
+			    highlightActiveLine: false,
+			    highlightGutterLine: false
+			});
+		}
 	});
 
 	$scope.changeName = function(view) {
