@@ -9,6 +9,7 @@
 
 
 @section('sidebar')
+@parent
 @include('angular.public-views.views.sidebar')
 @stop
 
