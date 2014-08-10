@@ -15,39 +15,43 @@
 	@yield('styles')
 </head>
 <body>
-	<div id="wrapper">
+	@section('structure')
+		<div id="wrapper">
 
-	    <!-- Sidebar -->
-	    <div id="sidebar-wrapper">
-	        <ul class="sidebar-nav">
-	        	@yield('sidebar')
-	        </ul>
-        	<a  href="http://nicolaslopez.co" target="_BLANK" class="creator-link">
-    			Nicolás López
-    		</a>
-	    </div>
-	    <!-- /#sidebar-wrapper -->
+		    <!-- Sidebar -->
+		    <div id="sidebar-wrapper">
+		        <ul class="sidebar-nav">
+		        	@yield('sidebar')
+		        </ul>
+	        	<a  href="http://nicolaslopez.co" target="_BLANK" class="creator-link">
+	    			Nicolás López
+	    		</a>
+		    </div>
+		    <!-- /#sidebar-wrapper -->
 
-	    <!-- Page Content -->
-	    <div id="page-content-wrapper">
-	    	@include('layouts.header')
+		    <!-- Page Content -->
+		    <div id="page-content-wrapper">
+		    	@include('layouts.header')
 
-	        <div class="container-fluid">
-	            @yield('content')
-				@include('layouts.footer')
-	        </div>
-	    </div>
-	    <!-- /#page-content-wrapper -->
+		        <div class="container-fluid">
+		            @yield('content')
+					@include('layouts.footer')
+		        </div>
+		    </div>
+		    <!-- /#page-content-wrapper -->
 
-	</div>
-	<!-- /#wrapper -->
+		</div>
+		<!-- /#wrapper -->
 
-	<script>
-	$("#menu-toggle").click(function(e) {
-	    e.preventDefault();
-	    $("#wrapper").toggleClass("toggled");
-	});
-	</script>
+		<script>
+		$("#menu-toggle").click(function(e) {
+		    e.preventDefault();
+		    $("#wrapper").toggleClass("toggled");
+		});
+		</script>
+
+	@show
+	
 	<script type="text/javascript" src="{{ asset('src/jany.js') }}"></script>
 	@yield('scripts')
 </body>

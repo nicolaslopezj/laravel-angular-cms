@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
-@section('content')
+@section('structure')
 {{ $content }}
 @stop
