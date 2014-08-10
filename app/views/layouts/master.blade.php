@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	
 	<title>CMS</title>
 	<link rel="stylesheet" href="{{ asset('src/styles.css') }}">
 	<link rel="stylesheet" href="{{ asset('src/styles2.css') }}">

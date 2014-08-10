@@ -9,7 +9,7 @@
 							<span class="text-muted">site/</span><span class="name" ng-click="changeName(activeView)">@{{ activeView.name }}</span><span class="text-muted">.blade.php</span>
 						</span>
 						<span class="file-tag">
-							<span class="label label-danger" ng-click="changeTag(activeView)">
+							<span class="label" ng-class="{'label-danger':activeView.tag, 'label-default':!activeView.tag}" ng-click="changeTag(activeView)">
 								<span ng-show="activeView.tag">@{{ activeView.tag }}</span>
 								<span ng-show="!activeView.tag" style="font-style: italic">set tag</span>
 							</span>
