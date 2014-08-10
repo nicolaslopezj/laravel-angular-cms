@@ -11,10 +11,12 @@ angular.module('cmsApp.controllers')
 		var newContent = $scope.editor.getSession().getValue();
 
 		if ($scope.editor_loaded) {
+			if ($rootScope.activeView.content != newContent) {
+				$scope.$apply(function(){
+					$rootScope.activeView.has_changes = true;
+				})
+			};
 			$rootScope.activeView.content = newContent;
-			$scope.$apply(function(){
-				$rootScope.activeView.has_changes = true;
-			})
 		};
 
 		if (newContent.trim() && !$scope.editor_loaded) {
@@ -69,7 +71,17 @@ angular.module('cmsApp.controllers')
 
 	$scope.saveView = function(view) {
 		view.has_changes = false;
-		View.update({'viewId': view.id}, view);
+		View.update({'viewId': view.id}, view, function(response){
+			
+		}, function(response) {
+			if (response.data.messages) {
+				var messages = response.data.messages;
+				for (var key in messages) {
+				   var message = messages[key];
+				   alert(message);
+				}
+			};
+		});
 	}
 
 	$scope.deleteView = function(view) {
