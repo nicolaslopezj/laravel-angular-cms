@@ -6,8 +6,8 @@ angular.module('cmsApp.controllers')
 
 	$(window).bind('keydown', function(event) {
 		if ((event.ctrlKey || event.metaKey) && event.which == 83) {
-			$scope.saveView();
-	    	event.preventDefault();
+			$scope.saveView($scope.activeView);
+			event.preventDefault();
 		};
 	});
 
