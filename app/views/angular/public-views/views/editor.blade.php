@@ -38,7 +38,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="editor" ng-model="activeView.content" readonly="activeView" ui-ace="{onLoad: aceLoaded}"></div>
+		<div class="editor" ng-model="activeView.content" readonly="@{{ !canEdit }}" ui-ace="{onLoad: aceLoaded}"></div>
 	</div>
 </div>
 <script type="text/javascript">

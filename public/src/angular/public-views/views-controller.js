@@ -17,8 +17,11 @@ angular.module('cmsApp.controllers')
 		});
 	};
 
+	$scope.canEdit = false;
 	$rootScope.$watch('activeView', function(newValue, oldValue){
 		if (newValue) {
+			if (newValue.id) {$scope.canEdit = true;} else {$scope.canEdit = false;};
+			
 			if (oldValue) {
 				if (newValue.id != oldValue.id) {
 					// Es nueva clase
@@ -33,6 +36,7 @@ angular.module('cmsApp.controllers')
 			}
 		} else {
 			// No hay clase
+			$scope.canEdit = false;
 		}
 	}, true);
 
@@ -86,18 +90,18 @@ angular.module('cmsApp.controllers')
 
 	$scope.deleteView = function(view) {
 		if (confirm('Are you sure you want delete this view?')) {
-			view.$delete();
 			for (var i = 0; i < $rootScope.views.length; i++) {
-
-				$rootScope.activeView = null;
-				$scope.editor_loaded = false;
-				$scope.editor.getSession().setValue();
-				
-
 				if ($rootScope.views[i].id == view.id) {
+
+					if ($rootScope.activeView.id == view.id) {
+						$rootScope.activeView = null;
+					};
+
 					$rootScope.views.splice(i, 1);
 				};
 			}
+
+			view.$delete();
 		} else {
 		    
 		}
