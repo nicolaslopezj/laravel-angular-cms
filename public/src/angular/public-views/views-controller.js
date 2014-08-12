@@ -4,6 +4,13 @@ angular.module('cmsApp.controllers')
 
 	$rootScope.views = View.all();
 
+	$(window).bind('keydown', function(event) {
+		if ((event.ctrlKey || event.metaKey) && event.which == 83) {
+			$scope.saveView();
+	    	event.preventDefault();
+		};
+	});
+
 	$scope.aceLoaded = function(_editor) {
 		_editor.setOptions({
 			mode: 'ace/mode/php',
