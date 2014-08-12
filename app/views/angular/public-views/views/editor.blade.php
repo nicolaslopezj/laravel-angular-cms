@@ -38,8 +38,7 @@
 				</div>
 			</div>
 		</div>
-
-		<div id="content" class="editor"></div>
+		<div class="editor" ng-model="activeView.content" readonly="activeView" ui-ace="{onLoad: aceLoaded}"></div>
 	</div>
 </div>
 <script type="text/javascript">

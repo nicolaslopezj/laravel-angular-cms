@@ -22,7 +22,6 @@
 	    $("#wrapper").toggleClass("toggled");
 	});
 	</script>
-	<script type="text/javascript" src="{{ asset('src/bower_components/angularjs/angular.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('src/bower_components/angular-resource/angular-resource.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('src/angular/main/app.js') }}"></script>
+
+	<!-- Predefined Scripts -->
 @stop

@@ -4,59 +4,35 @@ angular.module('cmsApp.controllers')
 
 	$rootScope.views = View.all();
 
-	$scope.editor_loaded = false;
-	$scope.editor = ace.edit("content");
-	$scope.editor.getSession().setMode("ace/mode/php");
-	$scope.editor.setOptions({
-	    readOnly: true,
-	    highlightActiveLine: false,
-	    highlightGutterLine: false
-	});
-	$scope.editor.getSession().on('change', function(){
-		var newContent = $scope.editor.getSession().getValue();
-
-		if ($scope.editor_loaded) {
-			if ($rootScope.activeView.content != newContent) {
-				if(!$scope.$$phase) {
-					$scope.$apply(function(){
-						$rootScope.activeView.has_changes = true;
-					})
-				}
-			};
-			$rootScope.activeView.content = newContent;
-		};
-
-		if (newContent.trim() && !$scope.editor_loaded) {
-			$scope.editor_loaded = true;
-		}
-
-
-	});
+	$scope.aceLoaded = function(_editor) {
+		_editor.setOptions({
+			mode: 'ace/mode/php',
+		});
+	};
 
 	$rootScope.$watch('activeView', function(newValue, oldValue){
 		if (newValue) {
-			$scope.editor_loaded = false;
-			$scope.editor.getSession().setValue(newValue.content);
-			$scope.editor.setOptions({
-			    readOnly: false,
-			    highlightActiveLine: true,
-			    highlightGutterLine: true
-			});
+			if (oldValue) {
+				if (newValue.id != oldValue.id) {
+					// Es nueva clase
+				} else {
+					// Es clase antigua
+					if (oldValue.has_changes != true) {
+						newValue.has_changes = true;
+					};
+				}
+			} else {
+				// Es nueva clase
+			}
 		} else {
-			$scope.editor.setOptions({
-			    readOnly: true,
-			    highlightActiveLine: false,
-			    highlightGutterLine: false
-			});
+			// No hay clase
 		}
-	});
+	}, true);
 
 	$scope.changeName = function(view) {
 		var newName = prompt("Enter the name", view.name);
 		if (newName) {
 			view.name = newName;
-			view.has_changes = true;
-
 		}
 	}
 
@@ -64,7 +40,6 @@ angular.module('cmsApp.controllers')
 		var newTag = prompt("Enter the tag", view.tag);
 		if (newTag) {
 			view.tag = newTag;
-			view.has_changes = true;
 		}
 	}
 

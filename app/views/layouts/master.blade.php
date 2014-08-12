@@ -7,16 +7,20 @@
 	<link rel="stylesheet" href="{{ asset('src/styles.css') }}">
 	<link rel="stylesheet" href="{{ asset('src/styles2.css') }}">
 	<link rel="stylesheet" href="{{ asset('src/slidebar.css') }}">
-	
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('src/bower_components/components-font-awesome/css/font-awesome.min.css') }}">
 
 	<script type="text/javascript" src="{{ asset('src/jquery.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/angularjs/angular.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/angular-resource/angular-resource.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/ace-builds/src-min-noconflict/ace.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/angular-ui-ace/ui-ace.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/angular/main/app.js') }}"></script>
 
 	@yield('styles')
 </head>
 <body>
 	@section('structure')
-		<div id="wrapper">
+		<div id="wrapper" ng-app="cmsApp">
 
 		    <!-- Sidebar -->
 		    <div id="sidebar-wrapper">

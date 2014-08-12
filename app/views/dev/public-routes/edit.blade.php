@@ -41,7 +41,6 @@
         height: 350px;
     }
 </style>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("function");
 	var textarea = $('textarea[name="function"]').hide();
