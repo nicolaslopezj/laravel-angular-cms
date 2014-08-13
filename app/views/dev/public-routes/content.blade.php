@@ -57,6 +57,11 @@
 				</div>
 
 				<div class="form-group">
+					<label>Loading Template</label>
+					<input ng-model="activeRoute.until_resolved" class="form-control">
+				</div>
+
+				<div class="form-group">
 					<label>Controller</label>
 					<input ng-model="activeRoute.controller" class="form-control">
 				</div>

@@ -26,6 +26,11 @@ angular.module('cmsApp.route', ['ngRoute', 'route-segment', 'view-segment'])
 		.segment('{{ $segment }}', {
 		    templateUrl: '{{ asset('site') }}/{{ $route->template }}',
 		    controller: '{{ $route->controller }}',
+@if($route->until_resolved)
+			untilResolved: {
+                templateUrl: '{{ asset('site') }}/{{ $route->until_resolved }}'
+            },
+@endif
 		})
 @endif
 @endforeach
