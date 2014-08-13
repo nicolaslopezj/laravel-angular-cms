@@ -14,7 +14,7 @@ class PublicRoutesEventHandler {
         $coder->codeRoutes();
     }
 
-    public function onDelete($public_route)
+    public function onDelete()
     {
         $coder = new \Cms\Library\Helpers\Coder\RoutesCoder;
         $coder->codeRoutes();

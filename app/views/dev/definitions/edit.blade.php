@@ -27,6 +27,12 @@
 		Editable
 	</label>
 </div>
+<div class="checkbox">
+	<label>
+		{{ Form::checkbox('hidden', '1', $definition->hidden); }}
+		Hidden
+	</label>
+</div>
 
 <hr>
 @if ($definition->type == 'string')

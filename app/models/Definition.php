@@ -18,14 +18,14 @@ class Definition extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['id', 'editable'];
+	protected $hidden = ['id', 'editable', 'hidden', 'tag', 'description'];
 
 	/**
 	 * The attributes that can be filled.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['identifier', 'description', 'type', 'editable', 'string', 'text', 'integer', 'image_id', 'image', 'tag'];
+	protected $fillable = ['identifier', 'description', 'type', 'editable', 'hidden', 'string', 'text', 'integer', 'image_id', 'image', 'tag'];
 
 	/**
 	 * Validation Rules
@@ -36,6 +36,7 @@ class Definition extends Eloquent {
 		'identifier' => 'required|alpha_dash|unique:definitions,identifier',
         'type' => 'required|in:string,text,integer,image',
         'editable' => 'boolean',
+        'hidden' => 'boolean',
         'string' => '',
         'text' => '',
         'integer' => 'numeric',
@@ -61,6 +62,11 @@ class Definition extends Eloquent {
 	}
 
 	public function getEditableAttribute($attribute)
+	{
+		return (boolean) $attribute;
+	}
+
+	public function getHiddenAttribute($attribute)
 	{
 		return (boolean) $attribute;
 	}

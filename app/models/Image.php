@@ -63,13 +63,18 @@ class Image extends Eloquent {
 		return (int) $attribute;
 	}
 
+	public function getPathAttribute() {
+		$path = $this->attributes['path'];
+		return asset($path);
+	}
+
 	public function getThumbnailXsAttribute()
 	{	
 		$path = $this->attributes['path'];
 		$parts = explode('/', $path);
 		$parts[2] = str_replace('.png', '', $parts[2]);
 		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'xs.png';
-		return $thumbnail;
+		return asset($thumbnail);
 	}
 
 	public function getThumbnailSmAttribute()
@@ -78,7 +83,7 @@ class Image extends Eloquent {
 		$parts = explode('/', $path);
 		$parts[2] = str_replace('.png', '', $parts[2]);
 		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'sm.png';
-		return $thumbnail;
+		return asset($thumbnail);
 	}
 
 	public function getThumbnailMdAttribute()
@@ -87,7 +92,7 @@ class Image extends Eloquent {
 		$parts = explode('/', $path);
 		$parts[2] = str_replace('.png', '', $parts[2]);
 		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'md.png';
-		return $thumbnail;
+		return asset($thumbnail);
 	}
 
 	public function getThumbnailLgAttribute()
@@ -96,7 +101,7 @@ class Image extends Eloquent {
 		$parts = explode('/', $path);
 		$parts[2] = str_replace('.png', '', $parts[2]);
 		$thumbnail = $parts[0] . '/' . $parts[1] . '/thumbnails/' . $parts[2] . 'lg.png';
-		return $thumbnail;
+		return asset($thumbnail);
 	}
 
 }

@@ -11,6 +11,26 @@ class DefinitionDriver extends ModelDriverWithTag {
 		return $class::where('identifier', $identifier)->first();
 	}
 
+	public function all($site = 'admin', $tag = null) {
+		$model = $this->model;
+
+		if ($tag) {
+			$query = $model::where('tag', $tag);
+		} else {
+			$query = $model::where('id', '>', '0');
+		}
+
+		if ($site == 'admin') {
+			$query = $query->where('editable', true);
+		}
+
+		if ($site == 'site') {
+			$query = $query->where('hidden', false);
+		}
+
+		return $query->get();
+	}
+
 	public function index($site = 'admin', $tag = null, $page = 1, $per_page = 20) {
 		$model = $this->model;
 
@@ -20,8 +40,12 @@ class DefinitionDriver extends ModelDriverWithTag {
 			$query = $model::where('id', '>', '0');
 		}
 
-		if ($site != 'dev') {
+		if ($site == 'admin') {
 			$query = $query->where('editable', true);
+		}
+
+		if ($site == 'site') {
+			$query = $query->where('hidden', false);
 		}
 
 		return $query->paginate($per_page);

@@ -15,9 +15,13 @@ class CreatePublicRoutesTable extends Migration {
 		Schema::create('public_routes', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name')->unique();
-			$table->string('path')->unique();
-			$table->text('function');
+			$table->string('name');
+			$table->string('path');
+			$table->string('controller');
+			$table->string('template');
+			$table->text('resolve');
+
+			$table->string('tag')->nullable();
 			$table->timestamps();
 		});
 	}

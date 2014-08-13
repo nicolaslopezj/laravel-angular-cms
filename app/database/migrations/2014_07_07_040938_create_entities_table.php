@@ -17,6 +17,8 @@ class CreateEntitiesTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('table_name');
+			$table->string('route_name');
+			$table->string('model_name');
 
 			$table->timestamps();
 		});
