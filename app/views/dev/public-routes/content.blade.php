@@ -66,6 +66,12 @@
 					<input ng-model="activeRoute.controller" class="form-control">
 				</div>
 
+				<div class="form-group">
+					<label>Resolve (json)</label>
+					<div class="editor" ng-model="activeRoute.resolve" ui-ace="{onLoad: aceLoaded}"></div>
+				</div>
+
+
 				<br><br>
 			</div>
 		</div>
@@ -73,7 +79,7 @@
 </div>
 <style type="text/css" media="screen">
 	.editor {
-		height: 300px;
+		height: 150px;
 	}
     .navbar {
     	margin-bottom: 0px;
