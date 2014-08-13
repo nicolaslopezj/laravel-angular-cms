@@ -32,7 +32,7 @@ class PublicRoute extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $appends = ['segments'];
+	protected $appends = ['segments', 'dependencies'];
 
 	/**
 	 * Validation Rules
@@ -72,6 +72,14 @@ class PublicRoute extends Eloquent {
 	{
 		$segments = explode('.', $this->attributes['name']);
 		return $segments;
+	}
+
+	public function getDependenciesAttribute()
+	{
+		$name = $this->attributes['path'];
+		$re = "/:[a-zA-Z0-9-_]+/"; 
+		preg_match_all($re, $name, $matches);
+		return str_replace(':', '', $matches[0]);
 	}
 
 }

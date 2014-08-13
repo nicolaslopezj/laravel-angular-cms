@@ -40,6 +40,9 @@ angular.module('cmsApp.route', ['ngRoute', 'route-segment', 'view-segment'])
                 templateUrl: '{{ asset('site') }}/{{ $route->until_resolved }}'
             },
 @endif
+@if($route->dependencies)
+			dependencies: {{ json_encode($route->dependencies) }},
+@endif
 		})
 @endif
 @endforeach
