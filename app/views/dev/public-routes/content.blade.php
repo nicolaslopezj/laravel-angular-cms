@@ -48,17 +48,26 @@
 
 				<div class="form-group">
 					<label>Path</label>
-					<input ng-model="activeRoute.path" class="form-control">
+					<div class="input-group">
+						<span class="input-group-addon">/</span>
+						<input ng-model="activeRoute.path" class="form-control">
+					</div>
 				</div>
 
 				<div class="form-group">
 					<label>Template</label>
-					<input ng-model="activeRoute.template" class="form-control">
+					<div class="input-group">
+						<span class="input-group-addon">site/</span>
+						<input ng-model="activeRoute.template" class="form-control">
+					</div>
 				</div>
 
 				<div class="form-group">
 					<label>Loading Template</label>
-					<input ng-model="activeRoute.until_resolved" class="form-control">
+					<div class="input-group">
+						<span class="input-group-addon">site/</span>
+						<input ng-model="activeRoute.until_resolved" class="form-control">
+					</div>
 				</div>
 
 				<div class="form-group">

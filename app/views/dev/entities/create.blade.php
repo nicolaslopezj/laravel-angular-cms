@@ -17,7 +17,10 @@
 </div>
 <div class="form-group">
 	<label>Model Name</label>
-	<input class="form-control" name="model_name" value="{{ Input::old('model_name') }}">
+	<div class="input-group">
+		<span class="input-group-addon">Site\</span>
+		<input class="form-control" name="model_name" value="{{ Input::old('model_name') }}">
+	</div>
 	{{ $errors->first('model_name', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 <hr>
