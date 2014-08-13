@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="cmsApp">
 <head>
 	<meta charset="UTF-8">
 	<base href="{{ url('/') }}/">
-	
+	<title ng-bind="page_title"></title>
+
 	@foreach ($styles as $url)
 	<link rel="stylesheet" href="{{ $url }}">
 	@endforeach
@@ -21,7 +22,7 @@
 
 	{{ Dict::get('head') }}
 </head>
-<body ng-app="cmsApp">
+<body>
 
 	<div ng-controller="CMSMainController">
 		<div app-view-segment="0"></div>
