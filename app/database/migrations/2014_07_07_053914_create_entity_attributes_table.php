@@ -17,9 +17,10 @@ class CreateEntityAttributesTable extends Migration {
 			$table->increments('id');
 			$table->integer('entity_id')->unsigned();
 			$table->foreign('entity_id')->references('id')->on('entities')->onDelete('cascade');
-			$table->string('name')->unique();
-			$table->enum('type', ['string', 'text', 'integer', 'image']);
-			$table->string('validations');
+			$table->string('name');
+			$table->string('description');
+			$table->string('type');
+			$table->text('options');
 			$table->timestamps();
 		});
 	}

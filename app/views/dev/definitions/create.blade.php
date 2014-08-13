@@ -36,6 +36,15 @@
 	</label>
 </div>
 {{ $errors->first('editable', '<br><div class="alert alert-danger">:message</div>') }}
+
+<div class="checkbox">
+	<label>
+		{{ Form::checkbox('hidden', '1', Input::old('hidden')); }}
+		Hidden
+	</label>
+</div>
+{{ $errors->first('hidden', '<br><div class="alert alert-danger">:message</div>') }}
+
 <hr>
 <div class="pull-right">
 	<a class="btn btn-default" href="{{ URL::route('dev.definitions.index') }}">Cancel</a>

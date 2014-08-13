@@ -17,8 +17,10 @@ class CreateDefinitionsTable extends Migration {
 			$table->increments('id');
 			$table->string('identifier')->unique();
 			$table->string('description');
-			$table->enum('type', ['string', 'text', 'integer', 'image']);
+			$table->string('type');
 			$table->boolean('editable');
+			$table->boolean('hidden');
+			$table->string('tag')->nullable();
 
 			$table->string('string')->nullable();
 			$table->text('text')->nullable();

@@ -15,4 +15,13 @@ class PublicViewDriver extends ModelDriverWithTag {
 
 	}
 
+	public function update($id, $data) {
+		$view = $this->get($id);
+
+		$coder = new \Cms\Library\Helpers\Coder\ViewsCoder;
+        $coder->deleteView($view);
+
+		return parent::update($id, $data);
+	}
+
 }

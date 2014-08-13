@@ -13,6 +13,10 @@
 			<b>{{ $definition->editable }}</b>
 		</p>
 		<p>
+			Hidden:
+			<b>{{ $definition->hidden }}</b>
+		</p>
+		<p>
 			Type:
 			<b>{{ $definition->type }}</b>
 		</p>

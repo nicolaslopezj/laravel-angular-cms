@@ -5,21 +5,23 @@ class ViewsCoder {
 	public function codeViews() {
 		$views = \PublicViewDriver::all();
 
-		$this->deleteFilesInFolder();
-		$this->codeViewsForViews($views);
-	}
-
-	public function deleteFilesInFolder() {
-		$folder_path = app_path() . '/views/site/';
-		\FilesHelper::deleteFilesInFolder($folder_path);
-	}
-
-	public function codeViewsForViews($views) {
-
 		foreach ($views as $index => $view) {
-			$view_path = app_path() . '/views/site/' . $view->name . '.blade.php';
-			$view_content = $view->content;
-			\FilesHelper::overwriteFile($view_path, $view_content);
+			$this->codeView($view);
+		}
+	}
+
+	public function codeView($view) {
+		$view_path = public_path() . '/site/' . $view->name;
+		$view_content = $view->content;
+		\FilesHelper::overwriteFile($view_path, $view_content);
+	}
+
+	public function deleteView($view) {
+		try {
+			$view_path = public_path() . '/site/' . $view->name;
+			\FilesHelper::deleteFile($view_path);
+		} catch (\Exception $e) {
+			
 		}
 		
 	}

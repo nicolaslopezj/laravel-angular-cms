@@ -5,16 +5,13 @@
 	<h4>
 		<b>{{ $attribute->name }}</b>
 	</h4>
+	<p class="help-block">
+		{{ $attribute->description }}
+	</p>
 	<p>
 		<b>Type:</b>
 		<code>{{ $attribute->type }}</code>
 	</p>
-	@if ($attribute->validations) 
-		<p>
-			<b>Validations:</b>
-			<code>{{ $attribute->validations }}</code>
-		</p>
-	@endif
 	<p>
 		<a class="btn btn-danger btn-xs" href="{{ URL::route('dev.entities.attributes.delete', [$entity->id, $attribute->id]) }}">
 			Delete

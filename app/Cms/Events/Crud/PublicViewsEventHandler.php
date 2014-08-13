@@ -5,19 +5,19 @@ class PublicViewsEventHandler {
     public function onCreate($public_view)
     {
         $coder = new \Cms\Library\Helpers\Coder\ViewsCoder;
-        $coder->codeViews();
+        $coder->codeView($public_view);
     }
 
     public function onUpdate($public_view)
     {
         $coder = new \Cms\Library\Helpers\Coder\ViewsCoder;
-        $coder->codeViews();
+        $coder->codeView($public_view);
     }
 
     public function onDelete($public_view)
     {
         $coder = new \Cms\Library\Helpers\Coder\ViewsCoder;
-        $coder->codeViews();
+        $coder->deleteView($public_view);
     }
 
     /**

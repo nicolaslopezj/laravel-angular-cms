@@ -25,7 +25,7 @@ class PublicView extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'content', 'tag'];
+	protected $fillable = ['name', 'content'];
 
 	/**
 	 * The attributes are not in the database
@@ -40,8 +40,7 @@ class PublicView extends Eloquent {
 	 * @var array
 	 */
 	protected $rules = [
-		'name' => 'required|alpha_dash|unique:public_views,name',
-        'tag' => 'alpha_dash',
+		'name' => 'required|unique:public_views,name',
     ];
 
     /**

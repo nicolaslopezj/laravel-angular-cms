@@ -109,6 +109,7 @@ class DeployCommand extends Command {
             'description' => 'The name of this project',
             'type' => 'string',
             'string' => $options['project_name'],
+            'tag' => 'dev',
             'editable' => false,
         ];
         try {
@@ -117,26 +118,6 @@ class DeployCommand extends Command {
             $this->error('Error setting the project name: "' . $e->getMessage() . '"');
         }
 
-        $view = [
-            'name' => 'index',
-            'content' => 'welcome',
-        ];
-        try {
-            \PublicViewDriver::store($view);
-        } catch (\Exception $e) {
-            $this->error('Error creating the home view: "' . $e->getMessage() . '"');
-        }
-
-        $route = [
-            'name' => 'index',
-            'path' => '/',
-            'function' => "return View::make('site.index');",
-        ];
-        try {
-            \PublicRouteDriver::store($route);
-        } catch (\Exception $e) {
-            $this->error('Error creating the home route: "' . $e->getMessage() . '"');
-        }
     }
 
     public function setupDefinitions() {
@@ -147,7 +128,9 @@ class DeployCommand extends Command {
             'description' => '"From" email address',
             'type' => 'string',
             'string' => 'norepley@example.com',
+            'tag' => 'dev',
             'editable' => false,
+            'hidden' => true,
         ];
         try {
             \DefinitionDriver::store($definition);
@@ -160,7 +143,9 @@ class DeployCommand extends Command {
             'description' => '"From" email address alias',
             'type' => 'string',
             'string' => 'CMS',
+            'tag' => 'dev',
             'editable' => false,
+            'hidden' => true,
         ];
         try {
             \DefinitionDriver::store($definition);
@@ -173,7 +158,9 @@ class DeployCommand extends Command {
             'description' => 'Mailgun API domain',
             'type' => 'string',
             'string' => '',
+            'tag' => 'dev',
             'editable' => false,
+            'hidden' => true,
         ];
         try {
             \DefinitionDriver::store($definition);
@@ -186,7 +173,9 @@ class DeployCommand extends Command {
             'description' => 'Mailgun API secret',
             'type' => 'string',
             'string' => '',
+            'tag' => 'dev',
             'editable' => false,
+            'hidden' => true,
         ];
         try {
             \DefinitionDriver::store($definition);

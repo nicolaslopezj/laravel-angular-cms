@@ -25,14 +25,14 @@ class PublicRoute extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'path', 'function', 'tag'];
+	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag'];
 
 	/**
 	 * The attributes are not in the database
 	 *
 	 * @var array
 	 */
-	protected $appends = ['parameters'];
+	protected $appends = ['segments'];
 
 	/**
 	 * Validation Rules
@@ -40,9 +40,8 @@ class PublicRoute extends Eloquent {
 	 * @var array
 	 */
 	protected $rules = [
-		'name' => 'required|alpha_dash|unique:public_routes,name',
-        'path' => 'required|unique:public_routes,path',
-        'function' => 'required',
+		'name' => 'required|unique:public_routes,name',
+        'path' => 'unique:public_routes,path',
         'tag' => 'alpha_dash',
     ];
 
@@ -63,13 +62,10 @@ class PublicRoute extends Eloquent {
 		return (int) $attribute;
 	}
 
-	public function getParametersAttribute() 
+	public function getSegmentsAttribute()
 	{
-		$path = $this->attributes['path'];
-		preg_match_all('({[^{}]*})', $path, $matches);
-		$matches = $matches[0];
-		$matches = str_replace(['{', '}'], '',  $matches);
-		return $matches;
+		$segments = explode('.', $this->attributes['name']);
+		return $segments;
 	}
 
 }

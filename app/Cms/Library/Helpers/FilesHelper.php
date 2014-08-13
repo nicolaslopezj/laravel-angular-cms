@@ -104,7 +104,21 @@ class FilesHelper {
 		}
 	}
 
+	public function createPath($path) {
+		try {
+			mkdir($path, 0777, true);
+			return true;
+		} catch (\Exception $e) {
+			return false;
+		}
+		
+	}
+
 	public function overwriteFile($path, $content) {
+		$parts = explode('/', $path);
+		unset($parts[count($parts) - 1]);
+		$this->createPath(join($parts, '/'));
+
 		// Let's make sure the file exists and is writable first.
 		if ((is_writable($path) && file_exists($path)) || !file_exists($path)) {
 
