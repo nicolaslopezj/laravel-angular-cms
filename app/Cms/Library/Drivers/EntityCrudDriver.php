@@ -25,7 +25,7 @@ class EntityCrudDriver extends ModelDriver {
 			}
 		}
 
-		$items = $query->paginate($per_page);
+		$items = $query->orderBy('created_at', 'desc')->paginate($per_page);
 		return $items;
 	}
 
@@ -42,7 +42,7 @@ class EntityCrudDriver extends ModelDriver {
 			}
 		}
 
-		$items = $query->get();
+		$items = $query->orderBy('created_at', 'desc')->get();
 		return $items;
 	}
 
