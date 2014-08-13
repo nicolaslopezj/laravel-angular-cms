@@ -28,6 +28,8 @@ class DefinitionDriver extends ModelDriverWithTag {
 			$query = $query->where('hidden', false);
 		}
 
+		$query->with('image');
+
 		return $query->get();
 	}
 
@@ -47,6 +49,8 @@ class DefinitionDriver extends ModelDriverWithTag {
 		if ($site == 'site') {
 			$query = $query->where('hidden', false);
 		}
+
+		$query->with('image');
 
 		return $query->paginate($per_page);
 	}
