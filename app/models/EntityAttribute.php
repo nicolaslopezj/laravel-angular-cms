@@ -35,7 +35,7 @@ class EntityAttribute extends Eloquent {
 	protected $rules = [
 		'entity_id' => 'required|exists:entities,id',
 		'name' => 'required|max:20|unique:entity_attributes,name',
-        'type' => 'required|in:string,text,integer,image,image_array',
+        'type' => 'required|in:string,text,integer,image,image_array,slug',
     ];
 
     

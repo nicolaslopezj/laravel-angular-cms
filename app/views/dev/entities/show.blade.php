@@ -1,3 +1,20 @@
+<h4>
+	<b>{{ $entity->name }}</b>
+</h4>
+<p>
+	<b>Table Name:</b>
+	<code>{{ $entity->table_name }}</code>
+</p>
+<p>
+	<b>Route Name:</b>
+	<code>{{ $entity->route_name }}</code>
+</p>
+<p>
+	<b>Model Name:</b>
+	<code>{{ $entity->model_name }}</code>
+</p>
+
+<hr>
 @foreach ($entity->attributes as $index => $attribute)
 	@if ($index != 0) 
 		<hr>

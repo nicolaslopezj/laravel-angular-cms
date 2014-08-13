@@ -51,7 +51,7 @@ angular.module('cmsApp.route', ['ngRoute', 'route-segment', 'view-segment'])
 angular.module('cmsApp.api', [])
 @foreach ($entities as $entity)
 .factory('{{ $entity->model_name }}', ['$resource', function($resource){
-	return $resource('{{ route('api.entity.index', $entity->id) }}/:id', {id:'@id'},
+	return $resource('{{ route('api.entity.index', $entity->route_name) }}/:id', {id:'@id'},
 		{
 			all: {
 				method: 'GET',

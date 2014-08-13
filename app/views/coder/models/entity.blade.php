@@ -14,9 +14,14 @@ class {{ $entity->model_name }} extends \Eloquent {
 
 	protected $rules = [
 @foreach ($entity->attributes as $index => $attribute)
-@if ($attribute->validations)		
-		'{{ $attribute->name }}' => '{{ $attribute->validations }}',
+
+@if ($attribute->type == 'integer')		
+		'{{ $attribute->name }}' => 'integer',
 @endif
+@if ($attribute->type == 'slug')		
+		'{{ $attribute->name }}' => 'alpha_dash|unique:site_{{ $entity->table_name }},{{ $attribute->name }}',
+@endif
+
 @endforeach
 	];
 

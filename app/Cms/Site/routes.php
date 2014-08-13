@@ -7,15 +7,20 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 		'uses' => 'DefinitionsController@index',
 	]);
 
-	Route::get('api/{entity_id}/', [
+	Route::get('api/{entity}/', [
 		'as' => 'api.entity.index',
 		'uses' => 'EntitiesController@index',
 	]);
 
-	Route::get('api/{entity_id}/{id}', [
+	Route::get('api/{entity}/{id}', [
 		'as' => 'api.entity.show',
 		'uses' => 'EntitiesController@show',
-	]);
+	])->where('id', '[0-9]+');
+
+	Route::get('api/{entity}/{slug}', [
+		'as' => 'api.entity.showSlug',
+		'uses' => 'EntitiesController@showSlug',
+	])->where('slug', '[a-zA-Z0-9]+');
 
 });
 

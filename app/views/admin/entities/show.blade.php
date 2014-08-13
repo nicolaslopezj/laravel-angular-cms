@@ -15,6 +15,10 @@
 				<p><b>{{ ucfirst($attribute->name) }}</b></p>
 				<p>{{ $item->{$attribute->name} }}</p>
 			@endif
+			@if ($attribute->type == 'slug')
+				<p><b>{{ ucfirst($attribute->name) }}</b></p>
+				<p>{{ $item->{$attribute->name} }}</p>
+			@endif
 			@if ($attribute->type == 'text')
 				<p><b>{{ ucfirst($attribute->name) }}</b></p>
 				<p>{{ nl2br(str_limit($item->{$attribute->name}, 300)) }}</p>
