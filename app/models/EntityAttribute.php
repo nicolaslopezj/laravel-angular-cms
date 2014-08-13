@@ -26,7 +26,7 @@ class EntityAttribute extends Eloquent {
 	 * @var array
 	 */
 	protected $fillable = ['entity_id', 'name', 'type', 'validations', 'options', 'description'];
-
+	
 	/**
 	 * Validation Rules
 	 *

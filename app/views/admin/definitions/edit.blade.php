@@ -15,6 +15,28 @@
 	{{ $errors->first('string', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 
+@elseif ($definition->type == 'code')
+
+<div class="form-group">
+	<label>Value</label>
+	<textarea class="form-control" name="code" style="display:none">{{{ $definition->code }}}</textarea>
+	<div class="editor" id="code"/>
+	{{ $errors->first('code', '<br><div class="alert alert-danger">:message</div>') }}
+
+	<script>
+	    var editor = ace.edit("code");
+		var textarea = $('textarea[name="code"]').hide();
+		editor.getSession().setValue(textarea.val());
+		editor.getSession().on('change', function(){
+		  textarea.val(editor.getSession().getValue());
+		});
+	</script>
+	<style type="text/css">
+	.editor {
+		height: 200px;
+	}
+	</style>
+</div>
 
 @elseif ($definition->type == 'text')
 

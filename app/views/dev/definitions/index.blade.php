@@ -33,10 +33,19 @@
 
 					<span class="text-muted">{{ $definition->description }}</span><br>
 
-					{{{ $definition->string }}}
-					{{{ str_limit($definition->text, 100) }}}
-					{{{ $definition->integer }}}
-					@if ($definition->image_id)
+					@if ($definition->type == 'string')
+						{{{ $definition->string }}}
+					@endif
+					@if ($definition->type == 'code')
+						<code>{{{ str_limit($definition->code, 100) }}}</code>
+					@endif
+					@if ($definition->type == 'text')
+						{{{ str_limit($definition->text, 100) }}}
+					@endif
+					@if ($definition->type == 'integer')
+						{{{ $definition->integer }}}
+					@endif
+					@if ($definition->type == 'image_id')
 						<img class="img-circle" style="margin-top:10px" src="{{ asset($definition->image->thumbnail_xs) }}">
 					@endif
 				</p>

@@ -25,7 +25,14 @@ class Definition extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['identifier', 'description', 'type', 'editable', 'hidden', 'string', 'text', 'integer', 'image_id', 'image', 'tag'];
+	protected $fillable = ['identifier', 'description', 'type', 'editable', 'hidden', 'string', 'text', 'integer', 'image_id', 'image', 'tag', 'code'];
+
+	/**
+	 * The attributes are not in the database
+	 *
+	 * @var array
+	 */
+	protected $appends = ['code'];
 
 	/**
 	 * Validation Rules
@@ -34,7 +41,7 @@ class Definition extends Eloquent {
 	 */
 	protected $rules = [
 		'identifier' => 'required|alpha_dash|unique:definitions,identifier',
-        'type' => 'required|in:string,text,integer,image',
+        'type' => 'required|in:string,text,integer,image,code',
         'editable' => 'boolean',
         'hidden' => 'boolean',
         'string' => '',
@@ -42,6 +49,7 @@ class Definition extends Eloquent {
         'integer' => 'numeric',
         'image_id' => 'exists:images,id',
         'tag' => 'alpha_dash',
+        'code' => '',
     ];
 
     /**
@@ -73,6 +81,16 @@ class Definition extends Eloquent {
 
 	public function image() {
 		return $this->belongsTo('Image');
+	}
+
+	public function setCodeAttribute($attribute)
+	{
+		$this->attributes['text'] = $attribute;
+	}
+
+	public function getCodeAttribute()
+	{
+		return $this->attributes['text'];
 	}
 
 }

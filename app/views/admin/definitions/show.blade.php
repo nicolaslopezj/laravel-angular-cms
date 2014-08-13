@@ -9,6 +9,28 @@
 
 		<p>Value: <b>{{ $definition->string }}</b></p>
 
+		@elseif ($definition->type == 'code')
+
+		<p><b>Value:</b></p>
+		<div class="clearfix">
+			 <textarea class="form-control" name="code" style="display:none">{{{ $definition->code }}}</textarea>
+			<div class="editor" id="code"/>
+		</div>
+		<script>
+		    var editor = ace.edit("code");
+			var textarea = $('textarea[name="code"]').hide();
+			editor.getSession().setValue(textarea.val());
+			editor.setReadOnly(true);
+			editor.getSession().on('change', function(){
+			  textarea.val(editor.getSession().getValue());
+			});
+		</script>
+		<style type="text/css">
+		.editor {
+			height: 200px;
+		}
+		</style>
+
 		@elseif ($definition->type == 'text')
 
 		<p><b>Value:</b></p>
