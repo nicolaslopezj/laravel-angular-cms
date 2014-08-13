@@ -70,6 +70,13 @@
 					<label>Resolve (json)</label>
 					<div class="editor" ng-model="activeRoute.resolve" ui-ace="{onLoad: aceLoaded}"></div>
 				</div>
+				<div class="form-group">
+					<label>
+						<input type="checkbox" ng-model="activeRoute.is_default">
+						Is Default
+					</label>
+				</div>
+
 
 
 				<br><br>

@@ -26,6 +26,9 @@ angular.module('cmsApp.route', ['ngRoute', 'route-segment', 'view-segment'])
 		.segment('{{ $segment }}', {
 		    templateUrl: '{{ asset('site') }}/{{ $route->template }}',
 		    controller: '{{ $route->controller }}',
+@if($route->is_default)
+			default:true,
+@endif
 @if($route->resolve)
 			resolve:
 {{ $route->resolve }},

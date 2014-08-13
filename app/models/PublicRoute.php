@@ -25,7 +25,7 @@ class PublicRoute extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved'];
+	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved', 'is_default'];
 
 	/**
 	 * The attributes are not in the database
@@ -43,6 +43,7 @@ class PublicRoute extends Eloquent {
 		'name' => 'required|unique:public_routes,name',
         'path' => 'unique:public_routes,path',
         'tag' => 'alpha_dash',
+        'is_default' => 'boolean',
     ];
 
     /**
@@ -60,6 +61,11 @@ class PublicRoute extends Eloquent {
 	public function getIdAttribute($attribute)
 	{
 		return (int) $attribute;
+	}
+
+	public function getIsDefaultAttribute($attribute)
+	{
+		return (boolean) $attribute;
 	}
 
 	public function getSegmentsAttribute()
