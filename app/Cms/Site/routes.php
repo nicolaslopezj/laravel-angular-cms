@@ -17,9 +17,23 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 		'uses' => 'EntitiesController@show',
 	]);
 
-	Route::get('/{route?}', [
-		'as' => 'site.index',
-		'uses' => 'SiteController@index',
-	]);
+});
 
+\App::missing(function($exception)
+{
+    $views = \PublicViewDriver::all();
+	$styles = [];
+	$scripts = [];
+
+	foreach ($views as $index => $view) {
+		if (ends_with($view->name, '.js')) {
+			$scripts[] = asset('site/' . $view->name);
+		}
+
+		if (ends_with($view->name, '.css')) {
+			$styles[] = asset('site/' . $view->name);
+		}
+	}
+
+	return \View::make('site.home', compact('styles', 'scripts'));
 });
