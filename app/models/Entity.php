@@ -83,7 +83,9 @@ class Entity extends Eloquent {
 				return $attribute;
 			}
 		}
-		return $attributes[0];
+		if (count($attributes)) {
+			return $attributes[0];
+		}
 	}
 
 	public function getMainImageAttributeAttribute()
@@ -100,7 +102,9 @@ class Entity extends Eloquent {
 				return $attribute;
 			}
 		}
-		return $attributes[0];
+		if (count($attributes)) {
+			return $attributes[0];
+		}
 	}
 
 }

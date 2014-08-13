@@ -20,7 +20,11 @@
 				<a class="btn btn-default btn-xs" href="{{ URL::route('admin.' . $entity->route_name . '.show', $item->id) }}">View</a>
 			</div>
 			<h4>
-				{{ $item->{$entity->main_attribute->name} }}
+				@if ($entity->main_attribute)
+					{{ $item->{$entity->main_attribute->name} }}
+				@else
+					<code>{{ $item->id }}</code>
+				@endif
 			</h4>
 		</div>
 	</div>

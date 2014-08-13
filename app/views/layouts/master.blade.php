@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="{{ asset('src/styles2.css') }}">
 	<link rel="stylesheet" href="{{ asset('src/slidebar.css') }}">
 	<link rel="stylesheet" href="{{ asset('src/bower_components/components-font-awesome/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('src/bower_components/bootstrap-markdown/css/bootstrap-markdown.min.css') }}">
 
 	<script type="text/javascript" src="{{ asset('src/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/angularjs/angular.min.js') }}"></script>
@@ -15,6 +16,9 @@
 	<script type="text/javascript" src="{{ asset('src/bower_components/ace-builds/src-min-noconflict/ace.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/angular-ui-ace/ui-ace.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/angular/main/app.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/markdown/lib/markdown.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/bootstrap-markdown/js/bootstrap-markdown.js') }}"></script>
+
 
 	@yield('styles')
 </head>

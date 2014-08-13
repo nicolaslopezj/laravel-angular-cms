@@ -8,7 +8,13 @@
 	@else
 		<div class="col-xs-12">
 	@endif
-		<h1>{{ $item->{$entity->main_attribute->name} }}</h1>
+		<h1>
+			@if ($entity->main_attribute)
+				{{ $item->{$entity->main_attribute->name} }}
+			@else
+				<code>{{ $item->id }}</code>
+			@endif
+		</h1>
 
 		@foreach ($entity->attributes as $index => $attribute)
 			@if ($attribute->type == 'string')
@@ -20,6 +26,10 @@
 				<p>{{ $item->{$attribute->name} }}</p>
 			@endif
 			@if ($attribute->type == 'text')
+				<p><b>{{ ucfirst($attribute->name) }}</b></p>
+				<p>{{ nl2br(str_limit($item->{$attribute->name}, 300)) }}</p>
+			@endif
+			@if ($attribute->type == 'markdown')
 				<p><b>{{ ucfirst($attribute->name) }}</b></p>
 				<p>{{ nl2br(str_limit($item->{$attribute->name}, 300)) }}</p>
 			@endif

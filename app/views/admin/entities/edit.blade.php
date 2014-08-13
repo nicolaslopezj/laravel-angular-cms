@@ -25,6 +25,14 @@
 			{{ $errors->first($attribute->name, '<br><div class="alert alert-danger">:message</div>') }}
 		</div>
 	@endif
+	@if ($attribute->type == 'markdown')
+		<div class="form-group">
+			<label>{{ ucfirst($attribute->name) }}</label>
+			<p class="help-block">{{ $attribute->description }}</p>
+			<textarea class="form-control" name="{{ $attribute->name }}" data-provide="markdown" data-iconlibrary="fa" rows="10">{{ $item->{$attribute->name} }}</textarea>
+			{{ $errors->first($attribute->name, '<br><div class="alert alert-danger">:message</div>') }}
+		</div>
+	@endif
 	@if ($attribute->type == 'integer')
 		<div class="form-group">
 			<label>{{ ucfirst($attribute->name) }}</label>
