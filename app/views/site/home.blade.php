@@ -9,12 +9,14 @@
 	<link rel="stylesheet" href="{{ $url }}">
 	@endforeach
 
-	<script type="text/javascript" src="{{ asset('src/jquery.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('src/bower_components/angularjs/angular.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('src/bower_components/angular-route/angular-route.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('src/bower_components/angular-resource/angular-resource.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('src/bower_components/angular-route-segment/build/angular-route-segment.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+	<script src="{{ asset('src/jquery.js') }}"></script>
+	<script src="{{ asset('src/bower_components/angularjs/angular.min.js') }}"></script>
+	<script src="{{ asset('src/bower_components/angular-route/angular-route.js') }}"></script>
+	<script src="{{ asset('src/bower_components/angular-resource/angular-resource.js') }}"></script>
+	<script src="{{ asset('src/bower_components/angular-route-segment/build/angular-route-segment.js') }}"></script>
+	<script src="{{ asset('src/bower_components/angular-sanitize/angular-sanitize.min.js') }}"></script>
+	<script src="{{ asset('src/bower_components/markdown/lib/markdown.js') }}"></script>
+	<script src="{{ asset('js/app.js') }}"></script>
 
 	@foreach ($scripts as $url)
 	<script type="text/javascript" src="{{ $url }}"></script>

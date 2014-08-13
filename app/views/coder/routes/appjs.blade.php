@@ -3,6 +3,7 @@ var cmsApp = angular.module('cmsApp', [
 	'cmsApp.route',
 	'cmsApp.api',
 	'cmsApp.modules',
+	'ngSanitize',
 	{{ Dict::get('angular_extensions') }}
 	]);
 
@@ -118,5 +119,22 @@ angular.module('cmsApp.api', [])
 		return definition[definition.type];
     }
 }])
+
+.directive('markdown', function ($sanitize) {
+    return {
+    	restrict: 'A',
+        link: function (scope, element, attrs) {
+            function renderMarkdown() {
+                var htmlText = markdown.toHTML(scope.$eval(attrs.markdown)  || '');
+                element.html($sanitize(htmlText));
+            }
+            scope.$watch(attrs.markdown, function(){
+                renderMarkdown();
+            });
+            renderMarkdown();
+        }
+    };
+
+});
 
 
