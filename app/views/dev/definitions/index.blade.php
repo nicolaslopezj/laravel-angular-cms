@@ -30,10 +30,12 @@
 					@endif
 
 					<b>{{ $definition->identifier }}</b> <br>
+
 					<span class="text-muted">{{ $definition->description }}</span><br>
-					{{ $definition->string }}
-					{{ str_limit($definition->text, 100) }}
-					{{ $definition->integer }}
+
+					{{{ $definition->string }}}
+					{{{ str_limit($definition->text, 100) }}}
+					{{{ $definition->integer }}}
 					@if ($definition->image_id)
 						<img class="img-circle" style="margin-top:10px" src="{{ asset($definition->image->thumbnail_xs) }}">
 					@endif
@@ -54,6 +56,9 @@
 
 @endforeach
 
-{{ $definitions->appends(array('tag' => Input::get('tag') ))->links() }}
+<div class="clearfix">
+	{{ $definitions->appends(array('tag' => Input::get('tag') ))->links() }}
+</div>
+
 
 <a class="btn btn-default" href="{{ URL::route('dev.definitions.create') }}">Create</a>
