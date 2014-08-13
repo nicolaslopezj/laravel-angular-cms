@@ -3,6 +3,7 @@ var cmsApp = angular.module('cmsApp', [
 	'cmsApp.route',
 	'cmsApp.api',
 	'cmsApp.modules',
+	{{ Dict::get('angular_extensions') }}
 	]);
 
 angular.module('cmsApp.modules', []);
