@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 	Route::get('api/{entity}/{slug}', [
 		'as' => 'api.entity.showSlug',
 		'uses' => 'EntitiesController@showSlug',
-	])->where('slug', '[a-zA-Z0-9]+');
+	])->where('slug', '[a-zA-Z0-9_-]+');
 
 });
 
