@@ -23,12 +23,12 @@
 		<hr>
 		@if ($definition->type == 'string')
 
-		<p>Value: <b>{{ $definition->string }}</b></p>
+		<p>Value: <b>{{{ $definition->string }}}</b></p>
 
 		@elseif ($definition->type == 'text')
 
 		<p><b>Value:</b></p>
-		{{ nl2br($definition->text) }}
+		{{{ nl2br($definition->text) }}}
 
 		@elseif ($definition->type == 'integer')
 
