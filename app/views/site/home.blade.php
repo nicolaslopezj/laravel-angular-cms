@@ -4,8 +4,6 @@
 	<meta charset="UTF-8">
 	<base href="{{ url('/') }}/">
 	
-	{{ Dict::get('head') }}
-
 	@foreach ($styles as $url)
 	<link rel="stylesheet" href="{{ $url }}">
 	@endforeach
@@ -21,7 +19,7 @@
 	<script type="text/javascript" src="{{ $url }}"></script>
 	@endforeach
 
-	
+	{{ Dict::get('head') }}
 </head>
 <body ng-app="cmsApp">
 
