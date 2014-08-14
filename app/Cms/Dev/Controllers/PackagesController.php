@@ -25,13 +25,23 @@ class PackagesController extends BaseController {
 	}
 
 	public function store() {
-		$data = \Input::only(['file']);
-		$path = app_path() . '/Cms/Packages/Source/';
-		$file = \FilesHelper::storeFileInPath($path, $data['file']);
-		\FilesHelper::unzipFile($path . $file, $path);
-
-		\PackagesHelper::installPackage(str_replace('.zip', '', $file));
-
+		$data = \Input::only(['file', 'github']);
+		if (array_key_exists('github', $data)) {
+			$path = app_path() . '/Cms/Packages/Temp/';
+			$file = 'master.zip';
+			$parts = explode('/', $data['github']);
+			$name = end($parts);
+			file_put_contents($path . $file, file_get_contents($data['github'] . "/archive/master.zip"));
+			\FilesHelper::unzipFile($path . $file, $path);
+			\PackagesHelper::installPackage($name . '-master');
+		} else {
+			$path = app_path() . '/Cms/Packages/Temp/';
+			$file = \FilesHelper::storeFileInPath($path, $data['file']);
+			\FilesHelper::unzipFile($path . $file, $path);
+			\PackagesHelper::installPackage(str_replace('.zip', '', $file));
+		}
+		
+		
 		return \Redirect::route('dev.packages.index');
 	}
 

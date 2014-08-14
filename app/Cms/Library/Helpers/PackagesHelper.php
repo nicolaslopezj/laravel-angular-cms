@@ -4,8 +4,14 @@
 class PackagesHelper {
 
 	public function installPackage($package) {
-		$main = '\Cms\Packages\Source\\' . $package . '\Main';
+		$config = $this->getPackageConfig(app_path() . '/Cms/Packages/Temp/' . $package);
+		rename(app_path() . '/Cms/Packages/Temp/' . $package, app_path() . '/Cms/Packages/Source/' . $config['name']);
+		$main = '\Cms\Packages\Source\\' . $config['name'] . '\Main';
 		$main::install();
+	}
+
+	public function getPackageConfig($path) {
+		return include($path . '/config.php');
 	}
 
 	public function uninstallPackage($package) {

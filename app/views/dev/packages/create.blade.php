@@ -17,10 +17,17 @@
 	</div>
 	{{ $errors->first('file', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
+<div class="form-group">
+	<label>Enter Github URL</label>
+	<div>
+		<input class="form-control" name="github" value="{{ Input::old('github') }}">
+	</div>
+	{{ $errors->first('github', '<br><div class="alert alert-danger">:message</div>') }}
+</div>
 <hr>
 <div class="pull-right">
 	<a class="btn btn-default" href="{{ URL::route('dev.files.index') }}">Cancel</a>
-	<button class="btn btn-primary">Upload</button>
+	<button class="btn btn-primary">Install</button>
 </div>
 
 {{ Form::close() }}

@@ -182,6 +182,34 @@ class DeployCommand extends Command {
         } catch (\Exception $e) {
             $this->error('Error creating the definition: "' . $e->getMessage() . '"');
         }
+
+        $definition = [
+            'identifier' => 'head',
+            'description' => 'Extra HTML in head tag. Add scripts and styles here',
+            'type' => 'code',
+            'tag' => 'dev',
+            'editable' => false,
+            'hidden' => true,
+        ];
+        try {
+            \DefinitionDriver::store($definition);
+        } catch (\Exception $e) {
+            $this->error('Error creating the definition: "' . $e->getMessage() . '"');
+        }
+
+        $definition = [
+            'identifier' => 'angular_extensions',
+            'description' => 'Angular required modules',
+            'type' => 'code',
+            'tag' => 'dev',
+            'editable' => false,
+            'hidden' => true,
+        ];
+        try {
+            \DefinitionDriver::store($definition);
+        } catch (\Exception $e) {
+            $this->error('Error creating the definition: "' . $e->getMessage() . '"');
+        }
     }
 
     /**
