@@ -60,9 +60,11 @@ angular.module('cmsApp.api', [])
 			all: {
 				method: 'GET',
 				isArray: true,
+				cache: {{ Dict::get('use_cache_api', false) ? 'true' : 'false' }},
 			},
 			get: {
 				method: 'GET',
+				cache: {{ Dict::get('use_cache_api', false) ? 'true' : 'false' }},
 			}
 		});
 }])
