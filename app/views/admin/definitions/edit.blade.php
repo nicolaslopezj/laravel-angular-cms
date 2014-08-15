@@ -54,6 +54,17 @@
 	{{ $errors->first('integer', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
 
+@elseif ($definition->type == 'boolean')
+
+<div class="form-group">
+	<label>Value</label>
+	<select class="form-control" name="boolean">
+		<option value=1 {{ $definition->boolean ? 'selected' : '' }}>Yes</option>
+		<option value=0 {{ $definition->boolean ? '' : 'selected' }}>No</option>
+	</select>
+	{{ $errors->first('boolean', '<br><div class="alert alert-danger">:message</div>') }}
+</div>
+
 @elseif ($definition->type == 'image')
 
 <div class="form-group">

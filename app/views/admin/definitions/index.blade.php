@@ -40,6 +40,9 @@
 				@if ($definition->type == 'integer')
 					{{{ $definition->integer }}}
 				@endif
+				@if ($definition->type == 'boolean')
+					{{{ $definition->boolean ? 'Yes' : 'No' }}}
+				@endif
 				@if ($definition->type == 'image_id')
 					<img class="img-circle" style="margin-top:10px" src="{{ asset($definition->image->thumbnail_xs) }}">
 				@endif

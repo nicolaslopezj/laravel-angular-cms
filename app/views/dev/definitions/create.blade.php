@@ -25,7 +25,7 @@
 <div class="form-group">
 	<label>Type</label>
 	{{ Form::select('type', 
-		['string' => 'string', 'text' => 'text', 'integer' => 'integer', 'image' => 'image', 'code' => 'code'], 
+		['string' => 'string', 'text' => 'text', 'integer' => 'integer', 'image' => 'image', 'code' => 'code', 'boolean' => 'boolean'], 
 		Input::old('type'), ['class' => 'form-control']) }}
 	{{ $errors->first('type', '<br><div class="alert alert-danger">:message</div>') }}
 </div>

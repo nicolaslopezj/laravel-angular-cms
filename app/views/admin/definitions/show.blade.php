@@ -40,6 +40,10 @@
 
 		<p>Value: <b>{{ $definition->integer }}</b></p>
 
+		@elseif ($definition->type == 'boolean')
+
+		<p>Value: <b>{{ $definition->boolean ? 'Yes' : 'No' }}</b></p>
+
 		@elseif ($definition->type == 'image' && $definition->image)
 
 		<div class="row">

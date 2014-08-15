@@ -25,7 +25,7 @@ class Definition extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['identifier', 'description', 'type', 'editable', 'hidden', 'string', 'text', 'integer', 'image_id', 'image', 'tag', 'code'];
+	protected $fillable = ['identifier', 'description', 'type', 'editable', 'hidden', 'string', 'text', 'integer', 'image_id', 'image', 'tag', 'code', 'boolean'];
 
 	/**
 	 * The attributes are not in the database
@@ -41,7 +41,7 @@ class Definition extends Eloquent {
 	 */
 	protected $rules = [
 		'identifier' => 'required|alpha_dash|unique:definitions,identifier',
-        'type' => 'required|in:string,text,integer,image,code',
+        'type' => 'required|in:string,text,integer,image,code,boolean',
         'editable' => 'boolean',
         'hidden' => 'boolean',
         'string' => '',
@@ -91,6 +91,16 @@ class Definition extends Eloquent {
 	public function getCodeAttribute()
 	{
 		return $this->attributes['text'];
+	}
+
+	public function setBooleanAttribute($attribute)
+	{
+		$this->attributes['integer'] = $attribute;
+	}
+
+	public function getBooleanAttribute()
+	{
+		return (boolean) $this->attributes['integer'];
 	}
 
 }

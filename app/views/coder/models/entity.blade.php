@@ -18,6 +18,9 @@ class {{ $entity->model_name }} extends \Eloquent {
 @if ($attribute->type == 'integer')		
 		'{{ $attribute->name }}' => 'integer',
 @endif
+@if ($attribute->type == 'boolean')		
+		'{{ $attribute->name }}' => 'boolean',
+@endif
 @if ($attribute->type == 'slug')		
 		'{{ $attribute->name }}' => 'alpha_dash|unique:site_{{ $entity->table_name }},{{ $attribute->name }}',
 @endif
