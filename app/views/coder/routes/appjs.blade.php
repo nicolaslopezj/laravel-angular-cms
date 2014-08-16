@@ -118,6 +118,12 @@ angular.module('cmsApp.api', [])
 				}
 			}
 
+			if (definition.type == 'boolean') {
+				if (definition[definition.type] === false) {
+					return false;
+				};
+			}
+
 			return defaultValue;
 		}
 

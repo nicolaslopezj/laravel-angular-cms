@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="{{ asset('src/angular/main/app.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/markdown/lib/markdown.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/bootstrap-markdown/js/bootstrap-markdown.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/underscore/underscore.js') }}"></script>
 
 
 	@yield('styles')

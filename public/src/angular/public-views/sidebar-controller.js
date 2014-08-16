@@ -1,5 +1,6 @@
 angular.module('cmsApp.controllers')
 
+
 .controller('SidebarController', ['$rootScope', '$scope', '$window', function($rootScope, $scope, $window) {
 
 	$scope.directory = [];
@@ -21,21 +22,37 @@ angular.module('cmsApp.controllers')
 	}, true);
 
 	$scope.parseDirectory = function(files) {
-		var tree = {};
-		var _files = [];
-		for (index in files) {
-			var path = 'site/' + files[index];
-			var parts = path.split("/");
-			var name = parts[parts.length - 1];
-			parts.splice(parts.length - 1, 1);
-			var file = {
-				path:parts,
-				name:name
-			}
-			_files.push(file);
-			console.log(file, path);
-		}
+		console.log(files);
+		var prepared = [];
+		var objects = [];
+		var folders = [];
+		var tree = [];
+		_.each(files, function(file){
+			prepared.push(file.split('/'));
+		});
+		_.each(prepared, function(file){
+			var object = {
+				name: _.last(file),
+				path: _.initial(file),
+			};
+			objects.push(object);
+		});
+		console.log(objects, 'before');
+		_.each(objects, function(file){
+			if (objects.path.length > 0) {
+				if (!tree['/']) {
+					tree['/'] = [];
+				};
+				tree['/'].push(file);
+				objects = _.without(objects, file);
+			};
+		});
 
+		console.log(objects, 'after');
+		console.log(tree, 'tree');
+	}
+
+	function parseFolder(dir) {
 
 	}
 
@@ -48,3 +65,5 @@ angular.module('cmsApp.controllers')
 	};
 
 }])
+
+var _views = [];
