@@ -32,7 +32,7 @@ class Definition extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $appends = ['code'];
+	protected $appends = ['code', 'boolean'];
 
 	/**
 	 * Validation Rules
