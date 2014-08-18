@@ -62,6 +62,14 @@ angular.module('cmsApp.api', [])
 				isArray: true,
 				cache: {{ Dict::get('use_cache_api', false) ? 'true' : 'false' }},
 			},
+			paginate: {
+				method: 'GET',
+				params: {
+					'paginate': 20,
+					'page': 1,
+				},
+				cache: {{ Dict::get('use_cache_api', false) ? 'true' : 'false' }},
+			},
 			get: {
 				method: 'GET',
 				cache: {{ Dict::get('use_cache_api', false) ? 'true' : 'false' }},

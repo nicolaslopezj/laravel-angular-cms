@@ -10,7 +10,8 @@
 		"intervention/image": "2.*",
 		"maatwebsite/excel": "1.*",
 		"Chumper/Zipper": "dev-master",
-		"michelf/php-markdown": "1.4.1"
+		"michelf/php-markdown": "1.4.1",
+		"underscore/underscore.php": "dev-master"
 	},
 	"require-dev": {
 		"way/generators": "2.*"

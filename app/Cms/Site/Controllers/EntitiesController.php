@@ -5,7 +5,15 @@ class EntitiesController extends BaseController {
 	public function index($entity) {
 		$entity = \EntityDriver::findByRouteName($entity);
 		$driver = new \EntityCrudDriver($entity->model_name);
-		$items = $driver->all();
+
+		$per_page = \Input::get('paginate');
+		if ($per_page) {
+			$page = \Input::get('page');
+			$items = $driver->index($page, $per_page);
+		} else {
+			$items = $driver->all();
+		}
+
 		return $items;
 	}
 
