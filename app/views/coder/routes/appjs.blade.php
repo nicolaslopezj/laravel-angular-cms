@@ -106,6 +106,8 @@ angular.module('cmsApp.api', [])
    			thumbnail_sm: 'http://lorempixel.com/100/100/',
    			thumbnail_md: 'http://lorempixel.com/200/200/',
    			thumbnail_lg: 'http://lorempixel.com/400/400/',
+   			width: width,
+   			height: height,
    		};
    		return image;
    	}
