@@ -22,6 +22,7 @@ angular.module('cmsApp.controllers')
 	}, true);
 
 	$scope.parseDirectory = function(files) {
+		/*
 		console.log(files);
 		var prepared = [];
 		var objects = [];
@@ -50,6 +51,7 @@ angular.module('cmsApp.controllers')
 
 		console.log(objects, 'after');
 		console.log(tree, 'tree');
+		*/
 	}
 
 	function parseFolder(dir) {
