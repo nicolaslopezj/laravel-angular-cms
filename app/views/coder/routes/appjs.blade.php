@@ -108,6 +108,9 @@ angular.module('cmsApp.api', [])
    			thumbnail_lg: 'http://lorempixel.com/400/400/',
    			width: width,
    			height: height,
+   			key_color: '#FFFFFF',
+   			secondary_color: '#E1E1E1',
+   			background_color: '#000000',
    		};
    		return image;
    	}
