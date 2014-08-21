@@ -12,10 +12,29 @@ angular.module('cmsApp.controllers')
 	});
 
 	$scope.aceLoaded = function(_editor) {
-		_editor.setOptions({
-			mode: 'ace/mode/php',
-		});
+		$scope.editor = _editor;
 	};
+
+	function setAceMode(fileName) {
+		if (!fileName) {return;};
+		var parts = fileName.split('.');
+		if (!parts.length) {return;};
+		var extension = parts[parts.length - 1];
+		var mode = 'ace/mode/html';
+		if (extension == 'html') {
+			mode = 'ace/mode/html';
+		} else if (extension == 'php') {
+			mode = 'ace/mode/php';
+		} else if (extension == 'css') {
+			mode = 'ace/mode/css';
+		} else if (extension == 'js') {
+			mode = 'ace/mode/javascript';
+		}
+
+		$scope.editor.setOptions({
+			mode: mode
+		});
+	}
 
 	$scope.canEdit = false;
 	$rootScope.$watch('activeView', function(newValue, oldValue){
@@ -25,6 +44,7 @@ angular.module('cmsApp.controllers')
 			if (oldValue) {
 				if (newValue.id != oldValue.id) {
 					// Es nueva clase
+					setAceMode(newValue.name);
 				} else {
 					// Es clase antigua
 					if (oldValue.has_changes != true) {
@@ -33,12 +53,15 @@ angular.module('cmsApp.controllers')
 				}
 			} else {
 				// Es nueva clase
+				setAceMode(newValue.name);
 			}
 		} else {
 			// No hay clase
 			$scope.canEdit = false;
 		}
 	}, true);
+
+	
 
 	$scope.changeName = function(view) {
 		var newName = prompt("Enter the name", view.name);
