@@ -2,6 +2,11 @@
 
 Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 
+	Route::get('js/app.js', [
+		'as' => 'site.assets.appjs',
+		'uses' => 'SiteController@getAppJs',
+	]);
+
 	Route::get('api/definitions/', [
 		'as' => 'api.definitions.index',
 		'uses' => 'DefinitionsController@index',

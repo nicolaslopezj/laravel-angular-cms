@@ -4,20 +4,14 @@ class PublicRoutesEventHandler {
 
     public function onCreate($public_route)
     {
-        $coder = new \Cms\Library\Helpers\Coder\RoutesCoder;
-        $coder->codeRoutes();
     }
 
     public function onUpdate($public_route)
     {
-        $coder = new \Cms\Library\Helpers\Coder\RoutesCoder;
-        $coder->codeRoutes();
     }
 
     public function onDelete()
     {
-        $coder = new \Cms\Library\Helpers\Coder\RoutesCoder;
-        $coder->codeRoutes();
     }
 
     /**

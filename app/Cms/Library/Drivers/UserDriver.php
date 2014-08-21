@@ -53,11 +53,17 @@ class UserDriver extends ModelDriver {
 
 		$user = $this->store($data);
 
-		\Mail::send('emails.users.welcome-admin', compact('user', 'password'), function($message) use ($user)
-		{
-			$message->to($user->email, $user->name)
-			->subject('Account Created');
-		});
+		try {
+			\Mail::send('emails.users.welcome-admin', compact('user', 'password'), function($message) use ($user)
+			{
+				$message->to($user->email, $user->name)
+				->subject('Account Created');
+			});
+		} catch (\Swift_RfcComplianceException $e) {
+			throw new \Exception("You have to set \"email_from_email\" in the dictionary", 500);
+		} catch (\Exception $e) {
+			throw new \Exception("An error ocurred sending the email. Check \"mailgun_domain\" and \"mailgun_secret\" in the dictionary", 500);
+		}
 
 		return $user;
 	}

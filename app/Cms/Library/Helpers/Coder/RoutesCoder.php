@@ -1,5 +1,9 @@
 <?php namespace Cms\Library\Helpers\Coder;
 
+/*
+This is not used
+ */
+
 class RoutesCoder {
 
 	public function codeRoutes() {

@@ -1,6 +1,14 @@
 <?php namespace Cms\Site\Controllers;
 
-class SiteController extends BaseController {
+class SiteController extends \Controller {
+
+	public function getAppJs() {
+
+		$routes = \PublicRouteDriver::all();
+		$entities = \EntityDriver::all();
+		$content = \View::make('site.assets.appjs', compact('routes', 'entities'));
+		return $content;
+	}
 
 	public function index() {
 		$views = \PublicViewDriver::all();

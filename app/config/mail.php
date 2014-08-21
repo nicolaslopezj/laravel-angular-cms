@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => \Dict::get('email_from_email'), 'name' => \Dict::get('email_from_name')),
+	'from' => array('address' => \Dict::get('email_from_email'), 'name' => \Dict::get('email_from_name', 'CMS')),
 
 	/*
 	|--------------------------------------------------------------------------

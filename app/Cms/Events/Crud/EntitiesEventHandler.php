@@ -4,9 +4,6 @@ class EntitiesEventHandler {
 
     public function onCreate($entity)
     {
-        $coder = new \Cms\Library\Helpers\Coder\RoutesCoder;
-        $coder->codeRoutes();
-
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
         $coder->codeEntities();
 
@@ -19,18 +16,12 @@ class EntitiesEventHandler {
 
     public function onUpdate($entity)
     {
-        $coder = new \Cms\Library\Helpers\Coder\RoutesCoder;
-        $coder->codeRoutes();
-
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
         $coder->codeEntities();
     }
 
     public function onDelete($entity)
     {
-        $coder = new \Cms\Library\Helpers\Coder\RoutesCoder;
-        $coder->codeRoutes();
-        
         $coder = new \Cms\Library\Helpers\Coder\EntitiesCoder;
         
         try {
