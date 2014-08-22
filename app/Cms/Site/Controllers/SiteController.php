@@ -59,11 +59,9 @@ class SiteController extends \Controller {
 		preg_match_all($re, $text, $matches);
 
 		foreach ($matches[0] as $match) {
-			var_dump($matches[0]);
 			$text = str_replace($match, $this->evaluateText($match), $text);
 		}
 
-		var_dump($text);
 		return $text;
 	}
 
