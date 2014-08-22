@@ -46,7 +46,8 @@ class SiteController extends \Controller {
 		foreach ($json as $index => $object) {
 			$html .= '<meta';
 			foreach ($object as $key => $value) {
-				$html .= ' ' . $key . '="' . $this->evaluate($value) . '"';
+				$value = htmlentities($this->evaluate($value));
+				$html .= ' ' . $key . '="' . $value . '"';
 			}
 			$html .= '>';
 		}
