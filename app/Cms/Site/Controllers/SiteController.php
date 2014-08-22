@@ -38,6 +38,11 @@ class SiteController extends \Controller {
 			
 		}
 		$html = '';
+
+		if (!$json) {
+			return '';
+		}
+		
 		foreach ($json as $index => $object) {
 			$html .= '<meta';
 			foreach ($object as $key => $value) {
