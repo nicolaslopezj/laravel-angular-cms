@@ -33,16 +33,16 @@ class SiteController extends \Controller {
 	private function getMetaTags() {
 		$tags = $this->getTags();
 		$json = json_decode($tags);
+
 		if (json_last_error()) {
 			throw new \Exception("Error Decoding Meta Tags", 1);
-			
 		}
 		$html = '';
 
 		if (!$json) {
 			return '';
 		}
-		
+
 		foreach ($json as $index => $object) {
 			$html .= '<meta';
 			foreach ($object as $key => $value) {
@@ -55,18 +55,32 @@ class SiteController extends \Controller {
 	}
 
 	private function evaluate($text) {
-		if (!starts_with($text, '**') || !ends_with($text, '**')) {
-			return $text;
+		$re = "/\\*\\*[a-zA-Z0-9:.>_\- ]+\\*\\*/"; 
+		preg_match_all($re, $text, $matches);
+
+		foreach ($matches[0] as $match) {
+			var_dump($matches[0]);
+			$text = str_replace($match, $this->evaluateText($match), $text);
 		}
 
+		var_dump($text);
+		return $text;
+	}
+
+	private function evaluateText($text) {
 		$text = str_replace('**', '', $text);
 		$parts = explode('>', $text);
 
 		if (count($parts) != 3) {
-			return $text;
+			return '';
 		}
 
 		$driver = new \EntityCrudDriver($parts[0]);
+
+		if (starts_with($parts[1], ':')) {
+			$parts[1] = str_replace(':', '', $parts[1]);
+			$parts[1] = $this->routeParameterToValue($parts[1]);
+		}
 
 		if (is_numeric($parts[1])) {
 			$item = $driver->get($parts[1]);
@@ -85,6 +99,12 @@ class SiteController extends \Controller {
 		}
 
 		return $array[$parts[2]];
+	}
+
+	private function routeParameterToValue($parameter) {
+		$route = \Route::current();
+		$value = $route->parameters()[$parameter];
+		return $value;
 	}
 
 	private function getTags() {
