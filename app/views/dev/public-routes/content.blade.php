@@ -79,6 +79,12 @@
 					<label>Resolve (json)</label>
 					<div class="editor" ng-model="activeRoute.resolve" ui-ace="{onLoad: aceLoaded}"></div>
 				</div>
+
+				<div class="form-group">
+					<label>Meta Tags (json)</label>
+					<div class="editor" ng-model="activeRoute.meta_tags" ui-ace="{onLoad: aceLoaded}"></div>
+				</div>
+
 				<div class="form-group">
 					<label>
 						<input type="checkbox" ng-model="activeRoute.is_default">
@@ -86,9 +92,17 @@
 					</label>
 				</div>
 
-
-
-				<br><br>
+				<hr>
+				<div class="pull-right clearfix">
+					<button class="btn btn-danger" ng-click="deleteRoute(activeRoute)">
+						Delete
+					</button>
+					<button class="btn btn-primary" ng-click="saveRoute(activeRoute)" 
+					ng-disabled="activeRoute.has_changes !== true">
+						Save
+					</button>
+					<br><br>
+				</div>
 			</div>
 		</div>
 	</div>

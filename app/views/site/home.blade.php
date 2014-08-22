@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="{{ $url }}">
 	@endforeach
 
+	{{ $tags }}
+
 	<script src="{{ asset('src/jquery.js') }}"></script>
 	<script src="{{ asset('src/bower_components/angularjs/angular.min.js') }}"></script>
 	<script src="{{ asset('src/bower_components/angular-route/angular-route.js') }}"></script>

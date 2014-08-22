@@ -25,14 +25,14 @@ class PublicRoute extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved', 'is_default'];
+	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved', 'is_default', 'meta_tags'];
 
 	/**
 	 * The attributes are not in the database
 	 *
 	 * @var array
 	 */
-	protected $appends = ['segments', 'dependencies'];
+	protected $appends = ['segments', 'dependencies', 'laravel_format'];
 
 	/**
 	 * Validation Rules
@@ -80,6 +80,20 @@ class PublicRoute extends Eloquent {
 		$re = "/:[a-zA-Z0-9-_]+/"; 
 		preg_match_all($re, $name, $matches);
 		return str_replace(':', '', $matches[0]);
+	}
+
+	public function getLaravelFormatAttribute() {
+		$name = $this->attributes['path'];
+		if (!$name) {
+			return '/';
+		}
+
+		$dependencies = $this->getDependenciesAttribute();
+		foreach ($dependencies as $index => $dependency) {
+			$name = str_replace(':' . $dependency, '{' . $dependency . '}', $name);
+		}
+		
+		return $name;
 	}
 
 }

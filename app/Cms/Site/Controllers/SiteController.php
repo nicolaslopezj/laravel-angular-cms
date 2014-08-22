@@ -2,15 +2,17 @@
 
 class SiteController extends \Controller {
 
-	public function getAppJs() {
-
-		$routes = \PublicRouteDriver::all();
-		$entities = \EntityDriver::all();
-		$content = \View::make('site.assets.appjs', compact('routes', 'entities'));
-		return $content;
+	public function missing() {
+		return $this->index();
 	}
 
-	public function index() {
+
+	public function route() {
+		$tags = $this->getMetaTags();
+		return $this->index($tags);
+	}
+
+	protected function index($tags = '') {
 		$views = \PublicViewDriver::all();
 		$styles = [];
 		$scripts = [];
@@ -25,8 +27,72 @@ class SiteController extends \Controller {
 			}
 		}
 
-		return \View::make('site.home', compact('styles', 'scripts'));
+		return \View::make('site.home', compact('styles', 'scripts', 'tags'));
 	}
 
+	private function getMetaTags() {
+		$tags = $this->getTags();
+		$json = json_decode($tags);
+		if (json_last_error()) {
+			throw new \Exception("Error Decoding Meta Tags", 1);
+			
+		}
+		$html = '';
+		foreach ($json as $index => $object) {
+			$html .= '<meta';
+			foreach ($object as $key => $value) {
+				$html .= ' ' . $key . '="' . $this->evaluate($value) . '"';
+			}
+			$html .= '>';
+		}
+
+		return $html;
+	}
+
+	private function evaluate($text) {
+		if (!starts_with($text, '**') || !ends_with($text, '**')) {
+			return $text;
+		}
+
+		$text = str_replace('**', '', $text);
+		$parts = explode('>', $text);
+
+		if (count($parts) != 3) {
+			return $text;
+		}
+
+		$driver = new \EntityCrudDriver($parts[0]);
+
+		if (is_numeric($parts[1])) {
+			$item = $driver->get($parts[1]);
+		} else {
+			$item = $driver->getBySlug($parts[1]);
+		}
+
+		if (!$item) {
+			return '';
+		}
+
+		$array = array_dot($item->toArray());
+		
+		if (!array_key_exists($parts[2], $array)) {
+			return '';
+		}
+
+		return $array[$parts[2]];
+	}
+
+	private function getTags() {
+		$route = \Route::current();
+		$route_path = $route->uri();
+		foreach ($route->parameters() as $key => $value) {
+			$route_path = str_replace('{' . $key . '}', ':' . $key, $route_path);
+		}
+		if ($route_path == '/') {
+			$route_path = '';
+		}
+		$public_route = \PublicRouteDriver::getByPath($route_path);
+		return $public_route->meta_tags;
+	}
 
 }

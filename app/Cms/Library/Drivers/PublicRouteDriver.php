@@ -17,4 +17,16 @@ class PublicRouteDriver extends ModelDriverWithTag {
 		}
 	}
 
+	public function getByName($name) {
+		$class = $this->model;
+		$route = $class::where('name', $name)->first();
+		return $route;
+	}
+
+	public function getByPath($path) {
+		$class = $this->model;
+		$route = $class::where('path', $path)->first();
+		return $route;
+	}
+
 }

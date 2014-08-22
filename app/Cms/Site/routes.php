@@ -4,7 +4,7 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 
 	Route::get('js/app.js', [
 		'as' => 'site.assets.appjs',
-		'uses' => 'SiteController@getAppJs',
+		'uses' => 'AssetsController@getAppJs',
 	]);
 
 	Route::get('api/definitions/', [
@@ -27,23 +27,17 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 		'uses' => 'EntitiesController@showSlug',
 	])->where('slug', '[a-zA-Z0-9_-]+');
 
+	$routes = \PublicRouteDriver::all();
+	foreach ($routes as $route) {
+		Route::get($route->laravel_format, [
+			'as' => $route->name,
+			'uses' => 'SiteController@route',
+		]);
+	}
+
 });
 
 \App::missing(function($exception)
 {
-    $views = \PublicViewDriver::all();
-	$styles = [];
-	$scripts = [];
-
-	foreach ($views as $index => $view) {
-		if (ends_with($view->name, '.js')) {
-			$scripts[] = asset('site/' . $view->name);
-		}
-
-		if (ends_with($view->name, '.css')) {
-			$styles[] = asset('site/' . $view->name);
-		}
-	}
-
-	return \View::make('site.home', compact('styles', 'scripts'));
+    return \App::make('Cms\Site\Controllers\SiteController')->missing();
 });

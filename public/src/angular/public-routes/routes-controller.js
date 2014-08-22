@@ -15,7 +15,7 @@ angular.module('cmsApp.controllers')
 		_editor.setOptions({
 			mode: 'ace/mode/javascript',
 		});
-		_editor.getSession().setUseWorker(false);
+		_editor.getSession().setUseWorker(true);
 	};
 
 	$rootScope.$watch('activeRoute', function(newValue, oldValue){
