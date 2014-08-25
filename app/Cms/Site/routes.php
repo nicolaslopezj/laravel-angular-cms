@@ -36,8 +36,9 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 	}
 
 });
-
+/*
 \App::missing(function($exception)
 {
     return \App::make('Cms\Site\Controllers\SiteController')->missing();
 });
+*/
