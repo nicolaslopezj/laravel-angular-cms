@@ -27,7 +27,15 @@ angular.module('cmsApp.route', ['ngRoute', 'route-segment', 'view-segment'])
 @if($index != count($route->segments) - 1)		.within('{{ $segment }}')@else 
 		.segment('{{ $segment }}', {
 		    templateUrl: '{{ asset('site') }}/{{ $route->template }}',
+@if ($route->controller)
 		    controller: '{{ $route->controller }}',
+@elseif(count($route->variables) > 0)
+			controller: function($scope, {{ join(', ', $route->variables) }}) {
+@foreach($route->variables as $variable)
+				$scope.{{ $variable }} = {{ $variable }};
+@endforeach
+			},
+@endif
 @if($route->is_default)
 			default:true,
 @endif

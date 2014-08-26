@@ -7,7 +7,7 @@ class AssetsController extends \Controller {
 		$routes = \PublicRouteDriver::all();
 		$entities = \EntityDriver::all();
 		$content = \View::make('site.assets.appjs', compact('routes', 'entities'));
-		return $content;
+		return \Response::make($content, 200, array('Content-Type' => 'text/javascript'));
 	}
 
 }

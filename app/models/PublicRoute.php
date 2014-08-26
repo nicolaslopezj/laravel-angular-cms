@@ -32,7 +32,7 @@ class PublicRoute extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $appends = ['segments', 'dependencies', 'laravel_format'];
+	protected $appends = ['segments', 'dependencies', 'laravel_format', 'variables'];
 
 	/**
 	 * Validation Rules
@@ -80,6 +80,14 @@ class PublicRoute extends Eloquent {
 		$re = "/:[a-zA-Z0-9-_]+/"; 
 		preg_match_all($re, $name, $matches);
 		return str_replace(':', '', $matches[0]);
+	}
+
+	public function getVariablesAttribute()
+	{
+		$resolve = $this->attributes['resolve'];
+		$regex = "/\"?([a-zA-Z0-9]+)\"?:/"; 
+		preg_match_all($regex, $resolve, $matches);
+		return $matches[1];
 	}
 
 	public function getLaravelFormatAttribute() {

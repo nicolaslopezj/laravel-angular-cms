@@ -24,14 +24,23 @@
 <style>
 	.tree {
 		margin-left: 20px;
+		-moz-user-select: none;
+	   -khtml-user-select: none;
+	   -webkit-user-select: none;
+	   -ms-user-select: none;
+	   user-select: none;
 	}
 	.tree .foldername a {
 		cursor: pointer;
 	}
-	.tree .foldername .icon{
+	.tree .foldername .icon .fa{
 		width: 5px;
 		margin-left: -20px;
-		margin-right: 28px;
+		margin-right: 5px;
+	}
+	.tree .foldername .icon .fa-caret-down{
+		margin-left: -23px;
+		margin-right: 8px;
 	}
 	.toolkit a {
 		cursor: pointer;
