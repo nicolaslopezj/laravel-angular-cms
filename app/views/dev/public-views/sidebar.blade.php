@@ -11,11 +11,8 @@
 		    	<i class="fa fa-plus"></i> New File
 		    </a>
 		</li>
-		<li ng-repeat="view in views">
-			<a ng-class="{'active': activeView.id == view.id, 'has-changes': view.has_changes}" 
-			href="#@{{ view.id }}" ng-click="openView(view.id)">
-				@{{ view.name }}
-			</a>
+		<li style="margin-left: -20px" class="tree-container">
+			<tree family="tree"></tree>
 		</li>
     </ul>
 	<a  href="http://nicolaslopez.co" target="_BLANK" class="creator-link">
@@ -25,11 +22,28 @@
 <!-- /#sidebar-wrapper -->
 
 <style>
+	.tree {
+		margin-left: 20px;
+	}
+	.tree .foldername a {
+		cursor: pointer;
+	}
+	.tree .foldername .icon{
+		width: 5px;
+		margin-left: -20px;
+		margin-right: 28px;
+	}
 	.toolkit a {
 		cursor: pointer;
 	}
 	.sidebar-nav li.toolkit a:hover {
 		background: #000;
+	}
+	.sidebar-nav li.tree-container a:hover {
+		background: #000;
+	}
+	.sidebar-nav li.tree-container a.selected {
+		font-weight: 600;
 	}
 	.toolkit .fa {
 		font-size: 15px; margin-right: 5px; margin-left: -20px;

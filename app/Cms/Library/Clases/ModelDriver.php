@@ -4,6 +4,12 @@ use Cms\Library\Interfaces\ModelDriverInterface;
 
 Class ModelDriver implements ModelDriverInterface {
 
+	public function query() {
+		$class = $this->model;
+		$query = $class::where('id', '>', '0');
+		return $query;
+	}
+
 	public function all() {
 		$class = $this->model;
 		

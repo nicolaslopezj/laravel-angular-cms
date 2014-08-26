@@ -5,7 +5,7 @@ angular.module('cmsApp.controllers')
 
 	$scope.directory = [];
 
-	$rootScope.$watch('views', function() {
+	$rootScope.$watch('views', function(newValue) {
 		if (!$rootScope.activeView && $window.location.hash && $rootScope.views) {
 			for (var i = 0; i < $rootScope.views.length; i++) {
 				if ("#" + $rootScope.views[i].id == $window.location.hash) {
@@ -13,59 +13,83 @@ angular.module('cmsApp.controllers')
 				};
 			}
 		};
-
-		var paths = [];
-		for (var i = 0; i < $rootScope.views.length; i++) {
-			paths.push($rootScope.views[i].name);
-		}
-		$scope.parseDirectory(paths);
+		if (newValue) {
+			generateTree(newValue);
+		};
+		
 	}, true);
 
-	$scope.parseDirectory = function(files) {
-		/*
-		console.log(files);
-		var prepared = [];
-		var objects = [];
-		var folders = [];
-		var tree = [];
-		_.each(files, function(file){
-			prepared.push(file.split('/'));
-		});
-		_.each(prepared, function(file){
-			var object = {
-				name: _.last(file),
-				path: _.initial(file),
-			};
-			objects.push(object);
-		});
-		console.log(objects, 'before');
-		_.each(objects, function(file){
-			if (objects.path.length > 0) {
-				if (!tree['/']) {
-					tree['/'] = [];
+	function generateTree(data) {
+		$scope.tree = $scope.tree || {};
+
+		function fillTree(file) {
+			var cursor = $scope.tree;
+			for (i in file.path) {
+				var part = file.path[i];
+				if (!cursor[part]) {
+					cursor[part] = {is_folder:true, is_open:false};
 				};
-				tree['/'].push(file);
-				objects = _.without(objects, file);
-			};
-		});
+				cursor = cursor[part];
+			}
+			cursor[file.filename] = file;
+		}
 
-		console.log(objects, 'after');
-		console.log(tree, 'tree');
-		*/
-	}
-
-	function parseFolder(dir) {
-
+		for (i in data) {
+			fillTree(data[i]);
+		}
+	
 	}
 
 	$scope.openView = function(viewId) {
-		for (var i = 0; i < $rootScope.views.length; i++) {
-			if ($rootScope.views[i].id == viewId) {
-				$rootScope.activeView = $rootScope.views[i];
-			};
-		}
+		alert(viewId);
 	};
 
 }])
 
-var _views = [];
+.directive("tree", function($compile) {
+    return {
+        restrict: "E",
+        transclude: true,
+        scope: {family: '='},
+        controller: function($rootScope, $scope, $element, $filter) {
+        	$rootScope.$watch('activeView', function(newValue) {
+        		$scope.activeView = newValue;
+        	});
+        	$scope.openView = function(viewId) {
+        		for (var i = 0; i < $rootScope.views.length; i++) {
+					if ($rootScope.views[i].id == viewId) {
+						$rootScope.activeView = $rootScope.views[i];
+					};
+				}
+        	}
+        },
+        template:       
+            '<div>' + 
+                '<div ng-transclude></div>' +
+                '<div class="tree" ng-repeat="(index, child) in family | orderBy:familyOrder">' +
+                    '<div ng-if="child.is_folder">' +
+	                    '<div class="foldername" ng-if="child.is_folder"><a ng-click="child.is_open = !child.is_open"><span class="icon pull-left"><i ng-show="!child.is_open" class="fa fa-caret-right"></i><i ng-show="child.is_open" class="fa fa-caret-down"></i></span><span class="text">{{ index }}</span></a></div>' +
+	                    '<tree ng-if="child.is_folder" ng-show="child.is_open" family="child"><div ng-transclude></div></tree>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="tree" ng-repeat="(index, child) in family | orderBy:familyOrder">' +
+                	'<div ng-if="!child.is_folder">' +
+	                    '<div class="filename" ng-if="!child.is_folder"><a ng-class="{\'selected\': activeView.id == child.id, \'has-changes\': child.has_changes}" href="#{{ child.id }}" ng-click="openView(child.id)">{{ child.filename }}</a></div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>',
+        compile: function(tElement, tAttr, transclude) {
+            var contents = tElement.contents().remove();
+            var compiledContents;
+            return function(scope, iElement, iAttr) {
+
+                if(!compiledContents) {
+                    compiledContents = $compile(contents, transclude);
+                }
+                compiledContents(scope, function(clone, scope) {
+                         iElement.append(clone); 
+                });
+            };
+        }
+    };
+});

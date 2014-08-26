@@ -32,7 +32,7 @@ class PublicView extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $appends = [];
+	protected $appends = ['filename', 'path'];
 
 	/**
 	 * Validation Rules
@@ -58,6 +58,17 @@ class PublicView extends Eloquent {
 	public function getIdAttribute($attribute)
 	{
 		return (int) $attribute;
+	}
+
+	public function getFilenameAttribute() {
+		$parts = explode('/', $this->attributes['name']);
+		return array_pop($parts);
+	}
+
+	public function getPathAttribute() {
+		$parts = explode('/', $this->attributes['name']);
+		array_pop($parts);
+		return $parts;
 	}
 
 }
