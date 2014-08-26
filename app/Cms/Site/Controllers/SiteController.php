@@ -2,6 +2,8 @@
 
 class SiteController extends \Controller {
 
+	private $public_route;
+
 	public function missing() {
 		return $this->index();
 	}
@@ -9,10 +11,11 @@ class SiteController extends \Controller {
 
 	public function route() {
 		$tags = $this->getMetaTags();
-		return $this->index($tags);
+		$metas = $this->getMetas();
+		return $this->index($metas, $tags);
 	}
 
-	protected function index($tags = '') {
+	protected function index($metas = [], $tags = '') {
 		$views = \PublicViewDriver::all();
 		$styles = [];
 		$scripts = [];
@@ -27,11 +30,20 @@ class SiteController extends \Controller {
 			}
 		}
 
-		return \View::make('site.home', compact('styles', 'scripts', 'tags'));
+		return \View::make('site.home', compact('styles', 'scripts', 'metas', 'tags'));
+	}
+
+	private function getMetas() {
+		$route = $this->getPublicRoute();
+		return [
+			'title' => $this->evaluate($route->meta_title),
+			'description' => $this->evaluate($route->meta_description),
+			'image' => $this->evaluate($route->meta_image),
+		];
 	}
 
 	private function getMetaTags() {
-		$tags = $this->getTags();
+		$tags = $this->getPublicRoute()->meta_tags;
 		$json = json_decode($tags);
 
 		if (json_last_error()) {
@@ -106,7 +118,11 @@ class SiteController extends \Controller {
 		return $value;
 	}
 
-	private function getTags() {
+	private function getPublicRoute() {
+		if ($this->public_route) {
+			return $this->public_route;
+		}
+
 		$route = \Route::current();
 		$route_path = $route->uri();
 		foreach ($route->parameters() as $key => $value) {
@@ -115,8 +131,8 @@ class SiteController extends \Controller {
 		if ($route_path == '/') {
 			$route_path = '';
 		}
-		$public_route = \PublicRouteDriver::getByPath($route_path);
-		return $public_route->meta_tags;
+		$this->public_route = \PublicRouteDriver::getByPath($route_path);
+		return $this->public_route;
 	}
 
 }

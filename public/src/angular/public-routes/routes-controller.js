@@ -3,6 +3,7 @@ angular.module('cmsApp.controllers')
 .controller('RoutesController', ['$rootScope', '$scope', 'Route', function($rootScope, $scope, Route) {
 
 	$rootScope.routes = Route.all();
+	$scope.autoResolve = [{}, {}];
 
 	$(window).bind('keydown', function(event) {
 		if ((event.ctrlKey || event.metaKey) && event.which == 83) {

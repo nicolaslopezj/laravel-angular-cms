@@ -76,8 +76,23 @@
 				</div>
 
 				<div class="form-group">
-					<label>Resolve (json)</label>
+					<label>Resolve</label>
 					<div class="editor" ng-model="activeRoute.resolve" ui-ace="{onLoad: aceLoaded}"></div>
+				</div>
+
+				<div class="form-group">
+					<label>Title</label>
+					<input ng-model="activeRoute.meta_title" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label>Description</label>
+					<input ng-model="activeRoute.meta_description" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label>Image</label>
+					<input ng-model="activeRoute.meta_image" class="form-control">
 				</div>
 
 				<div class="form-group">

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<base href="{{ url('/') }}/">
-	<title ng-bind="page_title"></title>
+	<title ng-bind="page_title">{{ $metas['title'] }}</title>
 
 	@foreach ($styles as $url)
 	<link rel="stylesheet" href="{{ $url }}">
@@ -29,7 +29,38 @@
 <body>
 
 	<div ng-controller="CMSMainController">
-		<div app-view-segment="0"></div>
+		<div app-view-segment="0">
+			<div class="metas">
+				<h1>{{ $metas['title'] }}</h1>
+				<img src="{{ $metas['image'] }}">
+				<p>{{ $metas['description'] }}</p>
+			</div>
+			<style>
+			.metas {
+				margin: 0 auto 0 auto;
+				width: 300px;
+				text-align: center;
+				opacity: 0.4;
+    			filter: alpha(opacity=40); /* For IE8 and earlier */
+				-moz-user-select: none;
+				-khtml-user-select: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.metas h1 {
+				margin-top: 40px;
+				font-size: 24px;
+			}
+			.metas img {
+				max-width: 100%;
+			}
+			.metas p {
+				margin-top: 20px;
+				font-size: 13px;
+			}
+			</style>
+		</div>
 	</div>
 
 </body>
