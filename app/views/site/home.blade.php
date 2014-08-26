@@ -30,7 +30,7 @@
 
 	<div ng-controller="CMSMainController">
 		<div app-view-segment="0">
-			<div class="metas">
+			<div class="metas clearfix">
 				<h1>{{ $metas['title'] }}</h1>
 				<img src="{{ $metas['image'] }}">
 				<p>{{ $metas['description'] }}</p>
