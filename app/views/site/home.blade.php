@@ -51,12 +51,14 @@
 			.metas h1 {
 				margin-top: 40px;
 				font-size: 24px;
+				line-height: 30px;
 			}
 			.metas img {
 				max-width: 100%;
 			}
 			.metas p {
 				margin-top: 20px;
+				margin-bottom: 40px;
 				font-size: 13px;
 			}
 			</style>
