@@ -15,7 +15,7 @@ class AddMetaXToPublicRoutesTable extends Migration {
 		Schema::table('public_routes', function(Blueprint $table)
 		{
 			$table->string('meta_title');
-			$table->string('meta_description');
+			$table->text('meta_description');
 			$table->string('meta_image');
 		});
 	}
