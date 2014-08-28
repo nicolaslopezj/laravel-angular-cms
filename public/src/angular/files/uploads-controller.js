@@ -18,7 +18,7 @@ angular.module('cmsApp.controllers')
 			upload.path = $rootScope.currentPath.join('/');
 
 			upload.upload = $upload.upload({
-				url: $rootScope.main_url + '/files/',
+				url: $rootScope.main_url + '/files',
 				data: {path:upload.path},
 				file: file,
 			})
