@@ -11,6 +11,21 @@ class FacadesServiceProvider extends ServiceProvider {
 
 	public function register()
 	{
+		\App::bind('file_driver', function()
+		{
+			return new \Cms\Library\Drivers\FileDriver;
+		});
+
+		\App::bind('file_link_driver', function()
+		{
+			return new \Cms\Library\Drivers\FileLinkDriver;
+		});
+
+		\App::bind('folder_link_driver', function()
+		{
+			return new \Cms\Library\Drivers\FolderLinkDriver;
+		});
+		
 		\App::bind('definition_driver', function()
 		{
 			return new \Cms\Library\Drivers\DefinitionDriver;

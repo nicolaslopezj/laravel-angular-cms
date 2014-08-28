@@ -7,10 +7,10 @@ class ApiController extends \BaseController {
 		$response = parent::callAction($method, $parameters);
 
 		if (gettype($response) == 'object') {
-			try {
+			if (method_exists($response, 'toArray')) {
 				$response = $response->toArray();
-			} catch (\BadMethodCallException $e) {
-
+			} else {
+				return $response;
 			}
 		}
 
@@ -29,7 +29,6 @@ class ApiController extends \BaseController {
 			$data['response'] = $response;
 			return \Response::json($data)->setCallback($callback);
 		}
-		
 	}
 
 	public function filterResponse($fields, $response) {

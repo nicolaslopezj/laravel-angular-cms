@@ -16,6 +16,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Cms\Admin\Controllers', 'befo
 		'uses' => 'UsersController@delete',
 		]);
 	Route::resource('users', 'UsersController');
+
+	Route::resource('files', 'FilesController');
 	
 	try {
 		foreach (\EntityDriver::all() as $index => $entity) {
@@ -40,4 +42,23 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Cms\Admin\Controllers', 'befo
 		
 	}
 
+});
+
+Route::group(['prefix' => 'admin/ajax', 'namespace' => 'Cms\Admin\AjaxControllers', 'before' => 'permissions.admin'], function()
+{
+	Route::get('/', [
+		'as' => 'admin.ajax',
+		'uses' => 'DashboardController@index',
+		]);
+
+	Route::get('files/{id}/download', [
+		'as' => 'admin.ajax.files.download',
+		'uses' => 'FilesController@download',
+		]);
+	Route::resource('files', 'FilesController');
+
+	Route::resource('file-links', 'FileLinksController');
+
+	Route::resource('folder-links', 'FolderLinksController');
+	
 });

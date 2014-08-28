@@ -121,4 +121,28 @@ class Helper {
 		return $res;
 	}
 
+	public static function fileExtensionToFA($extension) {
+		if (self::arrayIsOneOf($extension, ['jpg', 'png', 'jpeg', 'gif', 'bmp', 'psd'])) {return 'fa-file-image-o';};
+		if (self::arrayIsOneOf($extension, ['pdf'])) {return 'fa-file-pdf-o';};
+		if (self::arrayIsOneOf($extension, ['zip', 'rar'])) {return 'fa-file-archive-o';};
+		if (self::arrayIsOneOf($extension, ['mp3', 'aac', 'wav', 'aiff'])) {return 'fa-file-audio-o';};
+		if (self::arrayIsOneOf($extension, ['aaf', '3gp', 'mp4', 'mkv', 'avi', 'flv', 'm4v', 'mov'])) {return 'fa-file-video-o';};
+		if (self::arrayIsOneOf($extension, ['xls', 'csv', 'xlsx', 'numbers'])) {return 'fa-file-excel-o';};
+		if (self::arrayIsOneOf($extension, ['ppt', 'pptx', 'key'])) {return 'fa-file-powerpoint-o';};
+		if (self::arrayIsOneOf($extension, ['php', 'js', 'json', 'xml', 'cpp', 'c', 'h', 'py', 'java', 'sql'])) {return 'fa-file-code-o';};
+		if (self::arrayIsOneOf($extension, ['txt', 'pages'])) {return 'fa-file-text-o';}
+		if (self::arrayIsOneOf($extension, ['doc', 'docx'])) {return 'fa-file-word-o';}
+		return 'fa-file-o';
+	}
+
+	public static function arrayIsOneOf($array, $values) {
+		foreach ($values as $value) {
+			if ($array == $value) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 }

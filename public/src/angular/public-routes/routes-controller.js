@@ -1,9 +1,8 @@
 angular.module('cmsApp.controllers')
 
-.controller('RoutesController', ['$rootScope', '$scope', 'Route', function($rootScope, $scope, Route) {
+.controller('RoutesController', ['$rootScope', '$scope', '$http', 'Route', function($rootScope, $scope, $http, Route) {
 
 	$rootScope.routes = Route.all();
-	$scope.autoResolve = [{}, {}];
 
 	$(window).bind('keydown', function(event) {
 		if ((event.ctrlKey || event.metaKey) && event.which == 83) {
@@ -17,6 +16,20 @@ angular.module('cmsApp.controllers')
 			mode: 'ace/mode/javascript',
 		});
 		_editor.getSession().setUseWorker(true);
+	};
+
+	$scope.getTemplates = function(val) {
+		return $http.get($rootScope.main_url + '/public-views', {
+			params: {
+				name: '%' + val + '%'
+			}
+		}).then(function(res){
+			var templates = [];
+			angular.forEach(res.data, function(item){
+				templates.push(item.name);
+			});
+			return templates;
+		});
 	};
 
 	$rootScope.$watch('activeRoute', function(newValue, oldValue){

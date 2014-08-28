@@ -58,7 +58,7 @@
 					<label>Template</label>
 					<div class="input-group">
 						<span class="input-group-addon">site/</span>
-						<input ng-model="activeRoute.template" class="form-control">
+						<input ng-model="activeRoute.template" class="form-control" typeahead="templates for templates in getTemplates($viewValue)" typeahead-loading="loadingLocations">
 					</div>
 				</div>
 
@@ -66,7 +66,7 @@
 					<label>Loading Template</label>
 					<div class="input-group">
 						<span class="input-group-addon">site/</span>
-						<input ng-model="activeRoute.until_resolved" class="form-control">
+						<input ng-model="activeRoute.until_resolved" class="form-control" typeahead="templates for templates in getTemplates($viewValue)" typeahead-loading="loadingLocations">
 					</div>
 				</div>
 

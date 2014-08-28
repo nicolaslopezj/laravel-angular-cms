@@ -10,10 +10,21 @@ Class ModelDriver implements ModelDriverInterface {
 		return $query;
 	}
 
-	public function all() {
-		$class = $this->model;
-		
-		return $class::all();
+	public function filterWhere($options, $query) {
+		if (!$options) {
+			return $query;
+		}
+		foreach ($options as $key => $value) {
+			$query = $query->where($key, 'like', $value);
+		}
+
+		return $query;
+	}
+
+	public function all($options = null) {
+		$query = $this->query();
+		$query = $this->filterWhere($options, $query);
+		return $query->get();
 	}
 
 	public function index($page = 1, $per_page = 20) {
@@ -25,6 +36,12 @@ Class ModelDriver implements ModelDriverInterface {
 	public function get($id) {
 		$class = $this->model;
 		return $class::findOrFail($id);
+	}
+
+	public function first($options) {
+		$query = $this->query();
+		$query = $this->filterWhere($options, $query);
+		return $query->first();
 	}
 
 	public function store($data) {

@@ -64,7 +64,7 @@ angular.module('cmsApp.controllers')
 	
 
 	$scope.changeName = function(view) {
-		var newName = prompt("Enter the name", view.name);
+		var newName = prompt("Enter the path", view.name);
 		if (newName) {
 			view.name = newName;
 		}

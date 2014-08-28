@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -131,6 +131,7 @@ return array(
 		'Cms\Admin\AdminServiceProvider',
 		'Cms\Me\MeServiceProvider',
 		'Cms\Dev\DevServiceProvider',
+		'Cms\Files\FilesServiceProvider',
 		'Cms\Commands\CommandsServiceProvider',
 		'Cms\Events\EventsServiceProvider',
 		'Cms\Packages\PackagesServiceProvider',
@@ -205,7 +206,10 @@ return array(
 		'ImageIntervention' => 'Intervention\Image\Facades\Image',
 		'Excel'             => 'Maatwebsite\Excel\Facades\Excel',
 		'Markdown'          => 'Michelf\Markdown',
-		
+
+		'FileDriver'  	    => 'Cms\Library\Facades\FileDriver',
+		'FileLinkDriver'  	=> 'Cms\Library\Facades\FileLinkDriver',
+		'FolderLinkDriver'  => 'Cms\Library\Facades\FolderLinkDriver',
 		'EntityCrudDriver'  => 'Cms\Library\Drivers\EntityCrudDriver',
 		'UserDriver'        => 'Cms\Library\Facades\UserDriver',
 		'DefinitionDriver'  => 'Cms\Library\Facades\DefinitionDriver',

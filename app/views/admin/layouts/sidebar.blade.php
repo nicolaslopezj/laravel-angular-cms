@@ -1,6 +1,3 @@
-@extends('layouts.master')
-
-@section('sidebar')
 <li class="sidebar-brand">
     Admin
 </li>
@@ -29,13 +26,8 @@
 	</a>
 </li>
 @endforeach
-
-@stop
-
-@section('content')
-<br>
-<div class="row">
-	@include('layouts.panel')
-</div>
-
-@stop
+<li>
+	<a href="{{ URL::route('admin.files.index') }}" class="{{ Helper::routeStartsWith('admin.files') ? 'active' : '' }}">
+		Files
+	</a>
+</li>

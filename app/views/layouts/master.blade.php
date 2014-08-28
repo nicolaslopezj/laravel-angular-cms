@@ -12,10 +12,14 @@
 
 	<script type="text/javascript" src="{{ asset('src/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/angularjs/angular.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('src/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/angular-resource/angular-resource.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/ace-builds/src-min-noconflict/ace.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/angular-ui-ace/ui-ace.js') }}"></script>
+	<script src="{{ asset('src/bower_components/ng-file-upload/angular-file-upload-shim.min.js') }}"></script> 
 	<script type="text/javascript" src="{{ asset('src/angular/main/app.js') }}"></script>
+	<script src="{{ asset('src/bower_components/ng-file-upload/angular-file-upload.min.js') }}"></script> 
 	<script type="text/javascript" src="{{ asset('src/bower_components/markdown/lib/markdown.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/bootstrap-markdown/js/bootstrap-markdown.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('src/bower_components/underscore/underscore.js') }}"></script>

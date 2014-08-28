@@ -33,8 +33,8 @@ class FilesHelper {
 		}
 	}
 
-	public function storeFileInPath($path, File $file) {
-		$filename = $file->getClientOriginalName();
+	public function storeFileInPath($path, File $file, $name = null) {
+		$filename = $name ? $name : $file->getClientOriginalName();
 
 		for ($i = 2; file_exists($path . $filename); $i++) {
 			$filename = $i . '_' . $filename;

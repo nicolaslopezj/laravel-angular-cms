@@ -2,7 +2,7 @@
 
 @section('structure')
 
-	<div id="wrapper" ng-app="cmsApp" ng-init="main_url = '{{ route('dev.ajax') }}'" class="ng-cloak">
+	<div id="wrapper" ng-app="cmsApp" ng-init="main_url = '@yield('main_url', route('dev.ajax'))'" class="ng-cloak">
 
 	    @yield('sidebar')
 

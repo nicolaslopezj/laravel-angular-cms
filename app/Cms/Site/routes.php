@@ -36,9 +36,24 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 	}
 
 });
-/*
-\App::missing(function($exception)
-{
-    return \App::make('Cms\Site\Controllers\SiteController')->missing();
-});
-*/
+
+if (!Config::get('app.debug')) {
+
+	App::error(function(\Exception $exception)
+	{	
+		Log::error($exception);
+    	return Response::view('errors.unknown', array(), 500);
+	});
+
+	App::fatal(function($exception)
+	{
+		Log::error($exception);
+	    return Response::view('errors.fatal', array(), 500);
+	});
+
+	App::missing(function($exception)
+	{
+	    return Response::view('errors.missing', array(), 404);
+	});
+
+}
