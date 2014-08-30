@@ -32,6 +32,9 @@
 	</div>
 </div>
 <style>
+.files-container {
+	margin-bottom: 50px;
+}
 .create-folder-btn {
 	margin-top: 10px;
 }

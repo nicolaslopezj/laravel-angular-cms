@@ -23,5 +23,5 @@
 @stop
 
 @section('content')
-@include('admin.files.content')
+		@include('admin.files.content')
 @stop
