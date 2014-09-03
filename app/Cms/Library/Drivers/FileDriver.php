@@ -50,7 +50,7 @@ class FileDriver extends ModelDriver {
 		$file->save();
 
 		$headers = array(
-			'Content-Type: ' . $file->mime,
+			'Content-Type:' => $file->mime,
 		);
 		
 		return \Response::download($file->system_path, $file->filename, $headers);
