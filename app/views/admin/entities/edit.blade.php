@@ -1,15 +1,16 @@
-{{ Form::open(['route' => ['admin.' . $entity->route_name . '.update', $item->id], 'files' => true, 'method' => 'put']) }}
+{{ Form::open(['route' => ['admin.' . $entity->route_name . '.update', $item->slug_or_id], 'files' => true, 'method' => 'put']) }}
+
+@if ($entity->has_slug == 'slug')
+	<div class="form-group">
+		<label>Slug</label>
+		<p class="help-block">Replaces the id</p>
+		<input class="form-control" name="slug" value="{{ $item->slug }}">
+		{{ $errors->first('slug', '<br><div class="alert alert-danger">:message</div>') }}
+	</div>
+@endif
 
 @foreach ($entity->attributes as $index => $attribute)
 	@if ($attribute->type == 'string')
-		<div class="form-group">
-			<label>{{ ucfirst($attribute->name) }}</label>
-			<p class="help-block">{{ $attribute->description }}</p>
-			<input class="form-control" name="{{ $attribute->name }}" value="{{ $item->{$attribute->name} }}">
-			{{ $errors->first($attribute->name, '<br><div class="alert alert-danger">:message</div>') }}
-		</div>
-	@endif
-	@if ($attribute->type == 'slug')
 		<div class="form-group">
 			<label>{{ ucfirst($attribute->name) }}</label>
 			<p class="help-block">{{ $attribute->description }}</p>

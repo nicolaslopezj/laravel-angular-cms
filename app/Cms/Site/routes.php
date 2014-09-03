@@ -20,12 +20,7 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 	Route::get('api/{entity}/{id}', [
 		'as' => 'api.entity.show',
 		'uses' => 'EntitiesController@show',
-	])->where('id', '[0-9]+');
-
-	Route::get('api/{entity}/{slug}', [
-		'as' => 'api.entity.showSlug',
-		'uses' => 'EntitiesController@showSlug',
-	])->where('slug', '[a-zA-Z0-9_-]+');
+	]);
 
 	$routes = \PublicRouteDriver::all();
 	foreach ($routes as $route) {

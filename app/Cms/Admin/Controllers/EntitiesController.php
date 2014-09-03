@@ -60,7 +60,7 @@ class EntitiesController extends BaseController {
 			->withInput();
 		}
 
-		return \Redirect::route('admin.' . $entity->route_name . '.show', $item->id);
+		return \Redirect::route('admin.' . $entity->route_name . '.show', $item->slug_or_id);
 	}
 
 	public function update($id) {
@@ -76,7 +76,7 @@ class EntitiesController extends BaseController {
 		}
 
 
-		return \Redirect::route('admin.' . $entity->route_name . '.show', $item->id);
+		return \Redirect::route('admin.' . $entity->route_name . '.show', $item->slug_or_id);
 	}
 
 	public function destroy($id) {

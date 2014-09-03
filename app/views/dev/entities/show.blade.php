@@ -13,6 +13,10 @@
 	<b>Model Name:</b>
 	<code>{{ $entity->model_name }}</code>
 </p>
+<p>
+	<b>Has Slug:</b>
+	<code>{{ $entity->has_slug ? 'true' : 'false' }}</code>
+</p>
 
 <hr>
 @foreach ($entity->attributes as $index => $attribute)

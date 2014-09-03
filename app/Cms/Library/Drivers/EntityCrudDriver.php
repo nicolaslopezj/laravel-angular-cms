@@ -48,23 +48,12 @@ class EntityCrudDriver extends ModelDriver {
 
 	public function get($id) {
 		$model = $this->model;
-		$item = $model::where('id', $id);
-
-		foreach ($this->entity->attributes as $index => $attribute) {
-			if ($attribute->type == 'image') {
-				$item->with('image_' . $attribute->name);
-			}
-			if ($attribute->type == 'image_array') {
-				$item->with('images_' . $attribute->name);
-			}
+		if (is_numeric($id)) {
+			$item = $model::where('id', $id);
+		} else {
+			$item = $model::where('slug', $id);
 		}
-
-		return $item->first();
-	}
-
-	public function getBySlug($slug) {
-		$model = $this->model;
-		$item = $model::where('slug', $slug);
+		
 
 		foreach ($this->entity->attributes as $index => $attribute) {
 			if ($attribute->type == 'image') {

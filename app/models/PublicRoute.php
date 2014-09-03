@@ -25,7 +25,7 @@ class PublicRoute extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved', 'is_default', 'meta_tags', 'meta_title', 'meta_description', 'meta_image'];
+	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved', 'is_default', 'meta_tags', 'meta_title', 'meta_description', 'meta_image', 'directory'];
 
 	/**
 	 * The attributes are not in the database

@@ -81,6 +81,17 @@
 				</div>
 
 				<div class="form-group">
+					<label>
+						<input type="checkbox" ng-model="activeRoute.is_default">
+						Is Default
+					</label>
+				</div>
+
+				<br><br>
+				<h3>SEO</h3>
+				<hr><br>
+
+				<div class="form-group">
 					<label>Title</label>
 					<input ng-model="activeRoute.meta_title" class="form-control">
 				</div>
@@ -101,10 +112,8 @@
 				</div>
 
 				<div class="form-group">
-					<label>
-						<input type="checkbox" ng-model="activeRoute.is_default">
-						Is Default
-					</label>
+					<label>Directory</label>
+					<div class="editor" ng-model="activeRoute.directory" ui-ace="{onLoad: aceLoaded}"></div>
 				</div>
 
 				<hr>

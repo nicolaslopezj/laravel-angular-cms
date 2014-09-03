@@ -24,12 +24,4 @@ class EntitiesController extends BaseController {
 		return $item;
 	}
 
-	public function showSlug($entity, $slug) {
-		$entity = \EntityDriver::findByRouteName($entity);
-		$driver = new \EntityCrudDriver($entity->model_name);
-		$item = $driver->getBySlug($slug);
-		return $item;
-	}
-
-
 }

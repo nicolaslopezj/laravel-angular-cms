@@ -23,6 +23,12 @@
 	</div>
 	{{ $errors->first('model_name', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
+<div class="checkbox">
+	<label>
+		{{ Form::checkbox('has_slug', '1', Input::old('has_slug')); }}
+		Uses Slug
+	</label>
+</div>
 <hr>
 <div class="pull-right">
 	<a class="btn btn-default" href="{{ URL::route('dev.entities.index') }}">Cancel</a>

@@ -12,7 +12,7 @@
 			@if ($entity->main_attribute)
 				{{ $item->{$entity->main_attribute->name} }}
 			@else
-				<code>{{ $item->id }}</code>
+				<code>{{ $item->slug_or_id }}</code>
 			@endif
 		</h1>
 
@@ -60,13 +60,13 @@
 <a class="btn btn-default" href="{{ URL::route('admin.' . $entity->route_name . '.index') }}">Back</a>
 @foreach ($entity->attributes as $index => $attribute)
 	@if ($attribute->type == 'image_array')
-		<a class="btn btn-primary" href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute->name . '.index', $item->id) }}">
+		<a class="btn btn-primary" href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute->name . '.index', $item->slug_or_id) }}">
 			{{ ucfirst($attribute->name) }}
 		</a>
 	@endif
 @endforeach
-<a class="btn btn-warning" href="{{ URL::route('admin.' . $entity->route_name . '.edit', $item->id) }}">Edit</a>
-<a class="btn btn-danger" href="{{ URL::route('admin.' . $entity->route_name . '.delete', $item->id) }}">Delete</a>
+<a class="btn btn-warning" href="{{ URL::route('admin.' . $entity->route_name . '.edit', $item->slug_or_id) }}">Edit</a>
+<a class="btn btn-danger" href="{{ URL::route('admin.' . $entity->route_name . '.delete', $item->slug_or_id) }}">Delete</a>
 
 
 <style>

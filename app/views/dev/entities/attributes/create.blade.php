@@ -14,7 +14,7 @@
 	<label>Type</label>
 	{{ Form::select('type', 
 		['string' => 'string', 'text' => 'text', 'integer' => 'integer', 'image' => 'image', 'image_array' => 'image_array',
-		'slug' => 'slug', 'markdown' => 'markdown'], 
+		'markdown' => 'markdown'], 
 		Input::old('type'), ['class' => 'form-control']) }}
 	{{ $errors->first('type', '<br><div class="alert alert-danger">:message</div>') }}
 </div>

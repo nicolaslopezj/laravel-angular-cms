@@ -25,7 +25,7 @@ class Entity extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'table_name', 'route_name', 'model_name'];
+	protected $fillable = ['name', 'table_name', 'route_name', 'model_name', 'has_slug'];
 
 	/**
 	 * The attributes are not in the database
@@ -44,7 +44,7 @@ class Entity extends Eloquent {
         'table_name' => 'required|min:3|max:20|alpha_dash',
         'route_name' => 'required|min:3|max:20|alpha_dash',
         'model_name' => 'required|min:3|max:20|alpha',
-
+        'has_slug' => 'boolean',
     ];
 
     /**
@@ -70,6 +70,11 @@ class Entity extends Eloquent {
 	public function getIdAttribute($attribute)
 	{
 		return (int) $attribute;
+	}
+
+	public function getHasSlugAttribute($attribute)
+	{
+		return (boolean) $attribute;
 	}
 
 	public function getMainAttributeAttribute()

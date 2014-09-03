@@ -8,28 +8,35 @@ class {{ $entity->model_name }} extends \Eloquent {
 
 	protected $table = 'site_{{ $entity->table_name }}';
 
-	protected $fillable = ['{{ join("', '", array_pluck($entity->attributes, 'name')) }}'];
+	protected $appends = ['slug_or_id'];
+
+	protected $fillable = [@if ($entity->has_slug)'slug',@endif'{{ join("', '", array_pluck($entity->attributes, 'name')) }}'];
 
 	protected $throwValidationExceptions = true;
 
 	protected $rules = [
 @foreach ($entity->attributes as $index => $attribute)
-
 @if ($attribute->type == 'integer')		
 		'{{ $attribute->name }}' => 'integer',
 @endif
 @if ($attribute->type == 'boolean')		
 		'{{ $attribute->name }}' => 'boolean',
 @endif
-@if ($attribute->type == 'slug')		
-		'{{ $attribute->name }}' => 'alpha_dash|unique:site_{{ $entity->table_name }},{{ $attribute->name }}',
-@endif
-
 @endforeach
+@if ($entity->has_slug)		
+		'slug' => 'alpha_dash|regex:/[A-Za-z0-9-_]*[^0-9][A-Za-z0-9-_]*/|unique:site_{{ $entity->table_name }},slug',
+@endif
 	];
 
 	public function getIdAttribute($attribute) {
 		return (int) $attribute;
+	}
+
+	public function getSlugOrIdAttribute($attribute) {
+		if (array_key_exists('slug', $this->attributes)) {
+			return $this->attributes['slug'] ? $this->attributes['slug'] : $this->id;
+		}
+		return $this->id;
 	}
 
 @foreach ($entity->attributes as $index => $attribute)

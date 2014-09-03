@@ -17,7 +17,9 @@
 			<div class="col-xs-12">
 		@endif
 			<div class="pull-right">
-				<a class="btn btn-default btn-xs" href="{{ URL::route('admin.' . $entity->route_name . '.show', $item->id) }}">View</a>
+				<a class="btn btn-default btn-xs" href="{{ URL::route('admin.' . $entity->route_name . '.show', $item->slug_or_id) }}">
+					View
+				</a>
 			</div>
 			<h4>
 				@if ($entity->main_attribute)
