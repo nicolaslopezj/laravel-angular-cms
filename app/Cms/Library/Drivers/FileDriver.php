@@ -39,10 +39,10 @@ class FileDriver extends ModelDriver {
 		return true;
 	}
 
-	public function download($id, $token = null, $token_type = 'file') {
+	public function download($id, $token = null, $token_type = null) {
 		$file = $this->get($id);
 
-		if ($token || $token_type == 'file') {
+		if ($token_type == 'file') {
 			$this->willDownloadFromFile($file, $token);
 		}
 
