@@ -49,11 +49,17 @@ class FileDriver extends ModelDriver {
 		$file->downloads += 1;
 		$file->save();
 
-		$headers = array(
-			'Content-Type:' => $file->mime,
-		);
+		$headers = $this->getHeadersForFile($file);
 		
 		return \Response::download($file->system_path, $file->filename, $headers);
+	}
+
+	public function getHeadersForFile($file) {
+		if ($file->mime == 'application/jar' && $file->extension == 'apk') {
+			return ['Content-Type' => 'application/vnd.android.package-archive'];
+		}
+
+		return ['Content-Type' => $file->mime];
 	}
 
 	private function saveFile($file, $name) {
