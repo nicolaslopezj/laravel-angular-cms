@@ -48,8 +48,12 @@ class FileDriver extends ModelDriver {
 
 		$file->downloads += 1;
 		$file->save();
+
+		$headers = array(
+			'Content-Type: ' . $file->mime,
+		);
 		
-		return \Response::download($file->system_path, $file->filename);
+		return \Response::download($file->system_path, $file->filename, $headers);
 	}
 
 	private function saveFile($file, $name) {

@@ -5,7 +5,6 @@ angular.module('cmsApp.controllers')
 	$rootScope.uploads = [];
 
 	$rootScope.uploadFiles = function($files) {
-		console.log($files);
 		for (var i = 0; i < $files.length; i++) {
 			var file = $files[i];
 			var upload = {};
@@ -25,7 +24,6 @@ angular.module('cmsApp.controllers')
 			.progress(function(evt) {
 				upload.active = true;
 				upload.progress = 100.0 * evt.loaded / evt.total;
-				console.log(upload, upload.file.name);
 			})
 			.error(function(data, status, headers, config) {
 				upload.active = false;
@@ -36,7 +34,6 @@ angular.module('cmsApp.controllers')
 				upload.active = false;
 				upload.success = data;
 				$rootScope.files.push(data);
-				console.log(upload, 'Success');
 			})
 
 			upload.cancel = function() {
