@@ -14,6 +14,13 @@ class FolderLink extends Eloquent {
 	protected $table = 'folder_link';
 
 	/**
+	 * The database colums
+	 *
+	 * @var array
+	 */
+	protected $columns = ['id', 'created_at', 'updated_at', 'path', 'name', 'token', 'expires_on', 'title', 'description'];
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array

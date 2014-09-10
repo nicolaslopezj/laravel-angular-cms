@@ -14,6 +14,13 @@ class Image extends Eloquent {
 	protected $table = 'images';
 
 	/**
+	 * The database colums
+	 *
+	 * @var array
+	 */
+	protected $columns = ['id', 'created_at', 'updated_at', 'name', 'path', 'width', 'height', 'background_color', 'key_color', 'secondary_color'];
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array

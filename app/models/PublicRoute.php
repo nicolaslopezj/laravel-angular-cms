@@ -14,6 +14,13 @@ class PublicRoute extends Eloquent {
 	protected $table = 'public_routes';
 
 	/**
+	 * The database colums
+	 *
+	 * @var array
+	 */
+	protected $columns = ['id', 'created_at', 'updated_at', 'name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved', 'is_default', 'meta_tags', 'meta_title', 'meta_description', 'meta_image', 'directory', 'directory_hidden'];
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array

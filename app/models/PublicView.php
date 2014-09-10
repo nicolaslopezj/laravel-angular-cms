@@ -14,6 +14,13 @@ class PublicView extends Eloquent {
 	protected $table = 'public_views';
 
 	/**
+	 * The database colums
+	 *
+	 * @var array
+	 */
+	protected $columns = ['id', 'name', 'content', 'created_at', 'updated_at'];
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array

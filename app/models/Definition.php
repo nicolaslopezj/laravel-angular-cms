@@ -14,6 +14,13 @@ class Definition extends Eloquent {
 	protected $table = 'definitions';
 
 	/**
+	 * The database colums
+	 *
+	 * @var array
+	 */
+	protected $columns = ['id', 'created_at', 'updated_at', 'description', 'type', 'editable', 'hidden', 'string', 'text', 'integer', 'image_id', 'image', 'tag', 'code', 'boolean'];
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array

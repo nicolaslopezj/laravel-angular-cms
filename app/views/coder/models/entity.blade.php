@@ -8,6 +8,8 @@ class {{ $entity->model_name }} extends \Eloquent {
 
 	protected $table = 'site_{{ $entity->table_name }}';
 
+	public $columns = ['id', 'created_at', 'updated_at', @if ($entity->has_slug)'slug',@endif' {{ join("', '", array_pluck($entity->attributes, 'name')) }}'];
+
 	protected $appends = ['slug_or_id'];
 
 	protected $fillable = [@if ($entity->has_slug)'slug',@endif'{{ join("', '", array_pluck($entity->attributes, 'name')) }}'];

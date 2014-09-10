@@ -14,6 +14,13 @@ class DBFile extends Eloquent {
 	protected $table = 'files';
 
 	/**
+	 * The database colums
+	 *
+	 * @var array
+	 */
+	protected $columns = ['id', 'created_at', 'updated_at', 'name', 'size', 'mime', 'system_name'];
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array

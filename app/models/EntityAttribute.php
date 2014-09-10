@@ -14,6 +14,13 @@ class EntityAttribute extends Eloquent {
 	protected $table = 'entity_attributes';
 
 	/**
+	 * The database colums
+	 *
+	 * @var array
+	 */
+	protected $columns = ['id', 'created_at', 'updated_at', 'entity_id', 'name', 'type', 'validations', 'options', 'description'];
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array

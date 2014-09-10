@@ -15,6 +15,13 @@ class FileLink extends Eloquent {
 	protected $table = 'file_link';
 
 	/**
+	 * The database colums
+	 *
+	 * @var array
+	 */
+	protected $columns = ['id', 'created_at', 'updated_at', 'file_id', 'name', 'token', 'expires_on', 'max_downloads', 'title', 'description'];
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
