@@ -27,4 +27,33 @@ class DirectoryController extends \Controller {
 		return '';
 	}
 
+	public function sitemap() {
+		$query = \PublicRouteDriver::query();
+		$urls = [];
+		$routes = $query->where('directory_hidden', false)->get();
+
+		foreach($routes as $route) {
+			if (!$route->dependencies) {
+				$urls[] = route($route->name);
+			} else {
+				$directory = json_decode($route->directory, 1);
+				foreach ($route->dependencies as $dependency) {
+					if (array_key_exists($dependency, $directory)) {
+						$parts = explode('<', $directory[$dependency]);
+						if (count($parts) == 3) {
+							$items = \Evaluator::getQuery($directory[$dependency])->get();
+							$identifier = $parts[2];
+							foreach ($items as $item) {
+								$urls[] = route($route->name, $item->{$identifier});
+							}
+						}
+					}
+				}
+			}
+		}
+
+		$sitemap = \View::make('directory.sitemapxml', compact('urls'));
+		return \Response::make($sitemap, 200)->header('Content-Type', 'application/xml');
+	}
+
 }

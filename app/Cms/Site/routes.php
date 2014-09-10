@@ -30,6 +30,11 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 		]);
 	}
 
+	Route::get('sitemap.xml', [
+		'as' => 'site.directory.sitemap',
+		'uses' => 'DirectoryController@sitemap',
+	]);
+
 	Route::get('directory', [
 		'as' => 'site.directory.index',
 		'uses' => 'DirectoryController@index',
