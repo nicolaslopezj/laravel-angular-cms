@@ -25,7 +25,6 @@
 
 			@if ($index % 2 == 1 || $index == count($routes) - 1)
 			</div>
-			<hr>
 			@endif
 		@endforeach  
 	</div>

@@ -20,20 +20,19 @@
 		@endif
 		<hr><br>
 		@foreach($items as $index => $item)
-			@if ($index % 2 == 0)
+			@if ($index % 3 == 0)
 			<div class="row">
 			@endif
 
-			<div class="col-sm-6">
+			<div class="col-sm-4">
 				<div class="well">	
 					@include('directory.views.detail-item', compact('route', 'item', 'identifier', 'dependency'))
 				</div>
 			</div>
 			
 
-			@if ($index % 2 == 1 || $index == count($items) - 1)
+			@if ($index % 3 == 2 || $index == count($items) - 1)
 			</div>
-			<hr>
 			@endif
 		@endforeach  
 
