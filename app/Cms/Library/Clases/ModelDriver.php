@@ -22,7 +22,7 @@ Class ModelDriver implements ModelDriverInterface {
 	}
 
 	public function filterQuery($options, $query) {
-		$query = $this->filterFields($options, $query);
+		//$query = $this->filterFields($options, $query);
 		$query = $this->filterWhere($options, $query);
 		$query = $this->filterOrderBy($options, $query);
 
