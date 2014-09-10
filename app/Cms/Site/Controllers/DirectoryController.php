@@ -3,7 +3,8 @@
 class DirectoryController extends \Controller {
 
 	public function index() {
-		$routes = \PublicRouteDriver::all();
+		$query = \PublicRouteDriver::query();
+		$routes = $query->where('directory_hidden', false)->get();
 
 		return \View::make('directory.views.main', compact('routes'));
 	}

@@ -111,6 +111,14 @@
 					<div class="editor" ng-model="activeRoute.meta_tags" ui-ace="{onLoad: aceLoaded}"></div>
 				</div>
 
+				<br><br>
+				<div class="form-group">
+					<label>
+						<input type="checkbox" ng-model="activeRoute.directory_hidden">
+						Hidden In Directory
+					</label>
+				</div>
+
 				<div class="form-group">
 					<label>Directory</label>
 					<div class="editor" ng-model="activeRoute.directory" ui-ace="{onLoad: aceLoaded}"></div>

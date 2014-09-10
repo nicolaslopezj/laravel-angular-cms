@@ -25,7 +25,7 @@ class PublicRoute extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved', 'is_default', 'meta_tags', 'meta_title', 'meta_description', 'meta_image', 'directory'];
+	protected $fillable = ['name', 'path', 'template', 'controller', 'resolve', 'tag', 'until_resolved', 'is_default', 'meta_tags', 'meta_title', 'meta_description', 'meta_image', 'directory', 'directory_hidden'];
 
 	/**
 	 * The attributes are not in the database
@@ -44,6 +44,7 @@ class PublicRoute extends Eloquent {
         'path' => 'unique:public_routes,path',
         'tag' => 'alpha_dash',
         'is_default' => 'boolean',
+        'directory_hidden' => 'boolean',
     ];
 
     /**
@@ -64,6 +65,11 @@ class PublicRoute extends Eloquent {
 	}
 
 	public function getIsDefaultAttribute($attribute)
+	{
+		return (boolean) $attribute;
+	}
+
+	public function getDirectoryHiddenAttribute($attribute)
 	{
 		return (boolean) $attribute;
 	}
