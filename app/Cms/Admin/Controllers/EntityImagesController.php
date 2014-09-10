@@ -74,7 +74,7 @@ class EntityImagesController extends BaseController {
 
 		}
 		
-		return \Redirect::route('admin.' . $entity->route_name . '.' . $attribute . '.index', $item->id);
+		return \Redirect::route('admin.' . $entity->route_name . '.' . $attribute . '.index', $item->slug_or_id);
 	}
 
 	public function destroy($entity_id, $id) {

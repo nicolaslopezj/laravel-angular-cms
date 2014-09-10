@@ -19,10 +19,10 @@
 
 		<hr>
 
-		<a href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.index', $item->id) }}" class="btn btn-default">
+		<a href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.index', $item->slug_or_id) }}" class="btn btn-default">
 			Back
 		</a>
-		<a href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.delete', [$item->id, $image->id]) }}" class="btn btn-danger">
+		<a href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.delete', [$item->slug_or_id, $image->id]) }}" class="btn btn-danger">
 			Delete
 		</a>
 	</div>

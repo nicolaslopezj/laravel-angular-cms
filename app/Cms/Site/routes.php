@@ -30,6 +30,16 @@ Route::group(['namespace' => 'Cms\Site\Controllers'], function() {
 		]);
 	}
 
+	Route::get('directory', [
+		'as' => 'site.directory.index',
+		'uses' => 'DirectoryController@index',
+	]);
+
+	Route::get('directory/{id}', [
+		'as' => 'site.directory.depended',
+		'uses' => 'DirectoryController@depended',
+	]);
+
 });
 
 if (!Config::get('app.debug')) {

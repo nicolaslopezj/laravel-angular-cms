@@ -1,8 +1,8 @@
 <?php namespace Cms\Library\Drivers;
 
-use Cms\Library\Clases\ModelDriver;
+use Cms\Library\Clases\ModelDriverWithSlug;
 
-class EntityCrudDriver extends ModelDriver {
+class EntityCrudDriver extends ModelDriverWithSlug {
 
 	protected $model;
 	protected $entity;
@@ -12,9 +12,9 @@ class EntityCrudDriver extends ModelDriver {
 		$this->entity = \EntityDriver::findByModelName($model);
 	}
 
-	public function index($page = 1, $per_page = 20) {
-		$model = $this->model;
-		$query = $model::where('id', '!=', 0);
+	public function query() {
+		$class = $this->model;
+		$query = $class::where('id', '>', '0');
 
 		foreach ($this->entity->attributes as $index => $attribute) {
 			if ($attribute->type == 'image') {
@@ -25,46 +25,7 @@ class EntityCrudDriver extends ModelDriver {
 			}
 		}
 
-		$items = $query->orderBy('created_at', 'desc')->paginate($per_page);
-		return $items;
-	}
-
-	public function all($page = 1, $per_page = 20) {
-		$model = $this->model;
-		$query = $model::where('id', '!=', 0);
-
-		foreach ($this->entity->attributes as $index => $attribute) {
-			if ($attribute->type == 'image') {
-				$query->with('image_' . $attribute->name);
-			}
-			if ($attribute->type == 'image_array') {
-				$query->with('images_' . $attribute->name);
-			}
-		}
-
-		$items = $query->orderBy('created_at', 'desc')->get();
-		return $items;
-	}
-
-	public function get($id) {
-		$model = $this->model;
-		if (is_numeric($id)) {
-			$item = $model::where('id', $id);
-		} else {
-			$item = $model::where('slug', $id);
-		}
-		
-
-		foreach ($this->entity->attributes as $index => $attribute) {
-			if ($attribute->type == 'image') {
-				$item->with('image_' . $attribute->name);
-			}
-			if ($attribute->type == 'image_array') {
-				$item->with('images_' . $attribute->name);
-			}
-		}
-
-		return $item->first();
+		return $query;
 	}
 
 	public function store($data) {
@@ -96,9 +57,7 @@ class EntityCrudDriver extends ModelDriver {
 	}
 
 	public function findByModel($model) {
-
 		$public_view = parent::store($data);
-
 		return $public_view;
 
 	}

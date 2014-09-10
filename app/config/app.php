@@ -135,6 +135,7 @@ return array(
 		'Cms\Commands\CommandsServiceProvider',
 		'Cms\Events\EventsServiceProvider',
 		'Cms\Packages\PackagesServiceProvider',
+		'Cms\Library\Helpers\CMSLang\EvaluatorServiceProvider',
 		'Cms\Site\SiteServiceProvider',
 
 	),
@@ -220,6 +221,7 @@ return array(
 		'FilesHelper'       => 'Cms\Library\Facades\FilesHelper',
 		'PackagesHelper'    => 'Cms\Library\Facades\PackagesHelper',
 		'Dict'              => 'Cms\Library\Facades\Dict',
+		'Evaluator'         => 'Cms\Library\Helpers\CMSLang\Evaluator',
 
 	),
 

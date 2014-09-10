@@ -6,12 +6,13 @@ class EntitiesController extends BaseController {
 		$entity = \EntityDriver::findByRouteName($entity);
 		$driver = new \EntityCrudDriver($entity->model_name);
 
+		$options = \Input::all();
 		$per_page = \Input::get('paginate');
 		if ($per_page) {
 			$page = \Input::get('page');
-			$items = $driver->index($page, $per_page);
+			$items = $driver->index($page, $per_page, $options);
 		} else {
-			$items = $driver->all();
+			$items = $driver->all($options);
 		}
 
 		return $items;

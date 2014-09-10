@@ -9,7 +9,7 @@
 	
 	<div class="col-sm-3">
 		<center>
-			<a href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.show', [$item->id, $image->id]) }}">
+			<a href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.show', [$item->slug_or_id, $image->id]) }}">
 				<img class="img-circle" width="60" src="{{ asset($image->thumbnail_sm) }}">
 			</a>
 		</center>
@@ -26,5 +26,5 @@
 @endif
 
 <hr>
-<a class="btn btn-default" href="{{ URL::route('admin.' . $entity->route_name . '.show', $item->id) }}">Back</a>
-<a class="btn btn-primary" href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.create', $item->id) }}">Upload</a>
+<a class="btn btn-default" href="{{ URL::route('admin.' . $entity->route_name . '.show', $item->slug_or_id) }}">Back</a>
+<a class="btn btn-primary" href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.create', $item->slug_or_id) }}">Upload</a>

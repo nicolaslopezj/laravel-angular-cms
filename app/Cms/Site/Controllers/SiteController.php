@@ -68,48 +68,8 @@ class SiteController extends \Controller {
 	}
 
 	private function evaluate($text) {
-		$re = "/\\*\\*[a-zA-Z0-9:.>_\- ]+\\*\\*/"; 
-		preg_match_all($re, $text, $matches);
-
-		foreach ($matches[0] as $match) {
-			$text = str_replace($match, $this->evaluateText($match), $text);
-		}
-
-		return $text;
-	}
-
-	private function evaluateText($text) {
-		$text = str_replace('**', '', $text);
-		$parts = explode('>', $text);
-
-		if (count($parts) != 3) {
-			return '';
-		}
-
-		$driver = new \EntityCrudDriver($parts[0]);
-
-		if (starts_with($parts[1], ':')) {
-			$parts[1] = str_replace(':', '', $parts[1]);
-			$parts[1] = $this->routeParameterToValue($parts[1]);
-		}
-
-		if (is_numeric($parts[1])) {
-			$item = $driver->get($parts[1]);
-		} else {
-			$item = $driver->getBySlug($parts[1]);
-		}
-
-		if (!$item) {
-			return '';
-		}
-
-		$array = array_dot($item->toArray());
-		
-		if (!array_key_exists($parts[2], $array)) {
-			return '';
-		}
-
-		return $array[$parts[2]];
+		$evaluated = \Evaluator::evaluateTextInView($text);
+		return $evaluated;
 	}
 
 	private function routeParameterToValue($parameter) {

@@ -1,4 +1,4 @@
-{{ Form::open(['route' => ['admin.' . $entity->route_name . '.' . $attribute . '.store', $item->id], 'files' => true]) }}
+{{ Form::open(['route' => ['admin.' . $entity->route_name . '.' . $attribute . '.store', $item->slug_or_id], 'files' => true]) }}
 
 
 <br>
@@ -21,7 +21,7 @@
 <br>
 <hr>
 <div class="pull-right">
-	<a class="btn btn-default" href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.index', $item->id) }}">
+	<a class="btn btn-default" href="{{ URL::route('admin.' . $entity->route_name . '.' . $attribute . '.index', $item->slug_or_id) }}">
 		Cancel
 	</a>
 	<button class="btn btn-primary">Upload</button>
