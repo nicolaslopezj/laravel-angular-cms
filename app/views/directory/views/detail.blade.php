@@ -9,8 +9,15 @@
 			<a class="btn btn-primary btn-xs pull-right" href="{{ route('site.directory.index') }}">
 				Back
 			</a>
-			Directory
+			@if (array_key_exists('title', json_decode($route->directory, 1)))
+				@evaluate(json_decode($route->directory, 1)['title'])
+			@else 
+				Directory
+			@endif
 		</h1>
+		@if (array_key_exists('description', json_decode($route->directory, 1)))
+			<p>@evaluate(json_decode($route->directory, 1)['description'])</p>
+		@endif
 		<hr><br>
 		@foreach($items as $index => $item)
 			@if ($index % 2 == 0)

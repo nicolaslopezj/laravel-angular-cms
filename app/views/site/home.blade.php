@@ -34,6 +34,9 @@
 				<h1>{{ $metas['title'] }}</h1>
 				<img src="{{ $metas['image'] }}">
 				<p>{{ $metas['description'] }}</p>
+				<p>
+					<a target="_BLANK" href="{{ route('site.directory.index') }}">Directory</a>
+				</p>
 			</div>
 			<style>
 			.metas {
