@@ -52,7 +52,7 @@ class DirectoryController extends \Controller {
 			}
 		}
 
-		$sitemap = \View::make('directory.sitemapxml', compact('urls'));
+		$sitemap = '<?xml version="1.0" encoding="UTF-8"?>' . \View::make('directory.sitemapxml', compact('urls'));
 		return \Response::make($sitemap, 200)->header('Content-Type', 'application/xml');
 	}
 
