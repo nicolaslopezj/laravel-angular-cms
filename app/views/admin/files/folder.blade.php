@@ -9,7 +9,7 @@
 			<hr>
 			
 			<p class="clearfix">
-				<button ng-show="currentPath.length" ng-click="createFolderLink(currentPath.join('/'))" class="btn btn-primary btn-xs">Share Folder</button>
+				<!--<button ng-show="currentPath.length" ng-click="createFolderLink(currentPath.join('/'))" class="btn btn-primary btn-xs">Share Folder</button>-->
 				<button class="btn btn-primary btn-xs" ng-file-select="uploadFiles($files)" onclick="this.value=null">Upload Files</button>
 			</p>
 
