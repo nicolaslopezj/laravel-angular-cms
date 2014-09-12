@@ -4,6 +4,16 @@ var cmsApp = angular.module('cmsApp', [
 	'cmsApp.api',
 	'cmsApp.modules',
 	'ngSanitize',
+
+@foreach (PackagesHelper::listPackages() as $index => $package)
+@if ($main = PackagesHelper::getMainFileForPackage($package))
+@if (method_exists($main, 'angularModules'))
+@if (is_array($main::angularModules()))
+'{{ join('\',\'', $main::angularModules()) }}',
+@endif
+@endif
+@endif
+@endforeach
 	{{ Dict::get('angular_extensions') }}
 	]);
 
@@ -170,3 +180,10 @@ angular.module('cmsApp.api', [])
 });
 
 
+@foreach (PackagesHelper::listPackages() as $index => $package)
+@if ($main = PackagesHelper::getMainFileForPackage($package))
+@if (method_exists($main, 'javascript'))
+{{ $main::javascript() }}
+@endif
+@endif
+@endforeach
