@@ -15,7 +15,7 @@ return array(
     /*
      * Login lines
      */
-    'Login' => 'Inicio Sesión',
+    'Login' => 'Iniciar Sesión',
     'Email' => 'Email',
     'Password' => 'Contraseña',
     'Forgot' => '¿Olvidaste tu contraseña?',
