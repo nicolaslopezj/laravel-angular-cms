@@ -6,7 +6,7 @@ class EntitiesController extends BaseController {
 	{
 		$entities = \EntityDriver::index();
 
-		$this->layout->title = 'Entities';
+		$this->layout->title = trans('dev.Entities');
 		$this->layout->content = \View::make('dev.entities.index', compact('entities'));
 	}
 

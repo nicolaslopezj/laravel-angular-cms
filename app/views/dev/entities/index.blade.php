@@ -1,9 +1,9 @@
 @foreach ($entities as $index => $entity)
 	<div class="row">
 		<div class="col-xs-12">
-			<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('dev.entities.show', $entity->id) }}">View</a>
+			<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('dev.entities.show', $entity->id) }}">{{ trans('dev.View') }}</a>
 			<p>
-				Name:
+				{{ trans('dev.Name') }}:
 				<b>{{ $entity->name }}</b>
 			</p>
 		</div>
@@ -13,4 +13,4 @@
 
 {{ $entities->links() }}
 
-<a class="btn btn-default" href="{{ URL::route('dev.entities.create') }}">Create</a>
+<a class="btn btn-default" href="{{ URL::route('dev.entities.create') }}">{{ trans('dev.Create') }}</a>

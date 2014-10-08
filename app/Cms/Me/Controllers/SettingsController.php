@@ -9,11 +9,11 @@ class SettingsController extends BaseController {
 
 		$content = [
 			[
-				'title' => 'Profile',
+				'title' => trans('me.Profile'),
 				'content' => $profile_view,
 			],
 			[
-				'title' => 'Change Password',
+				'title' => trans('me.Change_Password'),
 				'content' => $password_view,
 			],
 		];

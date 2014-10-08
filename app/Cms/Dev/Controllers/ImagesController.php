@@ -5,7 +5,7 @@ class ImagesController extends BaseController {
 	public function index()
 	{
 		$images = \ImageDriver::index();
-		$this->layout->title = 'Images';
+		$this->layout->title = trans('dev.Images');
 		$this->layout->content = \View::make('dev.images.index', compact('images'));
 	}
 

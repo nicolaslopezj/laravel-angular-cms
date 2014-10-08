@@ -1,10 +1,10 @@
 <li class="sidebar-brand">
-    Admin
+    {{ trans('admin.Admin') }}
 </li>
 
 <li>
 	<a href="{{ URL::route('admin.users.index') }}" class="{{ Helper::routeStartsWith('admin.users') ? 'active' : '' }}">
-		Users
+		{{ trans('admin.Users') }}
 	</a>
 </li>
 @foreach (EntityDriver::all() as $index => $entity)
@@ -16,7 +16,7 @@
 @endforeach
 <li>
 	<a href="{{ URL::route('admin.definitions.index') }}" class="{{ Helper::routeStartsWith('admin.definitions') ? 'active' : '' }}">
-		Dictionary
+		{{ trans('admin.Dictionary') }}
 	</a>
 </li>
 @foreach (PackagesHelper::getAdminSidebar() as $index => $params)
@@ -28,6 +28,6 @@
 @endforeach
 <li>
 	<a href="{{ URL::route('admin.files.index') }}" class="{{ Helper::routeStartsWith('admin.files') ? 'active' : '' }}">
-		Files
+		{{ trans('admin.Files') }}
 	</a>
 </li>

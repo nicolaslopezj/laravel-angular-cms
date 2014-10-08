@@ -3,18 +3,18 @@
     <ul class="sidebar-nav">
     	<li class="sidebar-brand">
 		    <a href="{{ route('dev.index') }}">
-		    	<i class="fa fa-chevron-left" style="font-size: 15px; margin-right: 5px;"></i> Developer
+		    	<i class="fa fa-chevron-left" style="font-size: 15px; margin-right: 5px;"></i> {{ trans('dev.Developer') }}
 		    </a>
 		</li>
 		<li class="toolkit">
 		    <a ng-click="newRoute()">
-		    	<i class="fa fa-plus"></i> New Route
+		    	<i class="fa fa-plus"></i> {{ trans('dev.New_Route') }}
 		    </a>
 		</li>
 		<li ng-repeat="route in routes">
 			<a href="javascript:void()" ng-click="openRoute(route)" ng-class="{'active': activeRoute.id == route.id && route.id, 'has-changes': route.has_changes}" >
 				<span ng-if="route.name && route.id">@{{ route.name }}</span>
-				<span ng-if="!route.name || !route.id">No Name</span>
+				<span ng-if="!route.name || !route.id">{{ trans('dev.No_Name') }}</span>
 			</a>
 		</li>
     </ul>

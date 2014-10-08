@@ -1,10 +1,10 @@
 {{ Form::open(['route' => ['admin.users.destroy', $user->id], 'method' => 'delete']) }}
 
-<p><b>Are you sure you want to delete this user?</b></p>
+<p><b>{{ trans('admin.Delete_User') }}</b></p>
 <hr>
 <div class="pull-right">
-	<a class="btn btn-default" href="{{ URL::route('admin.users.show', $user->id) }}">Cancel</a>
-	<button class="btn btn-danger">Delete</button>
+	<a class="btn btn-default" href="{{ URL::route('admin.users.show', $user->id) }}">{{ trans('admin.Cancel') }}</a>
+	<button class="btn btn-danger">{{ trans('admin.Delete') }}</button>
 </div>
 
 {{ Form::close() }}

@@ -5,7 +5,7 @@ class PackagesController extends BaseController {
 	public function index() {
 		$packages = \PackagesHelper::listPackages();
 
-		$this->layout->title = 'Packages';
+		$this->layout->title = trans('dev.Packages');
 		$this->layout->content = \View::make('dev.packages.index', compact('packages'));
 	}
 
@@ -40,8 +40,8 @@ class PackagesController extends BaseController {
 			\FilesHelper::unzipFile($path . $file, $path);
 			\PackagesHelper::installPackage(str_replace('.zip', '', $file));
 		}
-		
-		
+
+
 		return \Redirect::route('dev.packages.index');
 	}
 

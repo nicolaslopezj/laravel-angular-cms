@@ -6,7 +6,7 @@ class UsersController extends BaseController {
 	{
 		$users = \UserDriver::index();
 
-		$this->layout->title = 'Users';
+		$this->layout->title = trans('admin.Users');;
 		$this->layout->content = \View::make('admin.users.index', compact('users'));
 	}
 
@@ -24,7 +24,7 @@ class UsersController extends BaseController {
 
 	public function create()
 	{
-		$this->layout->title = 'Create User';
+		$this->layout->title = trans('Create_User');
 		$this->layout->content = \View::make('admin.users.create');
 	}
 
@@ -35,7 +35,7 @@ class UsersController extends BaseController {
 
 		$user = \UserDriver::get($id);
 
-		$this->layout->title = $user->name . ' - Delete';
+		$this->layout->title = $user->name . ' - '.trans('admin.Delete');
 		$this->layout->content = \View::make('admin.users.delete', compact('user'));
 	}
 
@@ -47,7 +47,7 @@ class UsersController extends BaseController {
 
 		$user = \UserDriver::get($id);
 
-		$this->layout->title = $user->name . ' - Edit';
+		$this->layout->title = $user->name . ' - '.trans('admin.Edit');;
 		$this->layout->content = \View::make('admin.users.edit', compact('user'));
 	}
 

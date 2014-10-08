@@ -8,7 +8,7 @@ class DefinitionsController extends BaseController {
 		$definitions = \DefinitionDriver::index('dev', $tag);
 		$tags = \DefinitionDriver::getTags('dev');
 
-		$this->layout->title = 'Dictionary';
+		$this->layout->title = trans('dev.Dictionary');
 		$this->layout->content = \View::make('dev.definitions.index', compact('definitions', 'tags'));
 	}
 

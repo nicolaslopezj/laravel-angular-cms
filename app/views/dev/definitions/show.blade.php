@@ -1,33 +1,33 @@
 <div class="row">
 	<div class="col-sm-12">
 		<p>
-			Identifier:
+			{{ trans('dev.Identifier') }}:
 			<b>{{ $definition->identifier }}</b>
 		</p>
 		<p>
-			Description:
+			{{ trans('dev.Description') }}:
 			<b>{{ $definition->description }}</b>
 		</p>
 		<p>
-			Editable:
+			{{ trans('dev.Editable') }}:
 			<b>{{ $definition->editable }}</b>
 		</p>
 		<p>
-			Hidden:
+			{{ trans('dev.Hidden') }}:
 			<b>{{ $definition->hidden }}</b>
 		</p>
 		<p>
-			Type:
-			<b>{{ $definition->type }}</b>
+			{{ trans('dev.Type') }}:
+			<b>{{ trans('dev.'.ucfirst($definition->type)) }}</b>
 		</p>
 		<hr>
 		@if ($definition->type == 'string')
 
-		<p>Value: <b>{{{ $definition->string }}}</b></p>
+		<p>{{ trans('dev.Value') }}: <b>{{{ $definition->string }}}</b></p>
 
 		@elseif ($definition->type == 'code')
 
-		<p><b>Value:</b></p>
+		<p><b>{{ trans('dev.Value') }}:</b></p>
 		<div class="clearfix">
 			 <textarea class="form-control" name="code" style="display:none">{{{ $definition->code }}}</textarea>
 			<div class="editor" id="code"/>
@@ -49,16 +49,16 @@
 
 		@elseif ($definition->type == 'text')
 
-		<p><b>Value:</b></p>
+		<p><b>{{ trans('dev.Value') }}:</b></p>
 		{{{ nl2br($definition->text) }}}
 
 		@elseif ($definition->type == 'integer')
 
-		<p>Value: <b>{{ $definition->integer }}</b></p>
+		<p>{{ trans('dev.Value') }}: <b>{{ $definition->integer }}</b></p>
 
 		@elseif ($definition->type == 'boolean')
 
-		<p>Value: <b>{{ $definition->boolean ? 'Yes' : 'No' }}</b></p>
+		<p>{{ trans('dev.Value') }}: <b>{{ $definition->boolean ? 'Yes' : 'No' }}</b></p>
 
 		@elseif ($definition->type == 'image' && $definition->image)
 
@@ -81,9 +81,9 @@
 		@endif
 
 		<hr>
-		<a href="{{ URL::route('dev.definitions.index') }}" class="btn btn-default">Back</a>
-		<a href="{{ URL::route('dev.definitions.edit', $definition->id) }}" class="btn btn-default">Edit</a>
-		<a href="{{ URL::route('dev.definitions.delete', $definition->id) }}" class="btn btn-danger">Delete</a>
+		<a href="{{ URL::route('dev.definitions.index') }}" class="btn btn-default">{{ trans('dev.Back') }}</a>
+		<a href="{{ URL::route('dev.definitions.edit', $definition->id) }}" class="btn btn-default">{{ trans('dev.Edit') }}</a>
+		<a href="{{ URL::route('dev.definitions.delete', $definition->id) }}" class="btn btn-danger">{{ trans('dev.Delete') }}</a>
 	</div>
 </div>
 

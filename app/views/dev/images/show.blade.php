@@ -11,7 +11,7 @@
 			<b>{{ $image->name }}</b>
 		</h4>
 	</div>
-	
+
 </div>
 <hr>
-<a class="btn btn-default" href="{{ URL::route('dev.images.index') }}">Back</a>
+<a class="btn btn-default" href="{{ URL::route('dev.images.index') }}">{{ trans('dev.Back') }}</a>
