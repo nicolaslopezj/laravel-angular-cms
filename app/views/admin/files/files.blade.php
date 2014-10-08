@@ -5,7 +5,7 @@
 		</span>
 	</div>
 	<div class="path-name">
-		<span ng-click="upFolder(currentPath.length)" ng-class="{'as_link': currentPath.length > 0}">Files</span>
+		<span ng-click="upFolder(currentPath.length)" ng-class="{'as_link': currentPath.length > 0}">{{ trans('admin.Files') }}</span>
 		<span ng-repeat="folder in currentPath"> 
 			<span class="chevron"><i class="fa fa-chevron-right"></i></span>
 			<span ng-click="upFolder(currentPath.length - $index - 1)" ng-class="{'as_link': currentPath.length > $index + 1}">@{{ folder }}</span>

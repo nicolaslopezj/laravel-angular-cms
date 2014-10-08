@@ -13,11 +13,11 @@
 				<div class="col-xs-3">
 					<div class="btn-group pull-right">
 						<button class="btn btn-danger" ng-click="deleteView(activeView)">
-							Delete
+							{{ trans('dev.Delete') }}
 						</button>
-						<button class="btn btn-primary" ng-click="saveView(activeView)" 
+						<button class="btn btn-primary" ng-click="saveView(activeView)"
 						ng-disabled="activeView.has_changes !== true">
-							Save
+							{{ trans('dev.Save') }}
 						</button>
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 				<div class="col-xs-9">
 					<p class="file-description-container">
 						<span class="file-name">
-							<span class="text-muted">Select a file</span>
+							<span class="text-muted">{{ trans('dev.File_Select') }}</span>
 						</span>
 					</p>
 				</div>

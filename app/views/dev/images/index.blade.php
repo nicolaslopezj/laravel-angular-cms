@@ -5,7 +5,7 @@
 		</div>
 		<div class="col-xs-10">
 			<p>
-				<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('dev.images.show', $image->id) }}">View</a>
+				<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('dev.images.show', $image->id) }}">{{ trans('dev.View') }}</a>
 				{{ $image->name }}
 
 				<div class="">
@@ -23,7 +23,7 @@
 {{ $images->links() }}
 
 <hr>
-<a class="btn btn-default" href="{{ URL::route('dev.images.create') }}">Upload</a>
+<a class="btn btn-default" href="{{ URL::route('dev.images.create') }}">{{ trans('dev.Upload') }}</a>
 
 <style>
 .image-color {

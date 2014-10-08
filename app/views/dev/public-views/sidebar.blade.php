@@ -3,12 +3,12 @@
     <ul class="sidebar-nav">
     	<li class="sidebar-brand">
 		    <a href="{{ route('dev.index') }}">
-		    	<i class="fa fa-chevron-left" style="font-size: 15px; margin-right: 5px;"></i> Developer
+		    	<i class="fa fa-chevron-left" style="font-size: 15px; margin-right: 5px;"></i> {{ trans('dev.Developer') }}
 		    </a>
 		</li>
 		<li class="toolkit">
 		    <a ng-click="newView()">
-		    	<i class="fa fa-plus"></i> New File
+		    	<i class="fa fa-plus"></i> {{ trans('dev.New_File') }}
 		    </a>
 		</li>
 		<li style="margin-left: -20px" class="tree-container">

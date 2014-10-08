@@ -6,7 +6,7 @@ class FilesController extends BaseController {
 		$path = public_path() . '/uploads/files/';
 		$files = \FilesHelper::filesInFolder($path);
 
-		$this->layout->title = 'Files';
+		$this->layout->title = trans('dev.Files');
 		$this->layout->content = \View::make('dev.files.index', compact('files'));
 	}
 

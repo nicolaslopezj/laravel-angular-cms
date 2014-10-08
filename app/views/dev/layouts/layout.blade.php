@@ -2,42 +2,42 @@
 
 @section('sidebar')
 <li class="sidebar-brand">
-    Developer
+    {{ trans('dev.Developer') }}
 </li>
 
 <li>
 	<a href="{{ URL::route('dev.public-views.index') }}" class="{{ Helper::routeStartsWith('dev.public-views') ? 'active' : '' }}">
-		Views
+		{{ trans('dev.Views') }}
 	</a>
 </li>
 <li>
 	<a href="{{ URL::route('dev.public-routes.index') }}" class="{{ Helper::routeStartsWith('dev.public-routes') ? 'active' : '' }}">
-		Routes
+		{{ trans('dev.Routes') }}
 	</a>
 </li>
 <li>
 	<a href="{{ URL::route('dev.definitions.index') }}" class="{{ Helper::routeStartsWith('dev.definitions') ? 'active' : '' }}">
-		Dictionary
+		{{ trans('dev.Dictionary') }}
 	</a>
 </li>
 <li>
 	<a href="{{ URL::route('dev.entities.index') }}" class="{{ Helper::routeStartsWith('dev.entities') ? 'active' : '' }}">
-		Entities
+		{{ trans('dev.Entities') }}
 	</a>
 </li>
 <li>
 	<a href="{{ URL::route('dev.packages.index') }}" class="{{ Helper::routeStartsWith('dev.packages') ? 'active' : '' }}">
-		Packages
+		{{ trans('dev.Packages') }}
 	</a>
 </li>
 <li>
 	<a href="{{ URL::route('dev.images.index') }}" class="{{ Helper::routeStartsWith('dev.images') ? 'active' : '' }}">
-		Images
+		{{ trans('dev.Images') }}
 	</a>
 </li>
 <li>
 	<a href="{{ URL::route('dev.files.index') }}" class="{{ Helper::routeStartsWith('dev.files') ? 'active' : '' }}">
-		Files
+		{{ trans('dev.Files') }}
 	</a>
 </li>
 @foreach (PackagesHelper::getDevSidebar() as $index => $params)

@@ -1,11 +1,11 @@
 @if(!$files)
-<p><i>No files</i></p>
+<p><i>{{ trans('dev.No_Files') }}</i></p>
 @endif
 
 @foreach ($files as $index => $file)
 	<span class="pull-right">
 		{{ Form::open(['route' => ['dev.files.destroy', $index], 'method' => 'delete']) }}
-		<button class="btn btn-danger btn-xs">Delete</button>
+		<button class="btn btn-danger btn-xs">{{ trans('dev.Delete') }}</button>
 		{{ Form::close() }}
 	</span>
 	<p>
@@ -18,4 +18,4 @@
 	<hr>
 @endforeach
 
-<a class="btn btn-default" href="{{ URL::route('dev.files.create') }}">Upload</a>
+<a class="btn btn-default" href="{{ URL::route('dev.files.create') }}">{{ trans('dev.Upload') }}</a>

@@ -18,7 +18,7 @@
 @elseif ($definition->type == 'code')
 
 <div class="form-group">
-	<label>Value</label>
+	<label>{{ trans('admin.Value') }}</label>
 	<textarea class="form-control" name="code" style="display:none">{{{ $definition->code }}}</textarea>
 	<div class="editor" id="code"/>
 	{{ $errors->first('code', '<br><div class="alert alert-danger">:message</div>') }}
@@ -57,10 +57,10 @@
 @elseif ($definition->type == 'boolean')
 
 <div class="form-group">
-	<label>Value</label>
+	<label>{{ trans('admin.Value') }}</label>
 	<select class="form-control" name="boolean">
-		<option value=1 {{ $definition->boolean ? 'selected' : '' }}>Yes</option>
-		<option value=0 {{ $definition->boolean ? '' : 'selected' }}>No</option>
+		<option value=1 {{ $definition->boolean ? 'selected' : '' }}>{{ trans('admin.Yes') }}</option>
+		<option value=0 {{ $definition->boolean ? '' : 'selected' }}>{{ trans('admin.No') }}</option>
 	</select>
 	{{ $errors->first('boolean', '<br><div class="alert alert-danger">:message</div>') }}
 </div>
@@ -76,11 +76,11 @@
 			<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 			<div>
 				<span class="btn btn-default btn-file">
-					<span class="fileinput-new">Select image</span>
-					<span class="fileinput-exists">Change</span>
+					<span class="fileinput-new">{{ trans('admin.Select_Image') }}</span>
+					<span class="fileinput-exists">{{ trans('admin.Change') }}</span>
 					<input type="file" name="file">
 				</span>
-				<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+				<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{ trans('admin.Delete') }}</a>
 			</div>
 		</div>
 	</div>
@@ -91,8 +91,8 @@
 
 <hr>
 <div class="pull-right">
-	<a class="btn btn-default" href="{{ URL::route('dev.definitions.index') }}">Cancel</a>
-	<button class="btn btn-primary">Save</button>
+	<a class="btn btn-default" href="{{ URL::route('dev.definitions.index') }}">{{ trans('admin.Cancel') }}</a>
+	<button class="btn btn-primary">{{ trans('admin.Save') }}</button>
 </div>
 
 {{ Form::close() }}

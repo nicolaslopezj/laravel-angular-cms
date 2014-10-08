@@ -13,11 +13,11 @@
 				<div class="col-xs-3">
 					<div class="btn-group pull-right">
 						<button class="btn btn-danger" ng-click="deleteRoute(activeRoute)">
-							Delete
+							{{ trans('dev.Delete') }}
 						</button>
-						<button class="btn btn-primary" ng-click="saveRoute(activeRoute)" 
+						<button class="btn btn-primary" ng-click="saveRoute(activeRoute)"
 						ng-disabled="activeRoute.has_changes !== true">
-							Save
+							{{ trans('dev.Save') }}
 						</button>
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 				<div class="col-xs-9">
 					<p class="file-description-container">
 						<span class="file-name">
-							<span class="text-muted">Select a route</span>
+							<span class="text-muted">{{ trans('dev.Route_Select') }}</span>
 						</span>
 					</p>
 				</div>
@@ -37,17 +37,17 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
-				
-				<h3>Route</h3>
+
+				<h3>{{ trans('dev.Route') }}</h3>
 				<hr><br>
 
 				<div class="form-group">
-					<label>Name</label>
+					<label>{{ trans('dev.Name') }}</label>
 					<input ng-model="activeRoute.name" class="form-control">
 				</div>
 
 				<div class="form-group">
-					<label>Path</label>
+					<label>{{ trans('dev.Path') }}</label>
 					<div class="input-group">
 						<span class="input-group-addon">/</span>
 						<input ng-model="activeRoute.path" class="form-control">
@@ -55,7 +55,7 @@
 				</div>
 
 				<div class="form-group">
-					<label>Template</label>
+					<label>{{ trans('dev.Template') }}</label>
 					<div class="input-group">
 						<span class="input-group-addon">site/</span>
 						<input ng-model="activeRoute.template" class="form-control" typeahead="templates for templates in getTemplates($viewValue)" typeahead-loading="loadingLocations">
@@ -63,7 +63,7 @@
 				</div>
 
 				<div class="form-group">
-					<label>Loading Template</label>
+					<label>{{ trans('dev.Loading_Template') }}</label>
 					<div class="input-group">
 						<span class="input-group-addon">site/</span>
 						<input ng-model="activeRoute.until_resolved" class="form-control" typeahead="templates for templates in getTemplates($viewValue)" typeahead-loading="loadingLocations">
@@ -71,43 +71,43 @@
 				</div>
 
 				<div class="form-group">
-					<label>Controller</label>
+					<label>{{ trans('dev.Controller') }}</label>
 					<input ng-model="activeRoute.controller" class="form-control">
 				</div>
 
 				<div class="form-group">
-					<label>Resolve</label>
+					<label>{{ trans('dev.Resolve') }}</label>
 					<div class="editor" ng-model="activeRoute.resolve" ui-ace="{onLoad: aceLoaded}"></div>
 				</div>
 
 				<div class="form-group">
 					<label>
 						<input type="checkbox" ng-model="activeRoute.is_default">
-						Is Default
+						{{ trans('dev.Is_Default') }}
 					</label>
 				</div>
 
 				<br><br>
-				<h3>SEO</h3>
+				<h3>{{ trans('dev.SEO') }}</h3>
 				<hr><br>
 
 				<div class="form-group">
-					<label>Title</label>
+					<label>{{ trans('dev.Title') }}</label>
 					<input ng-model="activeRoute.meta_title" class="form-control">
 				</div>
 
 				<div class="form-group">
-					<label>Description</label>
+					<label>{{ trans('dev.Description') }}</label>
 					<input ng-model="activeRoute.meta_description" class="form-control">
 				</div>
 
 				<div class="form-group">
-					<label>Image</label>
+					<label>{{ trans('dev.Image') }}</label>
 					<input ng-model="activeRoute.meta_image" class="form-control">
 				</div>
 
 				<div class="form-group">
-					<label>Meta Tags (json)</label>
+					<label>{{ trans('dev.Meta_Tags') }}</label>
 					<div class="editor" ng-model="activeRoute.meta_tags" ui-ace="{onLoad: aceLoaded}"></div>
 				</div>
 
@@ -115,23 +115,23 @@
 				<div class="form-group">
 					<label>
 						<input type="checkbox" ng-model="activeRoute.directory_hidden">
-						Hidden In Directory
+						{{ trans('dev.Hidden_In_Directory') }}
 					</label>
 				</div>
 
 				<div class="form-group">
-					<label>Directory</label>
+					<label>{{ trans('dev.Directory') }}</label>
 					<div class="editor" ng-model="activeRoute.directory" ui-ace="{onLoad: aceLoaded}"></div>
 				</div>
 
 				<hr>
 				<div class="pull-right clearfix">
 					<button class="btn btn-danger" ng-click="deleteRoute(activeRoute)">
-						Delete
+						{{ trans('dev.Delete') }}
 					</button>
-					<button class="btn btn-primary" ng-click="saveRoute(activeRoute)" 
+					<button class="btn btn-primary" ng-click="saveRoute(activeRoute)"
 					ng-disabled="activeRoute.has_changes !== true">
-						Save
+						{{ trans('dev.Save') }}
 					</button>
 					<br><br>
 				</div>

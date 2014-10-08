@@ -2,7 +2,7 @@
 	<div class="col-sm-12">
 		<span class="label label-{{ !Input::get('tag') ? 'danger' : 'default' }}" style="margin-right: 10px">
 			<a href="?" style="color: white">
-				all
+				{{ trans('admin.All') }}
 			</a>
 		</span>
 		@foreach ($tags as $tag)
@@ -23,7 +23,7 @@
 
 	<div class="row">
 		<div class="col-xs-12">
-			<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('admin.definitions.show', $definition->id) }}">View</a>
+			<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('admin.definitions.show', $definition->id) }}">{{ trans('admin.View') }}</a>
 			<p>
 				<b>{{ $definition->identifier }}</b> <br>
 				<span class="text-muted">{{ $definition->description }}</span><br>

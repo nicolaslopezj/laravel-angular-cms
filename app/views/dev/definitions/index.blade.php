@@ -2,7 +2,7 @@
 	<div class="col-sm-12">
 		<span class="label label-{{ !Input::get('tag') ? 'danger' : 'default' }}" style="margin-right: 10px">
 			<a href="?" style="color: white">
-				all
+				{{ trans('dev.All') }}
 			</a>
 		</span>
 		@foreach ($tags as $tag)
@@ -20,7 +20,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div>
-				<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('dev.definitions.show', $definition->id) }}">View</a>
+				<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('dev.definitions.show', $definition->id) }}">{{ trans('dev.View') }}</a>
 				<p >
 					@if (!$definition->editable)
 						<i class="fa fa-lock" style="margin-right: 5px;"></i>
@@ -73,4 +73,4 @@
 </div>
 
 
-<a class="btn btn-default" href="{{ URL::route('dev.definitions.create') }}">Create</a>
+<a class="btn btn-default" href="{{ URL::route('dev.definitions.create') }}">{{ trans('dev.Create') }}</a>

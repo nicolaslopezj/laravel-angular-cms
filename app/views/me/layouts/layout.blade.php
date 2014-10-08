@@ -7,7 +7,7 @@
 
 <li>
 	<a href="{{ URL::route('me.index') }}" class="{{ Helper::routeStartsWith('me.index') ? 'active' : '' }}">
-		Dashboard
+		{{ trans('me.Dashboard') }}
 	</a>
 </li>
 @foreach (PackagesHelper::getUserSidebar() as $index => $params)
@@ -19,12 +19,12 @@
 @endforeach
 <li>
 	<a href="{{ URL::route('me.settings.edit') }}" class="{{ Helper::routeStartsWith('me.settings') ? 'active' : '' }}">
-		Settings
+		{{ trans('me.Settings') }}
 	</a>
 </li>
 <li>
 	<a href="{{ URL::route('logout') }}">
-		Log out
+		{{ trans('me.Log_Out') }}
 	</a>
 </li>
 

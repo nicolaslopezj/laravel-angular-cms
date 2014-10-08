@@ -7,11 +7,11 @@
 		<hr>
 		@if ($definition->type == 'string')
 
-		<p>Value: <b>{{ $definition->string }}</b></p>
+		<p>{{ trans('admin.Value') }}: <b>{{ $definition->string }}</b></p>
 
 		@elseif ($definition->type == 'code')
 
-		<p><b>Value:</b></p>
+		<p><b>{{ trans('admin.Value') }}:</b></p>
 		<div class="clearfix">
 			 <textarea class="form-control" name="code" style="display:none">{{{ $definition->code }}}</textarea>
 			<div class="editor" id="code"/>
@@ -33,16 +33,16 @@
 
 		@elseif ($definition->type == 'text')
 
-		<p><b>Value:</b></p>
+		<p><b>{{ trans('admin.Value') }}:</b></p>
 		{{ nl2br($definition->text) }}
 
 		@elseif ($definition->type == 'integer')
 
-		<p>Value: <b>{{ $definition->integer }}</b></p>
+		<p>{{ trans('admin.Value') }}: <b>{{ $definition->integer }}</b></p>
 
 		@elseif ($definition->type == 'boolean')
 
-		<p>Value: <b>{{ $definition->boolean ? 'Yes' : 'No' }}</b></p>
+		<p>{{ trans('admin.Value') }}: <b>{{ $definition->boolean ? 'Yes' : 'No' }}</b></p>
 
 		@elseif ($definition->type == 'image' && $definition->image)
 
@@ -65,8 +65,8 @@
 		@endif
 
 		<hr>
-		<a href="{{ URL::route('admin.definitions.index') }}" class="btn btn-default">Back</a>
-		<a href="{{ URL::route('admin.definitions.edit', $definition->id) }}" class="btn btn-default">Edit</a>
+		<a href="{{ URL::route('admin.definitions.index') }}" class="btn btn-default">{{ trans('admin.Back') }}</a>
+		<a href="{{ URL::route('admin.definitions.edit', $definition->id) }}" class="btn btn-default">{{ trans('admin.Edit') }}</a>
 	</div>
 </div>
 

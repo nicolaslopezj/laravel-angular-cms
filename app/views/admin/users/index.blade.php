@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div style="padding-left: 15px">
-				<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('admin.users.show', $user->id) }}">View</a>
+				<a class="pull-right btn btn-default btn-xs" href="{{ URL::route('admin.users.show', $user->id) }}">{{ trans('admin.View') }}</a>
 				<p>
 					@if ($user->is_dev)
 						<i class="fa fa-cogs" style="margin-left: -20px; margin-right: 2px;"></i>
@@ -13,11 +13,11 @@
 					@elseif ($user->is_normal)
 						<i class="fa fa-user" style="margin-left: -20px; margin-right: 2px;"></i>
 					@endif
-					Name:
+					{{ trans('admin.Name') }}:
 					<b>{{ $user->name }}</b>
 				</p>
 				<p>
-					Email:
+					{{ trans('admin.Email') }}:
 					<code>{{ $user->email }}</code>
 				</p>
 			</div>
@@ -28,4 +28,4 @@
 
 {{ $users->links() }}
 
-<a class="btn btn-default" href="{{ URL::route('admin.users.create') }}">Create</a>
+<a class="btn btn-default" href="{{ URL::route('admin.users.create') }}">{{ trans('admin.Create') }}</a>
