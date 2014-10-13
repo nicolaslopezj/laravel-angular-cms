@@ -7,6 +7,6 @@ return array(
 	'db_password' => 'secret',
 	'db_name' => 'cms',
 	
-	'lang' => 'en',
+	'locale' => 'en',
 	
 );
