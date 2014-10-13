@@ -65,12 +65,13 @@ return array(
 	'Type' => 'Tipo',
 	'Value' => 'Valor',
 	'Tag' => 'Etiqueta',
-	'String' => 'Cadena de texto',
-	'Text' => 'Texto',
+	'String' => 'Texto',
+	'Text' => 'Texto largo',
 	'Integer' => 'Número entero',
-	'Intege_Array' => 'Lista de Imágenes',
+	'Image_Array' => 'Lista de Imágenes',
 	'Code' => 'Código',
 	'Boolean' => 'Booleano',
+    'Markdown' => 'Markdown',
 
 	/*
 	| Entities page texts
@@ -78,7 +79,7 @@ return array(
 	'Table_Name' => 'Nombre de tabla',
 	'Route_Name' => 'Nombre de ruta',
 	'Model_Name' => 'Nombre del Modelo',
-	'Uses_Slug' => 'Usa ficha',
+	'Uses_Slug' => 'Usa slug',
 	'Entity_Delete' => '¿Estás seguro que deseas eliminar esta entidad?',
 	// Database part
 	'Attribute_Delete' => '¿Estás seguro que deseas eliminar este atributo?',

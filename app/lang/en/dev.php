@@ -69,9 +69,10 @@ return array(
 	'String' => 'String',
 	'Text' => 'Text',
 	'Integer' => 'Integer',
-	'Intege_Array' => 'Image array',
+	'Image_Array' => 'Image array',
 	'Code' => 'Code',
 	'Boolean' => 'Boolean',
+    'Markdown' => 'Markdown',
 
 	/*
 	| Entities page texts
