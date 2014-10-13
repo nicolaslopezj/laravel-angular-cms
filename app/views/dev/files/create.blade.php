@@ -12,7 +12,7 @@
 				<span class="fileinput-exists">{{ trans('dev.Change') }}</span>
 				<input type="file" name="file">
 			</span>
-			<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">{{ trans('dev.Remove') }}</a>
+			<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">{{ trans('dev.Delete') }}</a>
 		</div>
 	</div>
 	{{ $errors->first('file', '<br><div class="alert alert-danger">:message</div>') }}
